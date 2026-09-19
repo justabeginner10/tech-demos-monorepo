@@ -18,7 +18,7 @@ struct DemoScreen: View {
     @State private var offset = CGSize.zero
     @State private var opacity = 1.0
     @State private var scale = 1.0
-    @State private var fps = 30
+    @State private var fps = 12
     @State private var tracingEnabled = true
 
     var body: some View {

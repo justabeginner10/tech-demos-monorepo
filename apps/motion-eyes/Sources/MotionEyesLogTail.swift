@@ -3,10 +3,13 @@ import OSLog
 import SwiftUI
 
 /// Tails this process’s MotionEyes OSLog lines so the CADisplayLink trace
-/// is visible without leaving the simulator.
+/// is visible without leaving the simulator / device.
+///
+/// OSLogStore reads run off the main actor; only published UI state updates
+/// hop back to MainActor.
 @MainActor
 final class MotionEyesLogTail: ObservableObject {
-    struct Line: Identifiable, Equatable {
+    struct Line: Identifiable, Equatable, Sendable {
         let id: UUID
         let date: Date
         let text: String
@@ -15,7 +18,7 @@ final class MotionEyesLogTail: ObservableObject {
         var isEnd: Bool { text.contains("-- End") }
     }
 
-    enum BurstKind: Equatable {
+    enum BurstKind: Equatable, Sendable {
         case idle
         case interpolating
         case snapped
@@ -36,8 +39,11 @@ final class MotionEyesLogTail: ObservableObject {
         storeAvailable = true
         task = Task { [weak self] in
             while let self, !Task.isCancelled {
-                self.poll()
-                try? await Task.sleep(for: .milliseconds(250))
+                let since = await self.snapshotLastSeen()
+                let result = await Self.fetchEntries(since: since)
+                guard !Task.isCancelled else { return }
+                await self.apply(result)
+                try? await Task.sleep(for: .milliseconds(500))
             }
         }
     }
@@ -54,41 +60,62 @@ final class MotionEyesLogTail: ObservableObject {
         samplesInCurrentBurst = 0
     }
 
-    private func poll() {
-        do {
-            let store = try OSLogStore(scope: .currentProcessIdentifier)
-            let startDate = lastSeen ?? Date().addingTimeInterval(-5)
-            let position = store.position(date: startDate)
-            let predicate = NSPredicate(format: "subsystem == %@", "MotionEyes")
-            let entries = try store.getEntries(at: position, matching: predicate)
+    private func snapshotLastSeen() -> Date {
+        lastSeen ?? Date().addingTimeInterval(-5)
+    }
 
-            var newest = startDate
-            var appended: [Line] = []
+    private struct FetchResult: Sendable {
+        var ok: Bool
+        var newest: Date
+        var lines: [Line]
+    }
 
-            for entry in entries {
-                guard entry.date > startDate else { continue }
-                guard let log = entry as? OSLogEntryLog, log.subsystem == "MotionEyes" else {
-                    continue
+    nonisolated private static func fetchEntries(since startDate: Date) async -> FetchResult {
+        await Task.detached(priority: .utility) {
+            do {
+                let store = try OSLogStore(scope: .currentProcessIdentifier)
+                let position = store.position(date: startDate)
+                let predicate = NSPredicate(format: "subsystem == %@", "MotionEyes")
+                let entries = try store.getEntries(at: position, matching: predicate)
+
+                var newest = startDate
+                var appended: [Line] = []
+                appended.reserveCapacity(32)
+
+                for entry in entries {
+                    guard entry.date > startDate else { continue }
+                    guard let log = entry as? OSLogEntryLog, log.subsystem == "MotionEyes" else {
+                        continue
+                    }
+                    appended.append(Line(id: UUID(), date: entry.date, text: log.composedMessage))
+                    if entry.date > newest {
+                        newest = entry.date
+                    }
                 }
 
-                let text = log.composedMessage
-                appended.append(Line(id: UUID(), date: entry.date, text: text))
-                classify(text)
-                if entry.date > newest {
-                    newest = entry.date
-                }
+                return FetchResult(ok: true, newest: newest, lines: appended)
+            } catch {
+                return FetchResult(ok: false, newest: startDate, lines: [])
             }
+        }.value
+    }
 
-            if !appended.isEmpty {
-                lines.append(contentsOf: appended)
-                if lines.count > 200 {
-                    lines.removeFirst(lines.count - 200)
-                }
-                lastSeen = newest
-            }
-        } catch {
+    private func apply(_ result: FetchResult) {
+        if !result.ok {
             storeAvailable = false
+            return
         }
+        storeAvailable = true
+        guard !result.lines.isEmpty else { return }
+
+        for line in result.lines {
+            classify(line.text)
+        }
+        lines.append(contentsOf: result.lines)
+        if lines.count > 80 {
+            lines.removeFirst(lines.count - 80)
+        }
+        lastSeen = result.newest
     }
 
     private func classify(_ text: String) {
@@ -157,9 +184,7 @@ struct TraceLogPanel: View {
                 .frame(minHeight: 180, maxHeight: 260)
                 .onChange(of: logTail.lines.last?.id) { _, newID in
                     guard let newID else { return }
-                    withAnimation(.easeOut(duration: 0.15)) {
-                        proxy.scrollTo(newID, anchor: .bottom)
-                    }
+                    proxy.scrollTo(newID, anchor: .bottom)
                 }
             }
         }
