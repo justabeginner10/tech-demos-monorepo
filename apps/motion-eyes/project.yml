@@ -22,6 +22,7 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.techdemos.motioneyes
         PRODUCT_NAME: MotionEyes
+        PRODUCT_MODULE_NAME: MotionEyesDemo
         GENERATE_INFOPLIST_FILE: YES
         INFOPLIST_KEY_CFBundleDisplayName: MotionEyes
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
