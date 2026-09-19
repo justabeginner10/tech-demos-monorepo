@@ -23,19 +23,29 @@ struct DemoScreen: View {
 
     var body: some View {
         NavigationStack {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 20) {
-                    storyHeader
-                    stage
-                    liveReadout
-                    controls
-                    TraceLogPanel(logTail: logTail)
+            VStack(spacing: 0) {
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 16) {
+                        storyHeader
+                        stage
+                        liveReadout
+                        controls
+                    }
+                    .padding()
+                    .padding(.bottom, 8)
                 }
-                .padding()
+
+                Divider()
+
+                // Pinned so traces stay visible while the card animates above.
+                TraceLogPanel(logTail: logTail)
+                    .padding(.horizontal)
+                    .padding(.vertical, 10)
+                    .background(Color(.systemBackground))
             }
             .background(Color(.systemGroupedBackground))
             .navigationTitle("MotionEyes")
-            .navigationBarTitleDisplayMode(.large)
+            .navigationBarTitleDisplayMode(.inline)
         }
         .onAppear {
             logTail.start()
@@ -75,7 +85,7 @@ struct DemoScreen: View {
             RoundedRectangle(cornerRadius: 18, style: .continuous)
                 .stroke(style: StrokeStyle(lineWidth: 1.2, dash: [7, 5]))
                 .foregroundStyle(.tertiary)
-                .frame(height: 260)
+                .frame(height: 200)
 
             card
                 .offset(offset)

@@ -181,7 +181,7 @@ struct TraceLogPanel: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }
-                .frame(minHeight: 180, maxHeight: 260)
+                .frame(minHeight: 140, maxHeight: 200)
                 .onChange(of: logTail.lines.last?.id) { _, newID in
                     guard let newID else { return }
                     proxy.scrollTo(newID, anchor: .bottom)
