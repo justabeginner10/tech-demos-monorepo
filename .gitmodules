@@ -1,0 +1,3 @@
+[submodule "apps/motion-eyes/Vendor/MotionEyes"]
+	path = apps/motion-eyes/Vendor/MotionEyes
+	url = https://github.com/edwardsanchez/MotionEyes.git

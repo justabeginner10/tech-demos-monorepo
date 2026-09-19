@@ -6,7 +6,7 @@ Each demo lives under `apps/<kebab-slug>/`.
 
 ## Demos
 
-- (none yet — cloud agents add apps here)
+- [`apps/motion-eyes/`](apps/motion-eyes/) — SwiftUI playground that integrates [MotionEyes](https://github.com/edwardsanchez/MotionEyes) so CADisplayLink traces show whether animations actually ran.
 
 ## Notes
 
