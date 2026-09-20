@@ -2,11 +2,10 @@ import Foundation
 import OSLog
 import SwiftUI
 
-/// Tails this process’s MotionEyes OSLog lines so the CADisplayLink trace
-/// is visible without leaving the simulator / device.
+/// Tails MotionEyes trace lines for the in-app panel.
 ///
-/// OSLogStore reads run off the main actor; only published UI state updates
-/// hop back to MainActor.
+/// Primary source: `Notification.Name("MotionEyes.TraceLine")` posted by the
+/// DEBUG sink (reliable on device). Fallback: OSLogStore for the same subsystem.
 @MainActor
 final class MotionEyesLogTail: ObservableObject {
     struct Line: Identifiable, Equatable, Sendable {
@@ -30,19 +29,34 @@ final class MotionEyesLogTail: ObservableObject {
     @Published private(set) var storeAvailable = true
 
     private var task: Task<Void, Never>?
+    private var observer: NSObjectProtocol?
     private var lastSeen: Date?
     private var samplesInCurrentBurst = 0
+
+    private static let traceNotification = Notification.Name("MotionEyes.TraceLine")
 
     func start() {
         stop()
         lastSeen = Date().addingTimeInterval(-2)
         storeAvailable = true
+
+        observer = NotificationCenter.default.addObserver(
+            forName: Self.traceNotification,
+            object: nil,
+            queue: .main
+        ) { [weak self] note in
+            guard let message = note.userInfo?["message"] as? String else { return }
+            Task { @MainActor in
+                self?.appendLive(message)
+            }
+        }
+
         task = Task { [weak self] in
             while let self, !Task.isCancelled {
                 let since = await self.snapshotLastSeen()
                 let result = await Self.fetchEntries(since: since)
                 guard !Task.isCancelled else { return }
-                await self.apply(result)
+                await self.applyStore(result)
                 try? await Task.sleep(for: .milliseconds(500))
             }
         }
@@ -51,6 +65,10 @@ final class MotionEyesLogTail: ObservableObject {
     func stop() {
         task?.cancel()
         task = nil
+        if let observer {
+            NotificationCenter.default.removeObserver(observer)
+            self.observer = nil
+        }
     }
 
     func clear() {
@@ -62,6 +80,17 @@ final class MotionEyesLogTail: ObservableObject {
 
     private func snapshotLastSeen() -> Date {
         lastSeen ?? Date().addingTimeInterval(-5)
+    }
+
+    private func appendLive(_ text: String) {
+        let line = Line(id: UUID(), date: Date(), text: text)
+        classify(text)
+        lines.append(line)
+        if lines.count > 80 {
+            lines.removeFirst(lines.count - 80)
+        }
+        lastSeen = line.date
+        storeAvailable = true
     }
 
     private struct FetchResult: Sendable {
@@ -100,18 +129,26 @@ final class MotionEyesLogTail: ObservableObject {
         }.value
     }
 
-    private func apply(_ result: FetchResult) {
+    private func applyStore(_ result: FetchResult) {
+        // Live notification feed is preferred; OSLog is backup only.
         if !result.ok {
-            storeAvailable = false
+            // Don't flip storeAvailable false if live feed already works.
             return
         }
-        storeAvailable = true
         guard !result.lines.isEmpty else { return }
 
-        for line in result.lines {
+        // Deduplicate against lines we already got via notification (same text + close time).
+        let existing = Set(lines.suffix(40).map(\.text))
+        let fresh = result.lines.filter { !existing.contains($0.text) }
+        guard !fresh.isEmpty else {
+            lastSeen = max(lastSeen ?? result.newest, result.newest)
+            return
+        }
+
+        for line in fresh {
             classify(line.text)
         }
-        lines.append(contentsOf: result.lines)
+        lines.append(contentsOf: fresh)
         if lines.count > 80 {
             lines.removeFirst(lines.count - 80)
         }
@@ -148,24 +185,15 @@ struct TraceLogPanel: View {
 
             verdict
 
-            Text(
-                "Filter Xcode’s console with `subsystem:MotionEyes`, or stream "
-                    + "`xcrun simctl spawn booted log stream --predicate 'subsystem == \"MotionEyes\"'`."
-            )
-            .font(.caption)
-            .foregroundStyle(.secondary)
-
-            if !logTail.storeAvailable {
-                Text("OSLogStore could not read this process. Watch the Xcode console instead.")
-                    .font(.caption)
-                    .foregroundStyle(.orange)
-            }
+            Text("Pinned live feed — tap Spring/Snap above and watch Start → samples → End here.")
+                .font(.caption)
+                .foregroundStyle(.secondary)
 
             ScrollViewReader { proxy in
                 ScrollView {
                     LazyVStack(alignment: .leading, spacing: 4) {
                         if logTail.lines.isEmpty {
-                            Text("Waiting for MotionEyes samples… tap a control above.")
+                            Text("Waiting for MotionEyes samples… tap Spring move.")
                                 .font(.caption.monospaced())
                                 .foregroundStyle(.tertiary)
                                 .padding(.vertical, 8)
@@ -181,7 +209,7 @@ struct TraceLogPanel: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }
-                .frame(minHeight: 140, maxHeight: 200)
+                .frame(minHeight: 120, maxHeight: 180)
                 .onChange(of: logTail.lines.last?.id) { _, newID in
                     guard let newID else { return }
                     proxy.scrollTo(newID, anchor: .bottom)

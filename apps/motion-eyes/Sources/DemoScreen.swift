@@ -3,15 +3,12 @@ import SwiftUI
 
 /// Playground that makes MotionEyes’ CADisplayLink traces readable in-app.
 ///
-/// Tap a **Spring / Fade / Scale** control to change values inside `withAnimation`.
-/// Tap the matching **Snap** control to assign the same values with no animation.
-/// MotionEyes samples the driving values on a display link; interpolated motion
-/// produces a Start → many FPS samples → End burst, while a snap is nearly a
-/// single jump.
+/// Layout keeps the traced card, trigger buttons, and console visible together
+/// so you can watch motion and the Start → samples → End burst at the same time.
 struct DemoScreen: View {
-    private static let movedOffset = CGSize(width: 92, height: -54)
+    private static let movedOffset = CGSize(width: 72, height: -40)
     private static let fadedOpacity = 0.22
-    private static let enlargedScale = 1.45
+    private static let enlargedScale = 1.35
 
     @StateObject private var logTail = MotionEyesLogTail()
 
@@ -20,72 +17,76 @@ struct DemoScreen: View {
     @State private var scale = 1.0
     @State private var fps = 12
     @State private var tracingEnabled = true
+    @State private var showMore = false
 
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
-                ScrollView {
-                    VStack(alignment: .leading, spacing: 16) {
-                        storyHeader
-                        stage
-                        liveReadout
-                        controls
-                    }
-                    .padding()
-                    .padding(.bottom, 8)
-                }
+                stage
+                    .padding(.horizontal)
+                    .padding(.top, 8)
+
+                controls
+                    .padding(.horizontal)
+                    .padding(.vertical, 8)
 
                 Divider()
 
-                // Pinned so traces stay visible while the card animates above.
                 TraceLogPanel(logTail: logTail)
                     .padding(.horizontal)
-                    .padding(.vertical, 10)
+                    .padding(.vertical, 8)
                     .background(Color(.systemBackground))
             }
             .background(Color(.systemGroupedBackground))
             .navigationTitle("MotionEyes")
             .navigationBarTitleDisplayMode(.inline)
-        }
-        .onAppear {
-            logTail.start()
-        }
-        .onDisappear {
-            logTail.stop()
-        }
-    }
-
-    private var storyHeader: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text("Did the animation actually run?")
-                .font(.title3.weight(.semibold))
-
-            Text(
-                "MotionEyes traces SwiftUI value changes on a CADisplayLink. "
-                    + "An animated change prints Start, samples at \(fps) fps, then End with deltas. "
-                    + "A snap without withAnimation is a one-frame jump."
-            )
-            .font(.subheadline)
-            .foregroundStyle(.secondary)
-
-            HStack(spacing: 8) {
-                Label("engine: displayLink", systemImage: "metronome")
-                Text("·")
-                Text("\(fps) fps")
-                Text("·")
-                Text("subsystem MotionEyes")
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("More") { showMore = true }
+                }
             }
-            .font(.caption.monospaced())
-            .foregroundStyle(.tertiary)
+            .sheet(isPresented: $showMore) {
+                NavigationStack {
+                    Form {
+                        Section("Tracing") {
+                            Toggle("Tracing enabled", isOn: $tracingEnabled)
+                            Stepper("Sample FPS: \(fps)", value: $fps, in: 8...60, step: 1)
+                        }
+                        Section("Target @State") {
+                            LabeledContent("opacity", value: format(opacity, digits: 2))
+                            LabeledContent("scale", value: format(scale, digits: 2))
+                            LabeledContent(
+                                "offset",
+                                value: "\(format(offset.width, digits: 0)), \(format(offset.height, digits: 0))"
+                            )
+                        }
+                        Section("How to read it") {
+                            Text("Left buttons use withAnimation (many samples). Right buttons snap with animations disabled (almost no samples).")
+                                .font(.footnote)
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                    .navigationTitle("More")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItem(placement: .confirmationAction) {
+                            Button("Done") { showMore = false }
+                        }
+                    }
+                }
+                .presentationDetents([.medium])
+            }
         }
+        .onAppear { logTail.start() }
+        .onDisappear { logTail.stop() }
     }
 
     private var stage: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 18, style: .continuous)
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
                 .stroke(style: StrokeStyle(lineWidth: 1.2, dash: [7, 5]))
                 .foregroundStyle(.tertiary)
-                .frame(height: 200)
+                .frame(height: 168)
 
             card
                 .offset(offset)
@@ -109,58 +110,28 @@ struct DemoScreen: View {
                 }
         }
         .frame(maxWidth: .infinity)
-        .padding(.vertical, 4)
     }
 
     private var card: some View {
-        RoundedRectangle(cornerRadius: 20, style: .continuous)
+        RoundedRectangle(cornerRadius: 18, style: .continuous)
             .fill(.orange.gradient)
-            .frame(width: 168, height: 110)
+            .frame(width: 140, height: 92)
             .overlay {
-                VStack(spacing: 4) {
+                VStack(spacing: 2) {
                     Image(systemName: "eye")
-                        .font(.title2.weight(.semibold))
+                        .font(.title3.weight(.semibold))
                     Text("traced view")
-                        .font(.caption.weight(.medium))
+                        .font(.caption2.weight(.medium))
                 }
                 .foregroundStyle(.white)
             }
-            .shadow(color: .orange.opacity(0.35), radius: 12, y: 6)
-    }
-
-    private var liveReadout: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text("Target @State")
-                .font(.headline)
-
-            Text("These chips jump as soon as you tap. MotionEyes samples the interpolated presentation values, which is why an animated tap still produces a long trace.")
-                .font(.caption)
-                .foregroundStyle(.secondary)
-
-            HStack(spacing: 16) {
-                valueChip("opacity", format(opacity, digits: 2))
-                valueChip("scale", format(scale, digits: 2))
-                valueChip(
-                    "offset",
-                    "\(format(offset.width, digits: 0)), \(format(offset.height, digits: 0))"
-                )
-            }
-
-            Toggle("Tracing enabled", isOn: $tracingEnabled)
-            Stepper("Sample FPS: \(fps)", value: $fps, in: 8...60, step: 1)
-        }
-        .padding()
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(.background, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+            .shadow(color: .orange.opacity(0.35), radius: 10, y: 5)
     }
 
     private var controls: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("Trigger a change")
-                .font(.headline)
-
-            Text("Left column uses withAnimation. Right column assigns the same values instantly.")
-                .font(.caption)
+        VStack(alignment: .leading, spacing: 8) {
+            Text("Trigger — watch card + console together")
+                .font(.caption.weight(.semibold))
                 .foregroundStyle(.secondary)
 
             pair(
@@ -208,19 +179,24 @@ struct DemoScreen: View {
                 }
             )
 
-            Button("Reset all") {
-                run(animated: true) {
-                    offset = .zero
-                    opacity = 1
-                    scale = 1
+            HStack(spacing: 10) {
+                Button("Reset") {
+                    run(animated: true) {
+                        offset = .zero
+                        opacity = 1
+                        scale = 1
+                    }
                 }
+                .buttonStyle(.bordered)
+
+                Button("Clear logs") {
+                    logTail.clear()
+                }
+                .buttonStyle(.bordered)
+
+                Spacer()
             }
-            .buttonStyle(.bordered)
-            .frame(maxWidth: .infinity)
         }
-        .padding()
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(.background, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
     }
 
     private func pair(
@@ -229,13 +205,15 @@ struct DemoScreen: View {
         animate: @escaping () -> Void,
         snap: @escaping () -> Void
     ) -> some View {
-        HStack(spacing: 10) {
+        HStack(spacing: 8) {
             Button(animateTitle, action: animate)
                 .buttonStyle(.borderedProminent)
+                .controlSize(.small)
                 .frame(maxWidth: .infinity)
 
             Button(snapTitle, action: snap)
                 .buttonStyle(.bordered)
+                .controlSize(.small)
                 .frame(maxWidth: .infinity)
         }
     }
@@ -252,17 +230,6 @@ struct DemoScreen: View {
                 updates()
             }
         }
-    }
-
-    private func valueChip(_ label: String, _ value: String) -> some View {
-        VStack(alignment: .leading, spacing: 2) {
-            Text(label)
-                .font(.caption2)
-                .foregroundStyle(.secondary)
-            Text(value)
-                .font(.body.monospacedDigit().weight(.medium))
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
     }
 
     private func format(_ value: Double, digits: Int) -> String {
