@@ -79,7 +79,7 @@ struct SessionCard: View {
                 Spacer()
                 Text(technique == .onAppear ? "optional + Binding(get:set:)" : "$session bindings")
                     .font(.caption2)
-                    .foregroundStyle(technique == .onAppear ? .secondary : .green)
+                    .foregroundStyle(technique == .onAppear ? Color.secondary : Color.green)
             }
 
             if technique == .onAppear, sessionRegion == nil {
