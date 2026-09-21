@@ -1,7 +1,5 @@
 import SwiftUI
 
-/// Find My–style chrome demo: a map canvas, a morphing floating tab bar,
-/// and a peeking material sheet. Visual recreation only — not a clone.
 struct DemoScreen: View {
     @State private var selection: FindMyTab = .devices
     @State private var detent: ChromeDetent = .peek
@@ -9,25 +7,28 @@ struct DemoScreen: View {
 
     var body: some View {
         GeometryReader { proxy in
+            let bottomInset = proxy.safeAreaInsets.bottom
+
             ZStack(alignment: .bottom) {
                 MapCanvas(selection: selection)
+                    .ignoresSafeArea()
                     .onTapGesture {
-                        withAnimation(FloatingMorphingTabBar.morphSpring) {
+                        withAnimation(.snappy(duration: 0.32)) {
                             detent = .bar
                         }
                     }
 
-                VStack(spacing: 10) {
+                VStack(spacing: 12) {
                     HStack {
                         Spacer()
                         RecenterButton {
-                            withAnimation(FloatingMorphingTabBar.morphSpring) {
+                            withAnimation(.snappy(duration: 0.32)) {
                                 selection = .me
                                 detent = .peek
                             }
                         }
                     }
-                    .padding(.horizontal, 22)
+                    .padding(.horizontal, 20)
 
                     FloatingFindMyChrome(
                         selection: $selection,
@@ -36,11 +37,10 @@ struct DemoScreen: View {
                         maxHeight: proxy.size.height
                     )
                 }
+                .padding(.bottom, max(bottomInset, 8))
             }
         }
         .preferredColorScheme(.dark)
-        .sensoryFeedback(.selection, trigger: selection)
-        .sensoryFeedback(.impact(weight: .light), trigger: detent)
     }
 }
 
@@ -53,14 +53,8 @@ private struct RecenterButton: View {
                 .font(.system(size: 15, weight: .semibold))
                 .foregroundStyle(.white)
                 .frame(width: 44, height: 44)
-                .background(
-                    Circle().fill(Color(red: 0.22, green: 0.72, blue: 0.42).gradient)
-                )
-                .overlay {
-                    Circle()
-                        .strokeBorder(.white.opacity(0.28), lineWidth: 0.8)
-                }
-                .shadow(color: Color(red: 0.22, green: 0.72, blue: 0.42).opacity(0.45), radius: 10, y: 4)
+                .background(Circle().fill(Color(red: 0.22, green: 0.72, blue: 0.42)))
+                .shadow(color: .black.opacity(0.35), radius: 8, y: 3)
         }
         .buttonStyle(.plain)
         .accessibilityLabel("Recenter on Me")

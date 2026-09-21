@@ -129,24 +129,27 @@ struct TabPeekList: View {
     var tab: FindMyTab
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            HStack {
-                Text(tab.title)
-                    .font(.title3.weight(.bold))
-                Spacer()
-                Text("Demo data")
-                    .font(.caption.weight(.medium))
-                    .foregroundStyle(.secondary)
-            }
-            .padding(.horizontal, 4)
+        ScrollView {
+            VStack(alignment: .leading, spacing: 10) {
+                HStack {
+                    Text(tab.title)
+                        .font(.title3.weight(.bold))
+                    Spacer()
+                    Text("Demo data")
+                        .font(.caption.weight(.medium))
+                        .foregroundStyle(.secondary)
+                }
+                .padding(.horizontal, 4)
 
-            ForEach(DemoCatalog.rows(for: tab)) { row in
-                LocateeRow(row: row)
+                ForEach(DemoCatalog.rows(for: tab)) { row in
+                    LocateeRow(row: row)
+                }
             }
+            .padding(.horizontal, 16)
+            .padding(.top, 2)
+            .padding(.bottom, 8)
         }
-        .padding(.horizontal, 16)
-        .padding(.top, 6)
-        .padding(.bottom, 8)
+        .scrollIndicators(.hidden)
     }
 }
 

@@ -1,9 +1,5 @@
 import SwiftUI
 
-/// Tabs shown in the floating Find My–style bar.
-///
-/// Icons follow the iOS 26 Find My chrome (People / Devices / Items / Me)
-/// using SF Symbols only — no Apple artwork.
 enum FindMyTab: String, CaseIterable, Identifiable, Hashable {
     case people
     case devices
@@ -33,7 +29,6 @@ enum FindMyTab: String, CaseIterable, Identifiable, Hashable {
     static let accent = Color(red: 0.39, green: 0.68, blue: 1.00)
 }
 
-/// How tall the floating chrome sits over the map.
 enum ChromeDetent: String, CaseIterable, Identifiable {
     case bar
     case peek
@@ -41,18 +36,19 @@ enum ChromeDetent: String, CaseIterable, Identifiable {
 
     var id: String { rawValue }
 
+    /// Content height of the floating chrome (excluding outer padding).
     func height(in maxHeight: CGFloat) -> CGFloat {
         switch self {
         case .bar:
-            92
+            72
         case .peek:
-            min(280, max(248, maxHeight * 0.34))
+            min(300, max(260, maxHeight * 0.36))
         case .half:
-            min(560, max(400, maxHeight * 0.58))
+            min(520, max(380, maxHeight * 0.55))
         }
     }
 
     var cornerRadius: CGFloat {
-        self == .bar ? 42 : 28
+        self == .bar ? 36 : 24
     }
 }
