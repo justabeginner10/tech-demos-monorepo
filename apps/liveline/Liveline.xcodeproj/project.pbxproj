@@ -10,6 +10,9 @@
 		31A31A31A31A31A31A31A31A /* LivelineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A21A21A21A21A21A21A21A /* LivelineApp.swift */; };
 		31B31B31B31B31B31B31B31B /* DemoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B21B21B21B21B21B21B21B /* DemoScreen.swift */; };
 		31C31C31C31C31C31C31C31C /* LiveTape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C21C21C21C21C21C21C21C /* LiveTape.swift */; };
+		31E31E31E31E31E31E31E31E /* GalleryScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D21D21D21D21D21D21D21D /* GalleryScreen.swift */; };
+		31F31F31F31F31F31F31F31F /* GallerySamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A22A22A22A22A22A22A22A /* GallerySamples.swift */; };
+		32A32A32A32A32A32A32A32A /* DemoChrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B22B22B22B22B22B22B22B /* DemoChrome.swift */; };
 		31D31D31D31D31D31D31D31D /* Liveline in Frameworks */ = {isa = PBXBuildFile; productRef = 81B81B81B81B81B81B81B81B /* Liveline */; };
 /* End PBXBuildFile section */
 
@@ -17,6 +20,9 @@
 		21A21A21A21A21A21A21A21A /* LivelineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivelineApp.swift; sourceTree = "<group>"; };
 		21B21B21B21B21B21B21B21B /* DemoScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoScreen.swift; sourceTree = "<group>"; };
 		21C21C21C21C21C21C21C21C /* LiveTape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveTape.swift; sourceTree = "<group>"; };
+		21D21D21D21D21D21D21D21D /* GalleryScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryScreen.swift; sourceTree = "<group>"; };
+		22A22A22A22A22A22A22A22A /* GallerySamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GallerySamples.swift; sourceTree = "<group>"; };
+		22B22B22B22B22B22B22B22B /* DemoChrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoChrome.swift; sourceTree = "<group>"; };
 		21E21E21E21E21E21E21E21E /* Liveline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Liveline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -45,7 +51,10 @@
 			children = (
 				21A21A21A21A21A21A21A21A /* LivelineApp.swift */,
 				21B21B21B21B21B21B21B21B /* DemoScreen.swift */,
+				22B22B22B22B22B22B22B22B /* DemoChrome.swift */,
 				21C21C21C21C21C21C21C21C /* LiveTape.swift */,
+				21D21D21D21D21D21D21D21D /* GalleryScreen.swift */,
+				22A22A22A22A22A22A22A22A /* GallerySamples.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -117,7 +126,10 @@
 			files = (
 				31A31A31A31A31A31A31A31A /* LivelineApp.swift in Sources */,
 				31B31B31B31B31B31B31B31B /* DemoScreen.swift in Sources */,
+				32A32A32A32A32A32A32A32A /* DemoChrome.swift in Sources */,
 				31C31C31C31C31C31C31C31C /* LiveTape.swift in Sources */,
+				31E31E31E31E31E31E31E31E /* GalleryScreen.swift in Sources */,
+				31F31F31F31F31F31F31F31F /* GallerySamples.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

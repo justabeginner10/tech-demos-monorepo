@@ -2,7 +2,10 @@
 
 Dark SwiftUI playground for **[Liveline](https://github.com/ParthJadhav/liveline-swift)** realtime charts (`import Liveline`, tagged **0.7.0**).
 
-A `LivelineDataStream` holds a bounded fake tape. The same ticks drive a live line, 20-second OHLC candles, and a three-series compare chart. Drag any chart to scrub; the value badge and tooltip come from the package.
+Two tabs:
+
+- **Live** — one ticking Canvas at a time (line, candlestick, or multi-series) fed by a `LivelineDataStream`.
+- **Gallery** — static samples of the other public families. No timer.
 
 ## Open and run
 
@@ -23,14 +26,24 @@ xcodegen generate
 
 ## What to tap
 
+### Live
+
 | Control | What to look for |
 | --- | --- |
-| **Live ticks** | Off pauses the 220ms tick loop and sets `paused` on each chart. On resumes the stream. |
-| **Dither style** | Applies `.livelineChartStyle(.dither)` to the whole gallery. Variants: gradient / dotted / hatched / solid, bloom `.aura`. Off restores each chart’s own style. |
-| **Drag a chart** | Built-in scrub tooltip + live value badge. The **Scrub** row mirrors `onHover`. |
+| **Line / Candles / Compare** | Only the selected family is on screen and ticking (~220ms). The other two are not laid out. |
+| **Live ticks** | Off pauses the tick loop and sets `paused` on the chart. |
+| **Dither style** | Per-chart `.dither` with bloom `.low` at 24 FPS (not `.aura`). Variants: gradient / dotted / hatched / solid. |
+| **Drag the chart** | Built-in scrub tooltip + live value badge. The **Scrub** row updates only when the hovered value actually moves. |
 | **Window chips** | 30s / 1m / 3m on the line; 2m / 4m / 8m on candles; 1m / 3m / 5m on compare. |
-| **Line / candle toggle** | On the Session tape chart, Liveline’s mode control morphs OHLC into a line (`onModeChange`). |
-| **Series chips** | Tape / Drift / Echo can be hidden independently. |
+| **Line / candle toggle** | On Candles, Liveline’s mode control morphs OHLC into a line. `lineData` is empty unless that morph is on. |
+
+### Gallery
+
+Lazy grid of static charts (no live timer): bar, range-band, scatter, step, lollipop, bubble, box-plot, waterfall, error-bar, dumbbell, stacked-bar, stacked-area, streamgraph, timeline, heatmap, radar, donut, gauge, funnel, histogram, bullet, treemap, sunburst, Sankey.
+
+Streamgraph is stacked-area with `LivelineStackedAreaStyle(baseline: .centered)` — 0.7.0 has no separate streamgraph initializer.
+
+**Skipped:** none of the listed 0.7.0 public families.
 
 ## Requirements
 

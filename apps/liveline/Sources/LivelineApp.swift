@@ -9,8 +9,3 @@ struct LivelineApp: App {
         }
     }
 }
-
-#Preview("Liveline Demo") {
-    DemoScreen()
-        .preferredColorScheme(.dark)
-}

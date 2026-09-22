@@ -4,9 +4,8 @@ import SwiftUI
 
 /// Synthetic live feed: a `LivelineDataStream` plus derived candles and series.
 ///
-/// Ticks are a smooth random walk (fake mid price). Candles bucket the same
-/// ticks into 20s OHLC bars. Two companion series lag the tape so a multi-line
-/// chart has something to compare.
+/// Only the active live family is published each tick so a single Canvas is
+/// driving SwiftUI updates at ~220ms.
 @MainActor
 final class LiveTape: ObservableObject {
     static let candleWidth: TimeInterval = 20
@@ -17,12 +16,16 @@ final class LiveTape: ObservableObject {
     @Published private(set) var candles: [LivelineCandle] = []
     @Published private(set) var liveCandle: LivelineCandle
     @Published private(set) var series: [LivelineSeries] = []
-    @Published private(set) var tickCount = 0
 
     private var phase = 0.0
     private var lastValue: Double
+    private var companionIndex = 0
     private var driftPoints: [LivelinePoint] = []
     private var echoPoints: [LivelinePoint] = []
+    private var candleOpen = 0.0
+    private var candleHigh = 0.0
+    private var candleLow = 0.0
+    private var candleBucket: TimeInterval = 0
 
     init() {
         let now = Date().timeIntervalSince1970
@@ -42,23 +45,50 @@ final class LiveTape: ObservableObject {
         latest = value
         phase = localPhase
         liveCandle = LivelineCandle(time: Self.bucket(now), open: value, high: value, low: value, close: value)
+        rememberLiveCandle(liveCandle)
         rebuildCandles(from: points, now: now)
         seedCompanions(from: points)
         publishSeries()
     }
 
-    func tick(now: TimeInterval = Date().timeIntervalSince1970) {
+    func tick(now: TimeInterval = Date().timeIntervalSince1970, family: LiveFamily) {
         phase += 0.09
         lastValue = Self.step(lastValue, phase: phase)
         let point = LivelinePoint(time: now, value: lastValue)
         stream.append(point)
-        latest = lastValue
-        absorbCandle(point)
-        absorbCompanions(point)
-        tickCount += 1
+
+        switch family {
+        case .line:
+            latest = lastValue
+        case .candles:
+            absorbCandle(point)
+            latest = lastValue
+        case .compare:
+            absorbCompanions(point)
+            latest = lastValue
+        }
+    }
+
+    func prepare(for family: LiveFamily) {
+        switch family {
+        case .line:
+            latest = lastValue
+        case .candles:
+            rebuildCandles(from: stream.points, now: Date().timeIntervalSince1970)
+            latest = lastValue
+        case .compare:
+            seedCompanions(from: stream.points)
+            publishSeries()
+            latest = lastValue
+        }
     }
 
     var points: [LivelinePoint] { stream.points }
+
+    /// Newest samples covering `window` seconds, for the visible chart only.
+    func visiblePoints(covering window: TimeInterval) -> [LivelinePoint] {
+        Self.windowed(stream.points, covering: window)
+    }
 
     // MARK: - Walk
 
@@ -83,6 +113,7 @@ final class LiveTape: ObservableObject {
                 committed.append(candle)
             } else {
                 liveCandle = candle
+                rememberLiveCandle(candle)
             }
         }
         candles = Array(committed.suffix(80))
@@ -90,8 +121,15 @@ final class LiveTape: ObservableObject {
 
     private func absorbCandle(_ point: LivelinePoint) {
         let key = Self.bucket(point.time)
-        if liveCandle.time != key {
-            candles.append(liveCandle)
+        if candleBucket != key {
+            let committed = LivelineCandle(
+                time: candleBucket,
+                open: candleOpen,
+                high: candleHigh,
+                low: candleLow,
+                close: liveCandle.close
+            )
+            candles.append(committed)
             if candles.count > 80 {
                 candles.removeFirst(candles.count - 80)
             }
@@ -102,6 +140,7 @@ final class LiveTape: ObservableObject {
                 low: point.value,
                 close: point.value
             )
+            rememberLiveCandle(liveCandle)
         } else {
             liveCandle = LivelineCandle(
                 time: liveCandle.time,
@@ -110,7 +149,16 @@ final class LiveTape: ObservableObject {
                 low: min(liveCandle.low, point.value),
                 close: point.value
             )
+            candleHigh = liveCandle.high
+            candleLow = liveCandle.low
         }
+    }
+
+    private func rememberLiveCandle(_ candle: LivelineCandle) {
+        candleBucket = candle.time
+        candleOpen = candle.open
+        candleHigh = candle.high
+        candleLow = candle.low
     }
 
     private static func candle(from points: [LivelinePoint], time: TimeInterval) -> LivelineCandle? {
@@ -135,34 +183,54 @@ final class LiveTape: ObservableObject {
         echoPoints = points.enumerated().map { index, point in
             LivelinePoint(time: point.time, value: point.value - 2.4 + cos(Double(index) * 0.05) * 1.4)
         }
+        companionIndex = points.count
     }
 
     private func absorbCompanions(_ point: LivelinePoint) {
-        let index = Double(tickCount)
+        companionIndex += 1
+        let index = Double(companionIndex)
         appendCapped(&driftPoints, LivelinePoint(time: point.time, value: point.value + sin(index * 0.07) * 1.8))
         appendCapped(&echoPoints, LivelinePoint(time: point.time, value: point.value - 2.4 + cos(index * 0.05) * 1.4))
         publishSeries()
     }
 
     private func publishSeries() {
-        let tape = stream.points
+        let tape = Self.windowed(stream.points, covering: 200)
+        let drift = Self.windowed(driftPoints, covering: 200)
+        let echo = Self.windowed(echoPoints, covering: 200)
         series = [
             LivelineSeries(id: "tape", data: tape, value: tape.last?.value ?? latest, color: .cyan, label: "Tape"),
             LivelineSeries(
                 id: "drift",
-                data: driftPoints,
-                value: driftPoints.last?.value ?? latest,
+                data: drift,
+                value: drift.last?.value ?? latest,
                 color: .mint,
                 label: "Drift"
             ),
             LivelineSeries(
                 id: "echo",
-                data: echoPoints,
-                value: echoPoints.last?.value ?? latest,
+                data: echo,
+                value: echo.last?.value ?? latest,
                 color: .orange,
                 label: "Echo"
             ),
         ]
+    }
+
+    private static func windowed(_ points: [LivelinePoint], covering window: TimeInterval) -> [LivelinePoint] {
+        guard let newest = points.last?.time else { return points }
+        let cutoff = newest - max(window, 1)
+        var low = 0
+        var high = points.count
+        while low < high {
+            let mid = (low + high) / 2
+            if points[mid].time < cutoff {
+                low = mid + 1
+            } else {
+                high = mid
+            }
+        }
+        return Array(points[low...])
     }
 
     private func appendCapped(_ buffer: inout [LivelinePoint], _ point: LivelinePoint) {
