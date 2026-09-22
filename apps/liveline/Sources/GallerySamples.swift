@@ -284,13 +284,15 @@ private enum Fixtures {
         )
     }
 
-    static let radial = LivelineChartConfiguration(
-        theme: .dark,
-        badge: false,
-        pulse: false,
-        endpointDecorations: false,
-        paused: true
-    )
+    static var radial: LivelineChartConfiguration {
+        LivelineChartConfiguration(
+            theme: .dark,
+            badge: false,
+            pulse: false,
+            endpointDecorations: false,
+            paused: true
+        )
+    }
 
     static var heatmapConfig: LivelineChartConfiguration {
         var configuration = cartesian(120)
@@ -348,16 +350,17 @@ private enum Fixtures {
         }
     }()
 
-    static let stacks: [LivelineStackedPoint] = (0..<8).map { index in
-        LivelineStackedPoint(
-            time: t0 + Double(index) * 20,
-            values: [
-                8 + Double(index % 3),
-                6 + Double((index + 1) % 4),
-                4 + Double((index + 2) % 3),
-            ]
-        )
-    }
+    static let stacks: [LivelineStackedPoint] = {
+        (0..<8).map { index -> LivelineStackedPoint in
+            let first = 8 + Double(index % 3)
+            let second = 6 + Double((index + 1) % 4)
+            let third = 4 + Double((index + 2) % 3)
+            return LivelineStackedPoint(
+                time: t0 + Double(index) * 20,
+                values: [first, second, third]
+            )
+        }
+    }()
 
     static let work: [LivelineTimelineItem] = [
         LivelineTimelineItem(id: "ingest", label: "Ingest", start: t0, end: t0 + 80, lane: 0),
@@ -401,9 +404,13 @@ private enum Fixtures {
         LivelineCategoryValue(id: "keep", label: "Keep", value: 86),
     ]
 
-    static let latencies: [Double] = (0..<80).map { index in
-        40 + sin(Double(index) * 0.23) * 12 + Double((index * 17) % 11)
-    }
+    static let latencies: [Double] = {
+        (0..<80).map { index -> Double in
+            let wave = sin(Double(index) * 0.23) * 12
+            let noise = Double((index * 17) % 11)
+            return 40 + wave + noise
+        }
+    }()
 
     static let tree: [LivelineTreemapNode] = [
         LivelineTreemapNode(label: "Tape", value: 180),
