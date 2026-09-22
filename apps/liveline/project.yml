@@ -1,0 +1,43 @@
+name: Liveline
+options:
+  bundleIdPrefix: com.techdemos
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: 6.0
+packages:
+  Liveline:
+    url: https://github.com/ParthJadhav/liveline-swift
+    from: 0.7.0
+targets:
+  Liveline:
+    type: application
+    platform: iOS
+    deploymentTarget: "18.0"
+    sources:
+      - Sources
+    dependencies:
+      - package: Liveline
+        product: Liveline
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.techdemos.liveline
+        PRODUCT_NAME: Liveline
+        PRODUCT_MODULE_NAME: LivelineDemo
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Liveline
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        CODE_SIGN_STYLE: Automatic
+schemes:
+  Liveline:
+    build:
+      targets:
+        Liveline: all
+    run:
+      config: Debug
+    test:
+      config: Debug
