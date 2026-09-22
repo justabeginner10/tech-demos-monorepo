@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "liveline-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ParthJadhav/liveline-swift",
+      "state" : {
+        "revision" : "2b57a29bc13d9acb7029f12caa29d6d7ccfda80f",
+        "version" : "0.7.0"
+      }
+    }
+  ],
+  "version" : 2
+}
