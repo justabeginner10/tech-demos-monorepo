@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "draftercharts",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AndroidPoet/DrafterCharts",
+      "state" : {
+        "revision" : "afb956ab5659240c0909a12c6f12a6287da18865",
+        "version" : "0.2.0"
+      }
+    }
+  ],
+  "version" : 2
+}
