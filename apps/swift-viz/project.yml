@@ -1,0 +1,43 @@
+name: SwiftViz
+options:
+  bundleIdPrefix: com.techdemos
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: 6.0
+packages:
+  SwiftViz:
+    url: https://github.com/omarsinan/SwiftViz.git
+    from: 1.0.0
+targets:
+  SwiftViz:
+    type: application
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - Sources
+    dependencies:
+      - package: SwiftViz
+        product: SwiftViz
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.techdemos.swiftviz
+        PRODUCT_NAME: SwiftViz
+        PRODUCT_MODULE_NAME: SwiftVizDemo
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: SwiftViz
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        CODE_SIGN_STYLE: Automatic
+schemes:
+  SwiftViz:
+    build:
+      targets:
+        SwiftViz: all
+    run:
+      config: Debug
+    test:
+      config: Debug
