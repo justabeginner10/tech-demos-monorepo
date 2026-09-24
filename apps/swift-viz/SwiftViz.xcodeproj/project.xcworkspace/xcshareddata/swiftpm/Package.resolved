@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "swiftviz",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/omarsinan/SwiftViz.git",
+      "state" : {
+        "revision" : "2ad63280de6448f00011cf6a26f5edd50f6b04b7",
+        "version" : "1.1.1"
+      }
+    }
+  ],
+  "version" : 2
+}
