@@ -1,0 +1,40 @@
+name: ShipSwift
+options:
+  bundleIdPrefix: com.techdemos
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: 6.0
+targets:
+  ShipSwift:
+    type: application
+    platform: iOS
+    deploymentTarget: "18.0"
+    sources:
+      - Sources
+      - path: Vendor
+        excludes:
+          - LICENSE
+          - NOTICE.md
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.techdemos.shipswift
+        PRODUCT_NAME: ShipSwift
+        PRODUCT_MODULE_NAME: ShipSwiftDemo
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: ShipSwift
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        CODE_SIGN_STYLE: Automatic
+schemes:
+  ShipSwift:
+    build:
+      targets:
+        ShipSwift: all
+    run:
+      config: Debug
+    test:
+      config: Debug
