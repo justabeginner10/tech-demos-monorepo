@@ -12,6 +12,7 @@ Each demo lives under `apps/<kebab-slug>/`.
 - [`apps/lazy-state/`](apps/lazy-state/) — Lazy `@State` initialized from parent data.
 - [`apps/liveline/`](apps/liveline/) — [Liveline](https://github.com/ParthJadhav/liveline-swift) realtime charts playground.
 - [`apps/motion-eyes/`](apps/motion-eyes/) — SwiftUI playground that integrates [MotionEyes](https://github.com/edwardsanchez/MotionEyes) so CADisplayLink traces show whether animations actually ran.
+- [`apps/shad-kit/`](apps/shad-kit/) — [ShadKit](https://github.com/jasonkneen/ShadKit) shadcn/ui + AI Elements playground (Live + Gallery).
 - [`apps/ship-swift/`](apps/ship-swift/) — Slim [ShipSwift](https://github.com/signerlabs/ShipSwift) copy-paste playground (`SWPackage` recipes, Live + Gallery).
 - [`apps/swift-viz/`](apps/swift-viz/) — [SwiftViz](https://github.com/omarsinan/SwiftViz) stacked / simple bar charts.
 

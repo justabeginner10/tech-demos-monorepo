@@ -1,0 +1,47 @@
+name: ShadKit
+options:
+  bundleIdPrefix: com.techdemos
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: 6.0
+packages:
+  ShadKit:
+    url: https://github.com/jasonkneen/ShadKit
+    from: 0.3.0
+targets:
+  ShadKit:
+    type: application
+    platform: iOS
+    deploymentTarget: "18.0"
+    sources:
+      - Sources
+    dependencies:
+      - package: ShadKit
+        product: ShadcnUI
+      - package: ShadKit
+        product: AIElementsUI
+      - package: ShadKit
+        product: CanvasUI
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.techdemos.shadkit
+        PRODUCT_NAME: ShadKit
+        PRODUCT_MODULE_NAME: ShadKitDemo
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: ShadKit
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        CODE_SIGN_STYLE: Automatic
+schemes:
+  ShadKit:
+    build:
+      targets:
+        ShadKit: all
+    run:
+      config: Debug
+    test:
+      config: Debug
