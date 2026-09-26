@@ -32,20 +32,20 @@ struct LivePlaygroundView: View {
         _chat = StateObject(wrappedValue: LiveChatFactory.make())
     }
 
+    /// Chat hosts `AIPromptInput` (iOS `TextEditor`). A page `ScrollView`
+    /// steals those gestures, so Chat is pinned outside the scroller.
+    private var showsPinnedChat: Bool {
+        isSelected && family == .chat
+    }
+
     var body: some View {
         NavigationStack {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 16) {
-                    storyHeader
-                    playgroundControls
-                    if isSelected {
-                        activeRecipe
-                    } else {
-                        parkedCard
-                    }
-                    howItWorks
+            Group {
+                if showsPinnedChat {
+                    pinnedChatLayout
+                } else {
+                    scrollingPlayground
                 }
-                .padding()
             }
             .background(DemoPalette.page)
             .navigationTitle("ShadKit")
@@ -60,6 +60,41 @@ struct LivePlaygroundView: View {
             if !selected {
                 chat.stop()
             }
+        }
+    }
+
+    /// Theme / Elements (and parked Chat) stay in the existing page scroller.
+    private var scrollingPlayground: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 16) {
+                storyHeader
+                playgroundControls
+                if isSelected {
+                    activeRecipe
+                } else {
+                    parkedCard
+                }
+                howItWorks
+            }
+            .padding()
+        }
+    }
+
+    /// Compact chrome on top; chat card fills the rest so the composer is not
+    /// nested in a `ScrollView` and sits above the floating tab pill.
+    private var pinnedChatLayout: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            playgroundControls
+            DemoChrome.chartCard(title: family.title, subtitle: family.subtitle) {
+                LiveChatSurface(chat: chat)
+            }
+            .frame(maxHeight: .infinity)
+        }
+        .padding(.horizontal)
+        .padding(.top, 8)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+        .safeAreaInset(edge: .bottom, spacing: 0) {
+            Color.clear.frame(height: 56)
         }
     }
 
@@ -127,15 +162,17 @@ struct LivePlaygroundView: View {
 
     @ViewBuilder
     private var activeRecipe: some View {
-        DemoChrome.chartCard(title: family.title, subtitle: family.subtitle) {
-            switch family {
-            case .theme:
+        switch family {
+        case .theme:
+            DemoChrome.chartCard(title: family.title, subtitle: family.subtitle) {
                 LiveThemeSurface(baseColor: baseColor)
-            case .chat:
-                LiveChatSurface(chat: chat)
-            case .elements:
+            }
+        case .elements:
+            DemoChrome.chartCard(title: family.title, subtitle: family.subtitle) {
                 LiveElementsSurface()
             }
+        case .chat:
+            EmptyView()
         }
     }
 
@@ -272,8 +309,7 @@ private struct LiveChatSurface: View {
                 )
             }
         )
-        .frame(maxWidth: .infinity)
-        .frame(height: 420)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(8)
     }
 }

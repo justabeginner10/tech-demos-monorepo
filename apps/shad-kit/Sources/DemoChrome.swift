@@ -64,6 +64,7 @@ enum DemoChrome {
         .overlay {
             RoundedRectangle(cornerRadius: 16, style: .continuous)
                 .strokeBorder(DemoPalette.stroke, lineWidth: 1)
+                .allowsHitTesting(false)
         }
     }
 }

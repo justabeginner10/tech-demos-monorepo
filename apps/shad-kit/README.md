@@ -35,7 +35,7 @@ The package also ships an executable target named `ShadKitDemo`; this app does *
 | Control | What to look for |
 | --- | --- |
 | **Theme** | Neutral / Zinc / Stone / Gray / Slate base colors, token swatches, `ShadcnButton` / `ShadcnTextField` / `ShadcnBadge` / `ShadcnCard`. `.shadcnSurface()` on the card. |
-| **Chat** | Empty `AIChatbot` with suggestions. Submit or tap a chip to stream a canned `AIMockChatTransport` reply (reasoning + tool + text). No network. |
+| **Chat** | Pinned outside the page scroller. Tap the composer, type, Send (or a suggestion chip). Streams a canned `AIMockChatTransport` reply — no network. Composer sits above the floating tab pill. |
 | **Elements** | Settled `AIReasoning`, completed `AITool`, `AICodeBlock`, `AIResponse`. No live stream. |
 | **Leave the tab** | The active surface unmounts and any mock stream is stopped. |
 
