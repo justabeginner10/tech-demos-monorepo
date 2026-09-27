@@ -7,6 +7,7 @@ Each demo lives under `apps/<kebab-slug>/`.
 ## Demos
 
 - [`apps/button-styles/`](apps/button-styles/) — Custom `ButtonStyle` / `PrimitiveButtonStyle` gallery.
+- [`apps/dial-kit/`](apps/dial-kit/) — [DialKit](https://github.com/mikelikesdesign/dialkit-ios) live panel playground (Live + Gallery).
 - [`apps/drafter-charts/`](apps/drafter-charts/) — [DrafterCharts](https://github.com/AndroidPoet/DrafterCharts) Live + Gallery playground.
 - [`apps/find-my-tab-bar/`](apps/find-my-tab-bar/) — Floating morphing tab bar inspired by Find My.
 - [`apps/lazy-state/`](apps/lazy-state/) — Lazy `@State` initialized from parent data.
