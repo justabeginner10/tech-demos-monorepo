@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "lazylayoutkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Dave861/LazyLayoutKit.git",
+      "state" : {
+        "revision" : "b48ad3d172a7dc2313e0ac17511b97ee14657d88",
+        "version" : "0.3.0"
+      }
+    }
+  ],
+  "version" : 2
+}

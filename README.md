@@ -10,6 +10,7 @@ Each demo lives under `apps/<kebab-slug>/`.
 - [`apps/dial-kit/`](apps/dial-kit/) — [DialKit](https://github.com/mikelikesdesign/dialkit-ios) live panel playground (Live + Gallery).
 - [`apps/drafter-charts/`](apps/drafter-charts/) — [DrafterCharts](https://github.com/AndroidPoet/DrafterCharts) Live + Gallery playground.
 - [`apps/find-my-tab-bar/`](apps/find-my-tab-bar/) — Floating morphing tab bar inspired by Find My.
+- [`apps/lazy-layout-kit/`](apps/lazy-layout-kit/) — [LazyLayoutKit](https://github.com/Dave861/LazyLayoutKit) masonry / justified / timeline playground (Live + Gallery).
 - [`apps/lazy-state/`](apps/lazy-state/) — Lazy `@State` initialized from parent data.
 - [`apps/liveline/`](apps/liveline/) — [Liveline](https://github.com/ParthJadhav/liveline-swift) realtime charts playground.
 - [`apps/motion-eyes/`](apps/motion-eyes/) — SwiftUI playground that integrates [MotionEyes](https://github.com/edwardsanchez/MotionEyes) so CADisplayLink traces show whether animations actually ran.
