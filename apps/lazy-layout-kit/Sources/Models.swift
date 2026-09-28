@@ -63,7 +63,7 @@ enum DemoCatalog {
             state ^= state << 13
             state ^= state >> 7
             state ^= state << 17
-            Double(state % 10_000) / 10_000
+            return Double(state % 10_000) / 10_000
         }
 
         return (0 ..< count).map { index in
@@ -83,7 +83,7 @@ enum DemoCatalog {
             state ^= state << 13
             state ^= state >> 7
             state ^= state << 17
-            Double(state % 10_000) / 10_000
+            return Double(state % 10_000) / 10_000
         }
 
         var cursor = 0.0
