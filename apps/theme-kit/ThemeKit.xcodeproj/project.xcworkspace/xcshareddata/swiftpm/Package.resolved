@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "themekit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/isamercan/ThemeKit.git",
+      "state" : {
+        "revision" : "119213052bdaf306fb324cb0ba66ee524520f523",
+        "version" : "1.14.0"
+      }
+    }
+  ],
+  "version" : 2
+}
