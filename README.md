@@ -17,6 +17,7 @@ Each demo lives under `apps/<kebab-slug>/`.
 - [`apps/shad-kit/`](apps/shad-kit/) — [ShadKit](https://github.com/jasonkneen/ShadKit) shadcn/ui + AI Elements playground (Live + Gallery).
 - [`apps/ship-swift/`](apps/ship-swift/) — Slim [ShipSwift](https://github.com/signerlabs/ShipSwift) copy-paste playground (`SWPackage` recipes, Live + Gallery).
 - [`apps/swift-viz/`](apps/swift-viz/) — [SwiftViz](https://github.com/omarsinan/SwiftViz) stacked / simple bar charts.
+- [`apps/theme-kit/`](apps/theme-kit/) — [ThemeKit](https://github.com/isamercan/ThemeKit) live re-skin playground (Live + Gallery).
 
 ## Notes
 
