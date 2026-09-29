@@ -35,7 +35,7 @@ struct ThemesLiveSurface: View {
         HStack {
             Text("Dark variant")
                 .font(.subheadline)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(DemoPalette.inkMuted)
             Spacer()
             ThemeToggle(
                 isOn: Binding(
@@ -88,11 +88,12 @@ struct GeneratorLiveSurface: View {
                         HStack(spacing: 8) {
                             Text("#")
                                 .font(.body.monospaced())
-                                .foregroundStyle(.secondary)
+                                .foregroundStyle(DemoPalette.inkMuted)
                             TextField("RRGGBB", text: $hex)
                                 .textInputAutocapitalization(.characters)
                                 .autocorrectionDisabled()
                                 .font(.body.monospaced())
+                                .foregroundStyle(DemoPalette.ink)
                                 .onSubmit(applyHexField)
                         }
                         .padding(10)
@@ -112,7 +113,7 @@ struct GeneratorLiveSurface: View {
 
                         Text("Theme.shared.applyGenerated(primaryHex: \"\(DemoHex.normalize(hex))\")")
                             .font(.caption2.monospaced())
-                            .foregroundStyle(.secondary)
+                            .foregroundStyle(DemoPalette.inkMuted)
                             .textSelection(.enabled)
                     }
                     .padding(8)
@@ -197,6 +198,7 @@ struct ThemedPreviewStrip: View {
         .padding(theme.spacing(.md))
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(theme.background(.bgWhite))
+        .themeKitIslandScheme(theme)
     }
 
     private var tokenRow: some View {

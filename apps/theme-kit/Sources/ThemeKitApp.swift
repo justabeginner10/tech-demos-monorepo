@@ -11,6 +11,7 @@ struct ThemeKitApp: App {
         WindowGroup {
             DemoScreen()
                 .themeKit(reactToRuntimeChanges: false)
+                .demoChromeScheme()
         }
     }
 }

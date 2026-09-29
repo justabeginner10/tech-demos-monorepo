@@ -9,7 +9,7 @@ Two tabs (iOS 18 floating Live / Gallery pill):
 - **Live** — picker among Themes, Components, and Generator. Only the selected surface is mounted.
 - **Gallery** — frozen Default / ocean / dracula cards plus a chip grid. Isolated `Theme` instances via `.theme(_:)`. No `ThemePicker`, no `Theme.shared` writes, no timers.
 
-Root install: `Theme.shared.applyPersistedConfig()` in `App.init`, `.themeKit(reactToRuntimeChanges: false)` on the `WindowGroup` content (live editor — a full `.id(revision)` rebuild would drop the family picker). The preview strip is keyed on `Theme.revision` so it still re-skins.
+Root install: `Theme.shared.applyPersistedConfig()` in `App.init`, `.themeKit(reactToRuntimeChanges: false)` then `.demoChromeScheme()` (`.preferredColorScheme(.dark)`) on the `WindowGroup` content. ThemeKit's own Demo binds the window scheme to `theme.isDark`; this playground does **not** — a light `Theme.shared` would paint `Color.primary` as dark-on-black chrome. Themed islands (`ThemedPreviewStrip`, Gallery `.theme(_:)`) set `environment(\.colorScheme)` from that palette's `isDark` so token fallbacks stay contrasted without overriding the dark window. The preview strip is keyed on `Theme.revision` so it still re-skins.
 
 ## Open and run
 

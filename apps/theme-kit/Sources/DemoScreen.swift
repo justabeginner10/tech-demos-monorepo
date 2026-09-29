@@ -15,6 +15,8 @@ struct DemoScreen: View {
                 .tabItem { Label("Gallery", systemImage: "square.grid.2x2") }
                 .tag(DemoTab.gallery)
         }
+        .toolbarBackground(DemoPalette.page, for: .tabBar)
+        .toolbarColorScheme(.dark, for: .tabBar)
     }
 }
 
@@ -42,6 +44,9 @@ struct LivePlaygroundView: View {
             .background(DemoPalette.page)
             .navigationTitle("ThemeKit")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbarBackground(DemoPalette.page, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbarColorScheme(.dark, for: .navigationBar)
             .safeAreaInset(edge: .bottom, spacing: 0) {
                 Color.clear.frame(height: 56)
             }
@@ -52,6 +57,7 @@ struct LivePlaygroundView: View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Playground")
                 .font(.headline)
+                .foregroundStyle(DemoPalette.ink)
 
             Picker("Family", selection: $family) {
                 ForEach(LiveFamily.allCases) { item in
@@ -65,7 +71,7 @@ struct LivePlaygroundView: View {
                     + "`Theme.shared`; leaving Live tears the surface down. Gallery never mutates it."
             )
             .font(.caption)
-            .foregroundStyle(.secondary)
+            .foregroundStyle(DemoPalette.inkMuted)
         }
         .padding(14)
         .background(DemoPalette.card, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
@@ -91,7 +97,7 @@ struct LivePlaygroundView: View {
         DemoChrome.chartCard(title: family.title, subtitle: "Unmounted") {
             Text("Live surface is unmounted while Gallery is open.")
                 .font(.subheadline)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(DemoPalette.inkMuted)
                 .frame(maxWidth: .infinity, minHeight: 120, alignment: .center)
         }
     }
@@ -100,4 +106,5 @@ struct LivePlaygroundView: View {
 #Preview("ThemeKit Demo") {
     DemoScreen()
         .themeKit(reactToRuntimeChanges: false)
+        .demoChromeScheme()
 }

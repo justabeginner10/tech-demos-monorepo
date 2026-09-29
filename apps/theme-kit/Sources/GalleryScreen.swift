@@ -1,4 +1,5 @@
 import SwiftUI
+import ThemeKit
 
 /// Static snapshots of ThemeKit surfaces. No ThemePicker, no Theme.shared writes.
 struct GalleryScreen: View {
@@ -19,6 +20,9 @@ struct GalleryScreen: View {
             .background(DemoPalette.page)
             .navigationTitle("Gallery")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbarBackground(DemoPalette.page, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbarColorScheme(.dark, for: .navigationBar)
             .safeAreaInset(edge: .bottom, spacing: 0) {
                 Color.clear.frame(height: 56)
             }
@@ -28,4 +32,6 @@ struct GalleryScreen: View {
 
 #Preview("ThemeKit Gallery") {
     GalleryScreen()
+        .themeKit(reactToRuntimeChanges: false)
+        .demoChromeScheme()
 }
