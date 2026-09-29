@@ -54,24 +54,31 @@ enum GalleryFamily: String, CaseIterable, Identifiable {
         }
     }
 
+    /// Apply `.theme(_:)` inside a `View.body` (MainActor) so Swift 6
+    /// region-isolation accepts ThemeKit's MainActor-bound modifier.
     @ViewBuilder
     private var snapshot: some View {
         switch self {
         case .defaultTheme:
-            FrozenThemedCard(caption: "Default")
-                .theme(IsolatedThemes.default)
+            IsolatedThemeHost(theme: IsolatedThemes.default) {
+                FrozenThemedCard(caption: "Default")
+            }
         case .ocean:
-            FrozenThemedCard(caption: "Ocean")
-                .theme(IsolatedThemes.ocean)
+            IsolatedThemeHost(theme: IsolatedThemes.ocean) {
+                FrozenThemedCard(caption: "Ocean")
+            }
         case .dracula:
-            FrozenThemedCard(caption: "Dracula")
-                .theme(IsolatedThemes.dracula)
+            IsolatedThemeHost(theme: IsolatedThemes.dracula) {
+                FrozenThemedCard(caption: "Dracula")
+            }
         case .chips:
-            FrozenChipGrid()
-                .theme(IsolatedThemes.default)
+            IsolatedThemeHost(theme: IsolatedThemes.default) {
+                FrozenChipGrid()
+            }
         case .atoms:
-            FrozenAtoms()
-                .theme(IsolatedThemes.nord)
+            IsolatedThemeHost(theme: IsolatedThemes.nord) {
+                FrozenAtoms()
+            }
         }
     }
 
@@ -83,6 +90,16 @@ enum GalleryFamily: String, CaseIterable, Identifiable {
         }
         .padding(.horizontal, 8)
         .padding(.bottom, 8)
+    }
+}
+
+/// Host that applies ThemeKit's `.theme(_:)` from `body` (MainActor).
+private struct IsolatedThemeHost<Content: View>: View {
+    let theme: Theme
+    @ViewBuilder let content: () -> Content
+
+    var body: some View {
+        content().theme(theme)
     }
 }
 
