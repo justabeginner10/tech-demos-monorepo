@@ -1,0 +1,15 @@
+{
+  "originHash" : "fddec50015e03cbbb9348ca064663ca51b10ee401480a751bba4cbb9e6687e53",
+  "pins" : [
+    {
+      "identity" : "bottomsheets",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/c-villain/BottomSheets",
+      "state" : {
+        "revision" : "94fc3b4bf87f73d40f9aae86d9b7f6f20284362f",
+        "version" : "1.0.0"
+      }
+    }
+  ],
+  "version" : 3
+}

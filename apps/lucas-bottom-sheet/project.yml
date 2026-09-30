@@ -1,0 +1,42 @@
+name: LucasBottomSheet
+options:
+  bundleIdPrefix: com.techdemos
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: 6.0
+packages:
+  BottomSheet:
+    url: https://github.com/lucaszischka/BottomSheet
+    from: 3.1.0
+targets:
+  LucasBottomSheet:
+    type: application
+    platform: iOS
+    deploymentTarget: "18.0"
+    sources:
+      - Sources
+    dependencies:
+      - package: BottomSheet
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.techdemos.lucasbottomsheet
+        PRODUCT_NAME: LucasBottomSheet
+        PRODUCT_MODULE_NAME: LucasBottomSheetDemo
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Lucas BottomSheet
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        CODE_SIGN_STYLE: Automatic
+schemes:
+  LucasBottomSheet:
+    build:
+      targets:
+        LucasBottomSheet: all
+    run:
+      config: Debug
+    test:
+      config: Debug
