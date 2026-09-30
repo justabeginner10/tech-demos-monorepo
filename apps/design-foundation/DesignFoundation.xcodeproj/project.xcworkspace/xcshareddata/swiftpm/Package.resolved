@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "design-foundation",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/NerdSnipe-Inc/design-foundation",
+      "state" : {
+        "revision" : "88cea25ee45bf957f706d7a1a7e39f3c83f5af54",
+        "version" : "1.7.1"
+      }
+    }
+  ],
+  "version" : 2
+}
