@@ -1,0 +1,355 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		12BC74872376DFA99563BFCB /* PlaygroundDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBF36E3D283B63620AE8B64 /* PlaygroundDemoView.swift */; };
+		167DA47FCAC7CD0E72A898E2 /* RootTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B91939988180911CCA142F /* RootTabView.swift */; };
+		683F760E0CCC5AC5D8361F1B /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = A98D323E0FD9C01C1D472DA4 /* FloatingPanel */; };
+		68A0DC4FADEFD79B9FC87F9D /* PanelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88582E9226FE993A4762E21 /* PanelStyle.swift */; };
+		8CF2F2A8A60D6A052B981329 /* ModalDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B847796EB7FE7FB0F6D1AE4 /* ModalDemoView.swift */; };
+		95328904F8BCADC3518B1FB4 /* FloatingPanelDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EE53F634389FF372FAC141 /* FloatingPanelDemoApp.swift */; };
+		AEFCA69EB0C4E0554FDDCDB2 /* MapsDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B0A77B00B9DF685477BD1F /* MapsDemoView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		153A90919090D37A097974B6 /* FloatingPanel.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = FloatingPanel.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FBF36E3D283B63620AE8B64 /* PlaygroundDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundDemoView.swift; sourceTree = "<group>"; };
+		79B0A77B00B9DF685477BD1F /* MapsDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsDemoView.swift; sourceTree = "<group>"; };
+		8B847796EB7FE7FB0F6D1AE4 /* ModalDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalDemoView.swift; sourceTree = "<group>"; };
+		90B91939988180911CCA142F /* RootTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabView.swift; sourceTree = "<group>"; };
+		B5EE53F634389FF372FAC141 /* FloatingPanelDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanelDemoApp.swift; sourceTree = "<group>"; };
+		E88582E9226FE993A4762E21 /* PanelStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelStyle.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		80708DC429761D7C061D0422 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				683F760E0CCC5AC5D8361F1B /* FloatingPanel in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		037C00C32047E4C4A539642C = {
+			isa = PBXGroup;
+			children = (
+				9A3C59325BD39CCF20741647 /* Sources */,
+				FB2F048A32A7B4D398DA8F2D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9A3C59325BD39CCF20741647 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				B5EE53F634389FF372FAC141 /* FloatingPanelDemoApp.swift */,
+				79B0A77B00B9DF685477BD1F /* MapsDemoView.swift */,
+				8B847796EB7FE7FB0F6D1AE4 /* ModalDemoView.swift */,
+				E88582E9226FE993A4762E21 /* PanelStyle.swift */,
+				6FBF36E3D283B63620AE8B64 /* PlaygroundDemoView.swift */,
+				90B91939988180911CCA142F /* RootTabView.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		FB2F048A32A7B4D398DA8F2D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				153A90919090D37A097974B6 /* FloatingPanel.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6E94AAB42417057864E0FA0B /* FloatingPanel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9617C17717D4EE47111B2320 /* Build configuration list for PBXNativeTarget "FloatingPanel" */;
+			buildPhases = (
+				F86C4F7880BE3026E44C2559 /* Sources */,
+				80708DC429761D7C061D0422 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FloatingPanel;
+			packageProductDependencies = (
+				A98D323E0FD9C01C1D472DA4 /* FloatingPanel */,
+			);
+			productName = FloatingPanel;
+			productReference = 153A90919090D37A097974B6 /* FloatingPanel.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8DE77C20574D536C07EAF881 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					6E94AAB42417057864E0FA0B = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 434014A720E7F9924CCDC011 /* Build configuration list for PBXProject "FloatingPanel" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 037C00C32047E4C4A539642C;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				5670C566C9DB39A0C54A9AFA /* XCRemoteSwiftPackageReference "FloatingPanel" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = FB2F048A32A7B4D398DA8F2D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6E94AAB42417057864E0FA0B /* FloatingPanel */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F86C4F7880BE3026E44C2559 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95328904F8BCADC3518B1FB4 /* FloatingPanelDemoApp.swift in Sources */,
+				AEFCA69EB0C4E0554FDDCDB2 /* MapsDemoView.swift in Sources */,
+				8CF2F2A8A60D6A052B981329 /* ModalDemoView.swift in Sources */,
+				68A0DC4FADEFD79B9FC87F9D /* PanelStyle.swift in Sources */,
+				12BC74872376DFA99563BFCB /* PlaygroundDemoView.swift in Sources */,
+				167DA47FCAC7CD0E72A898E2 /* RootTabView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		433EEA8664E6F7C722827DDA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		78245F879C2979A4BB76448E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = FloatingPanel;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.techdemos.floatingpanel;
+				PRODUCT_MODULE_NAME = FloatingPanelDemo;
+				PRODUCT_NAME = FloatingPanel;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		796D251CAE010F0E5B1750A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = FloatingPanel;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.techdemos.floatingpanel;
+				PRODUCT_MODULE_NAME = FloatingPanelDemo;
+				PRODUCT_NAME = FloatingPanel;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7B1CA6440E3E1F3D678048EC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		434014A720E7F9924CCDC011 /* Build configuration list for PBXProject "FloatingPanel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				433EEA8664E6F7C722827DDA /* Debug */,
+				7B1CA6440E3E1F3D678048EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		9617C17717D4EE47111B2320 /* Build configuration list for PBXNativeTarget "FloatingPanel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				796D251CAE010F0E5B1750A3 /* Debug */,
+				78245F879C2979A4BB76448E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5670C566C9DB39A0C54A9AFA /* XCRemoteSwiftPackageReference "FloatingPanel" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scenee/FloatingPanel";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.2.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A98D323E0FD9C01C1D472DA4 /* FloatingPanel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5670C566C9DB39A0C54A9AFA /* XCRemoteSwiftPackageReference "FloatingPanel" */;
+			productName = FloatingPanel;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 8DE77C20574D536C07EAF881 /* Project object */;
+}

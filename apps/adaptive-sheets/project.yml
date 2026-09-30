@@ -1,0 +1,42 @@
+name: AdaptiveSheets
+options:
+  bundleIdPrefix: com.techdemos
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: 6.0
+packages:
+  AdaptiveSheets:
+    url: https://github.com/huyparody/AdaptiveSheets
+    from: 1.0.0
+targets:
+  AdaptiveSheets:
+    type: application
+    platform: iOS
+    deploymentTarget: "18.0"
+    sources:
+      - Sources
+    dependencies:
+      - package: AdaptiveSheets
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.techdemos.adaptivesheets
+        PRODUCT_NAME: AdaptiveSheets
+        PRODUCT_MODULE_NAME: AdaptiveSheetsDemo
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: AdaptiveSheets
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        CODE_SIGN_STYLE: Automatic
+schemes:
+  AdaptiveSheets:
+    build:
+      targets:
+        AdaptiveSheets: all
+    run:
+      config: Debug
+    test:
+      config: Debug

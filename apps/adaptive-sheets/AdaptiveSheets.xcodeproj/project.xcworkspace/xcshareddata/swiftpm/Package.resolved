@@ -1,0 +1,15 @@
+{
+  "originHash" : "c151814425b112c92404537b3d67619433cb8730ee5479ba7aaea926c3ff549c",
+  "pins" : [
+    {
+      "identity" : "adaptivesheets",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/huyparody/AdaptiveSheets",
+      "state" : {
+        "revision" : "6188b4070c1b8a7e4fdba91a904ae1d59e8eeab0",
+        "version" : "1.0.0"
+      }
+    }
+  ],
+  "version" : 3
+}
