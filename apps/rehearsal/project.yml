@@ -1,0 +1,43 @@
+name: Rehearsal
+options:
+  bundleIdPrefix: com.techdemos
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: 6.0
+packages:
+  Rehearsal:
+    url: https://github.com/daneden/Rehearsal.git
+    from: 0.5.1
+targets:
+  Rehearsal:
+    type: application
+    platform: iOS
+    deploymentTarget: "18.0"
+    sources:
+      - Sources
+    dependencies:
+      - package: Rehearsal
+        product: Rehearsal
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.techdemos.rehearsal
+        PRODUCT_NAME: Rehearsal
+        PRODUCT_MODULE_NAME: RehearsalDemo
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Rehearsal
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        CODE_SIGN_STYLE: Automatic
+schemes:
+  Rehearsal:
+    build:
+      targets:
+        Rehearsal: all
+    run:
+      config: Debug
+    test:
+      config: Debug

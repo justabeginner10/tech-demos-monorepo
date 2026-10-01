@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "rehearsal",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/daneden/Rehearsal.git",
+      "state" : {
+        "revision" : "9a0c3b821a62fec92a18dd7bbcb690be5e14468a",
+        "version" : "0.5.1"
+      }
+    }
+  ],
+  "version" : 2
+}

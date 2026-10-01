@@ -1,0 +1,369 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 63;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		RHS31A31A31A31A31A31A31 /* RehearsalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = RHS21A21A21A21A21A21A21 /* RehearsalApp.swift */; };
+		RHS31B31B31B31B31B31B31 /* DemoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = RHS21B21B21B21B21B21B21 /* DemoScreen.swift */; };
+		RHS31C31C31C31C31C31C31 /* DemoChrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = RHS21C21C21C21C21C21C21 /* DemoChrome.swift */; };
+		RHS31D31D31D31D31D31D31 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = RHS21D21D21D21D21D21D21 /* Models.swift */; };
+		RHS31E31E31E31E31E31E31 /* LiveSurfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = RHS21E21E21E21E21E21E21 /* LiveSurfaces.swift */; };
+		RHS31F31F31F31F31F31F31 /* GalleryScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = RHS22A22A22A22A22A22A22 /* GalleryScreen.swift */; };
+		RHS32A32A32A32A32A32A32 /* GallerySamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = RHS22B22B22B22B22B22B22 /* GallerySamples.swift */; };
+		RHS32B32B32B32B32B32B32 /* Rehearsal in Frameworks */ = {isa = PBXBuildFile; productRef = RHS81B81B81B81B81B81B81 /* Rehearsal */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		RHS21A21A21A21A21A21A21 /* RehearsalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RehearsalApp.swift; sourceTree = "<group>"; };
+		RHS21B21B21B21B21B21B21 /* DemoScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoScreen.swift; sourceTree = "<group>"; };
+		RHS21C21C21C21C21C21C21 /* DemoChrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoChrome.swift; sourceTree = "<group>"; };
+		RHS21D21D21D21D21D21D21 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		RHS21E21E21E21E21E21E21 /* LiveSurfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveSurfaces.swift; sourceTree = "<group>"; };
+		RHS22A22A22A22A22A22A22 /* GalleryScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryScreen.swift; sourceTree = "<group>"; };
+		RHS22B22B22B22B22B22B22 /* GallerySamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GallerySamples.swift; sourceTree = "<group>"; };
+		RHS21F21F21F21F21F21F21 /* Rehearsal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rehearsal.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		RHS41A41A41A41A41A41A41 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				RHS32B32B32B32B32B32B32 /* Rehearsal in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		RHSB11B11B11B11B11B11B11 = {
+			isa = PBXGroup;
+			children = (
+				RHSD11D11D11D11D11D11D11 /* Sources */,
+				RHSE11E11E11E11E11E11E11 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		RHSD11D11D11D11D11D11D11 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				RHS21A21A21A21A21A21A21 /* RehearsalApp.swift */,
+				RHS21B21B21B21B21B21B21 /* DemoScreen.swift */,
+				RHS21C21C21C21C21C21C21 /* DemoChrome.swift */,
+				RHS21D21D21D21D21D21D21 /* Models.swift */,
+				RHS21E21E21E21E21E21E21 /* LiveSurfaces.swift */,
+				RHS22A22A22A22A22A22A22 /* GalleryScreen.swift */,
+				RHS22B22B22B22B22B22B22 /* GallerySamples.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		RHSE11E11E11E11E11E11E11 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				RHS21F21F21F21F21F21F21 /* Rehearsal.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		RHS51A51A51A51A51A51A51 /* Rehearsal */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = RHS71A71A71A71A71A71A71 /* Build configuration list for PBXNativeTarget "Rehearsal" */;
+			buildPhases = (
+				RHS41B41B41B41B41B41B41 /* Sources */,
+				RHS41A41A41A41A41A41A41 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Rehearsal;
+			packageProductDependencies = (
+				RHS81B81B81B81B81B81B81 /* Rehearsal */,
+			);
+			productName = Rehearsal;
+			productReference = RHS21F21F21F21F21F21F21 /* Rehearsal.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		RHSA11A11A11A11A11A11A11 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+			};
+			buildConfigurationList = RHS71B71B71B71B71B71B71 /* Build configuration list for PBXProject "Rehearsal" */;
+			compatibilityVersion = "Xcode 15.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = RHSB11B11B11B11B11B11B11;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				RHS81A81A81A81A81A81A81 /* XCRemoteSwiftPackageReference "Rehearsal" */,
+			);
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				RHS51A51A51A51A51A51A51 /* Rehearsal */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		RHS41B41B41B41B41B41B41 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				RHS31A31A31A31A31A31A31 /* RehearsalApp.swift in Sources */,
+				RHS31B31B31B31B31B31B31 /* DemoScreen.swift in Sources */,
+				RHS31C31C31C31C31C31C31 /* DemoChrome.swift in Sources */,
+				RHS31D31D31D31D31D31D31 /* Models.swift in Sources */,
+				RHS31E31E31E31E31E31E31 /* LiveSurfaces.swift in Sources */,
+				RHS31F31F31F31F31F31F31 /* GalleryScreen.swift in Sources */,
+				RHS32A32A32A32A32A32A32 /* GallerySamples.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		RHS61A61A61A61A61A61A61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		RHS61B61B61B61B61B61B61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		RHS61C61C61C61C61C61C61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Rehearsal;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.techdemos.rehearsal;
+				PRODUCT_MODULE_NAME = RehearsalDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		RHS61D61D61D61D61D61D61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Rehearsal;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.techdemos.rehearsal;
+				PRODUCT_MODULE_NAME = RehearsalDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		RHS71A71A71A71A71A71A71 /* Build configuration list for PBXNativeTarget "Rehearsal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				RHS61C61C61C61C61C61C61 /* Debug */,
+				RHS61D61D61D61D61D61D61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		RHS71B71B71B71B71B71B71 /* Build configuration list for PBXProject "Rehearsal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				RHS61A61A61A61A61A61A61 /* Debug */,
+				RHS61B61B61B61B61B61B61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		RHS81A81A81A81A81A81A81 /* XCRemoteSwiftPackageReference "Rehearsal" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/daneden/Rehearsal.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		RHS81B81B81B81B81B81B81 /* Rehearsal */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = RHS81A81A81A81A81A81A81 /* XCRemoteSwiftPackageReference "Rehearsal" */;
+			productName = Rehearsal;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = RHSA11A11A11A11A11A11A11 /* Project object */;
+}
