@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "foldy",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/insanearts/foldy.git",
+      "state" : {
+        "revision" : "99e56ee7000398a3e5ddaa3922e078a2547a1615",
+        "version" : "0.3.0"
+      }
+    }
+  ],
+  "version" : 2
+}
