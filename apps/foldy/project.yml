@@ -1,0 +1,43 @@
+name: Foldy
+options:
+  bundleIdPrefix: com.techdemos
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: 6.0
+packages:
+  Foldy:
+    url: https://github.com/insanearts/foldy.git
+    from: 0.3.0
+targets:
+  Foldy:
+    type: application
+    platform: iOS
+    deploymentTarget: "18.0"
+    sources:
+      - Sources
+    dependencies:
+      - package: Foldy
+        product: Foldy
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.techdemos.foldy
+        PRODUCT_NAME: Foldy
+        PRODUCT_MODULE_NAME: FoldyDemo
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Foldy
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        CODE_SIGN_STYLE: Automatic
+schemes:
+  Foldy:
+    build:
+      targets:
+        Foldy: all
+    run:
+      config: Debug
+    test:
+      config: Debug
