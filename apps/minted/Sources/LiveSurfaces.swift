@@ -88,27 +88,72 @@ struct AwardCoinSurface: View {
 }
 
 /// Live `SpinningArtworkCoinView` from a bundled `ArtworkCoin.Sample`.
-/// Changing the pin remounts this one view (the representable does not remint).
+/// The package mint is CPU-heavy, so it runs off the main thread. Only one
+/// SceneKit coin is mounted, and only after the bake finishes.
 struct PinArtworkSurface: View {
     @State private var sample: ArtworkCoin.Sample = .alhambra
+    @State private var minted: (ArtworkCoin.Sample, ArtworkCoin)?
+    @State private var failed = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             controls
 
             DemoChrome.coinStage {
-                if let coin = try? ArtworkCoin(sample: sample) {
-                    SpinningArtworkCoinView(coin: coin)
+                if let minted, minted.0 == sample {
+                    SpinningArtworkCoinView(coin: minted.1)
                         .id(sample)
                         .frame(width: 280, height: 280)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
-                } else {
+                } else if failed {
                     Text("Could not mint \(sample.title).")
                         .font(.subheadline)
                         .foregroundStyle(DemoPalette.inkMuted)
+                } else {
+                    mintingPlaceholder
                 }
             }
         }
+        .task(id: sample) {
+            failed = false
+            if let cached = PinMinting.cached(sample) {
+                minted = (sample, cached)
+                return
+            }
+            minted = nil
+            let requested = sample
+            switch await PinMinting.coin(for: requested) {
+            case .success(let coin) where requested == sample:
+                minted = (requested, coin)
+            case .failure where requested == sample:
+                failed = true
+            default:
+                break
+            }
+        }
+    }
+
+    private var mintingPlaceholder: some View {
+        VStack(spacing: 12) {
+            if let image = sample.image {
+                Image(uiImage: image)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 96, height: 96)
+                    .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+            }
+            ProgressView()
+                .tint(DemoPalette.accent)
+                .controlSize(.large)
+            Text("Minting \(sample.title)…")
+                .font(.subheadline.weight(.medium))
+                .foregroundStyle(DemoPalette.ink)
+            Text("Outline, gold, and relief bake off the main thread.")
+                .font(.caption)
+                .foregroundStyle(DemoPalette.inkMuted)
+                .multilineTextAlignment(.center)
+        }
+        .padding(20)
     }
 
     private var controls: some View {
@@ -136,8 +181,8 @@ struct PinArtworkSurface: View {
             .foregroundStyle(DemoPalette.ink)
 
             Text(
-                "ArtworkCoin(sample:) traces the bundled pin, keys gold as metal, "
-                    + "and extrudes a SceneKit medallion. One pin at a time."
+                "ArtworkCoin(sample:) traces the bundled pin off the main thread, "
+                    + "then one SpinningArtworkCoinView mounts. Switching pins unmounts the last coin."
             )
             .font(.caption)
             .foregroundStyle(DemoPalette.inkMuted)

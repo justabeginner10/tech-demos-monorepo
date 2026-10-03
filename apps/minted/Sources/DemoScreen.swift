@@ -49,6 +49,10 @@ struct LivePlaygroundView: View {
             .safeAreaInset(edge: .bottom, spacing: 0) {
                 Color.clear.frame(height: 56)
             }
+            .task {
+                // Bake the default pin while Award is showing so Pin is a cache hit.
+                PinMinting.prefetch(.alhambra)
+            }
         }
     }
 

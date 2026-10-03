@@ -56,7 +56,7 @@ Silhouettes: `.seal`, `.octagon`, `.circle`, `.diamond`, `.custom(CGPath)`. Engr
 | Control | What to look for |
 | --- | --- |
 | **Award** | `SpinningCoinView` + `CoinDesign`. Heart / Star / Alpine / Trophy. Menus restyle silhouette and engraving on this one coin. Drag to flick; idle spin resumes. Alpine uses `artSplit` / `artLower` (two-tone enamel). |
-| **Pin** | `ArtworkCoin(sample:)` + `SpinningArtworkCoinView`. Menu picks among the eight bundled pins. Changing the pin remounts the single representable. |
+| **Pin** | `ArtworkCoin(sample:)` + `SpinningArtworkCoinView`. The JPEG analyze/mint runs off the main thread (and the default pin is prefetched while Award is up). A placeholder shows until the single live coin mounts. Menu picks among the eight bundled pins. |
 | **Reverse** | `SpinningCoinView(design:initialRotation: .pi)` shows the orange-peel back. **Face** / **Back** remounts this one coin. |
 | **Leave the tab / family** | The active SceneKit coin unmounts. Gallery never keeps a live coin. |
 
