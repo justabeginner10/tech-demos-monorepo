@@ -12,6 +12,7 @@ Each demo lives under `apps/<kebab-slug>/`.
 - [`apps/design-foundation/`](apps/design-foundation/) — [DesignFoundation](https://github.com/NerdSnipe-Inc/design-foundation) token playground (Live + Gallery).
 - [`apps/dial-kit/`](apps/dial-kit/) — [DialKit](https://github.com/mikelikesdesign/dialkit-ios) live panel playground (Live + Gallery).
 - [`apps/drafter-charts/`](apps/drafter-charts/) — [DrafterCharts](https://github.com/AndroidPoet/DrafterCharts) Live + Gallery playground.
+- [`apps/enriched-markdown/`](apps/enriched-markdown/) — [enriched-markdown-ios](https://github.com/software-mansion-labs/enriched-markdown-ios) Live + Gallery playground.
 - [`apps/find-my-tab-bar/`](apps/find-my-tab-bar/) — Floating morphing tab bar inspired by Find My.
 - [`apps/floating-panel/`](apps/floating-panel/) — [FloatingPanel](https://github.com/scenee/FloatingPanel) Maps-style persistent panel.
 - [`apps/foldy/`](apps/foldy/) — [Foldy](https://github.com/InsaneArts/foldy) frosted-glass fold playground (Live + Gallery).
