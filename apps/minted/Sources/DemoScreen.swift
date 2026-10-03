@@ -51,7 +51,7 @@ struct LivePlaygroundView: View {
             }
             .task {
                 // Bake the default pin while Award is showing so Pin is a cache hit.
-                PinMinting.prefetch(.alhambra)
+                await PinMinting.prefetch(.alhambra)
             }
         }
     }
