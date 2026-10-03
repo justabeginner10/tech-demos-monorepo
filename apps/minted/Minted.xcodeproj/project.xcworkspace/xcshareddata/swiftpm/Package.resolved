@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "minted",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/haplollc/Minted",
+      "state" : {
+        "revision" : "0cdb91a23edfad5dd9ec41252584303f078547fe",
+        "version" : "1.1.1"
+      }
+    }
+  ],
+  "version" : 2
+}

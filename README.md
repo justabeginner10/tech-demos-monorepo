@@ -19,6 +19,7 @@ Each demo lives under `apps/<kebab-slug>/`.
 - [`apps/lazy-state/`](apps/lazy-state/) — Lazy `@State` initialized from parent data.
 - [`apps/liveline/`](apps/liveline/) — [Liveline](https://github.com/ParthJadhav/liveline-swift) realtime charts playground.
 - [`apps/lucas-bottom-sheet/`](apps/lucas-bottom-sheet/) — [lucaszischka/BottomSheet](https://github.com/lucaszischka/BottomSheet) custom snap-state sheet.
+- [`apps/minted/`](apps/minted/) — [Minted](https://github.com/haplollc/Minted) physically-lit 3D gold medallions (Live + Gallery).
 - [`apps/motion-eyes/`](apps/motion-eyes/) — SwiftUI playground that integrates [MotionEyes](https://github.com/edwardsanchez/MotionEyes) so CADisplayLink traces show whether animations actually ran.
 - [`apps/rehearsal/`](apps/rehearsal/) — [Rehearsal](https://github.com/daneden/Rehearsal) interactive preview knobs (Live + Gallery).
 - [`apps/shad-kit/`](apps/shad-kit/) — [ShadKit](https://github.com/jasonkneen/ShadKit) shadcn/ui + AI Elements playground (Live + Gallery).
