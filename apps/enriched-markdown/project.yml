@@ -1,0 +1,45 @@
+name: EnrichedMarkdown
+options:
+  bundleIdPrefix: com.techdemos
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: 6.0
+packages:
+  EnrichedMarkdown:
+    url: https://github.com/software-mansion-labs/enriched-markdown-ios.git
+    from: 0.1.0
+targets:
+  EnrichedMarkdown:
+    type: application
+    platform: iOS
+    deploymentTarget: "18.0"
+    sources:
+      - Sources
+    dependencies:
+      - package: EnrichedMarkdown
+        product: EnrichedMarkdown
+      - package: EnrichedMarkdown
+        product: EnrichedMarkdownLaTeX
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.techdemos.enrichedmarkdown
+        PRODUCT_NAME: EnrichedMarkdown
+        PRODUCT_MODULE_NAME: EnrichedMarkdownDemo
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Enriched MD
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        CODE_SIGN_STYLE: Automatic
+schemes:
+  EnrichedMarkdown:
+    build:
+      targets:
+        EnrichedMarkdown: all
+    run:
+      config: Debug
+    test:
+      config: Debug
