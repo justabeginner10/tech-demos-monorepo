@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "welcomekit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/atoll-studio/WelcomeKit.git",
+      "state" : {
+        "revision" : "17cea83890d7f814e4c8f1aca6080c7b38638a62",
+        "version" : "1.5.0"
+      }
+    }
+  ],
+  "version" : 2
+}
