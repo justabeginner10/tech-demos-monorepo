@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "shaderkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/jamesrochabrun/ShaderKit.git",
+      "state" : {
+        "revision" : "0f4f5b41b58f2eaddfe2ba46d8dd721d0732d5c7",
+        "version" : "1.3.0"
+      }
+    }
+  ],
+  "version" : 2
+}

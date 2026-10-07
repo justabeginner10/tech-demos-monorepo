@@ -1,0 +1,47 @@
+name: ShaderKit
+options:
+  bundleIdPrefix: com.techdemos
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: 6.0
+packages:
+  ShaderKit:
+    url: https://github.com/jamesrochabrun/ShaderKit.git
+    from: 1.0.0
+targets:
+  ShaderKit:
+    type: application
+    platform: iOS
+    deploymentTarget: "18.0"
+    sources:
+      - Sources
+    dependencies:
+      - package: ShaderKit
+        product: ShaderKit
+      - package: ShaderKit
+        product: ShaderCards
+      - package: ShaderKit
+        product: ShaderKitUI
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.techdemos.shaderkit
+        PRODUCT_NAME: ShaderKit
+        PRODUCT_MODULE_NAME: ShaderKitDemo
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: ShaderKit
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        CODE_SIGN_STYLE: Automatic
+schemes:
+  ShaderKit:
+    build:
+      targets:
+        ShaderKit: all
+    run:
+      config: Debug
+    test:
+      config: Debug
