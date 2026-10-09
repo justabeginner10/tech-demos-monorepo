@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 enum DemoTab: Hashable {
     case live
@@ -36,10 +37,24 @@ enum DemoPalette {
     static let canvas = Color(.tertiarySystemGroupedBackground)
     static let stroke = Color.primary.opacity(0.18)
     static let ink = Color.primary
-    static let inkMuted = Color.secondary
+    /// Opaque secondary label — `Color.secondary` is ~60% and fails contrast on grouped fills.
+    static let inkMuted = Color(
+        light: Color(red: 58 / 255, green: 58 / 255, blue: 60 / 255),
+        dark: Color(red: 199 / 255, green: 199 / 255, blue: 204 / 255)
+    )
     static let accent = Color(red: 0.82, green: 0.16, blue: 0.38)
     static let badge = Color(red: 0.72, green: 0.10, blue: 0.32)
     static let badgeInk = Color.white
+    /// Particles on the rose badge (and as they leave it) stay readable.
+    static let particle = Color.white
+}
+
+extension Color {
+    init(light: Color, dark: Color) {
+        self.init(uiColor: UIColor { traits in
+            traits.userInterfaceStyle == .dark ? UIColor(dark) : UIColor(light)
+        })
+    }
 }
 
 enum DemoParticleLayer {

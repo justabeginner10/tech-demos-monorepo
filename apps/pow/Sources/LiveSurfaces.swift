@@ -11,10 +11,8 @@ struct ChangeEffectSurface: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             controls
-            Spacer(minLength: 8)
             target
             fireButton
-            Spacer(minLength: 0)
         }
         .onChange(of: kind) { _, _ in
             fireCount = 0
@@ -137,6 +135,7 @@ struct ChangeEffectSurface: View {
         .buttonStyle(.plain)
         .powChangeEffect(kind, params: params, value: fireCount)
         .id(kind)
+        .padding(.top, kind.liveHeadroom(jumpHeight: params.jumpHeight))
         .accessibilityLabel("Fire \(kind.title)")
         .accessibilityIdentifier("live-badge")
     }
@@ -216,10 +215,8 @@ struct TransitionSurface: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             controls
-            Spacer(minLength: 8)
             stage
             toggleButton
-            Spacer(minLength: 0)
         }
         .onChange(of: kind) { _, _ in
             isVisible = true
@@ -391,7 +388,7 @@ extension View {
                             Image(systemName: "sparkles")
                         }
                         .font(.title2.weight(.bold))
-                        .foregroundStyle(DemoPalette.accent)
+                        .foregroundStyle(DemoPalette.particle)
                     },
                     value: value
                 )
@@ -465,7 +462,7 @@ extension View {
                             Image(systemName: "star.fill")
                         }
                         .font(.title3.weight(.bold))
-                        .foregroundStyle(DemoPalette.accent)
+                        .foregroundStyle(DemoPalette.particle)
                     },
                     value: value
                 )

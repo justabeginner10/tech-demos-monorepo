@@ -35,19 +35,21 @@ struct LivePlaygroundView: View {
 
     var body: some View {
         NavigationStack {
-            VStack(alignment: .leading, spacing: 12) {
-                playgroundControls
-                if isSelected {
-                    activeSurface
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                } else {
-                    parkedCard
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+            ScrollView {
+                VStack(alignment: .leading, spacing: 12) {
+                    playgroundControls
+                    if isSelected {
+                        activeSurface
+                    } else {
+                        parkedCard
+                    }
                 }
+                .padding(.horizontal)
+                .padding(.top, 8)
+                .padding(.bottom, 16)
+                .frame(maxWidth: .infinity, alignment: .top)
             }
-            .padding(.horizontal)
-            .padding(.top, 8)
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+            .scrollBounceBehavior(.basedOnSize)
             .background(DemoPalette.page)
             .navigationTitle("Pow")
             .navigationBarTitleDisplayMode(.inline)

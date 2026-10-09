@@ -82,6 +82,14 @@ enum ChangeEffectKind: String, CaseIterable, Identifiable, Hashable {
         }
     }
 
+    /// Empty space above the badge so Jump does not cover the caption card.
+    func liveHeadroom(jumpHeight: CGFloat) -> CGFloat {
+        switch self {
+        case .jump: jumpHeight + 24
+        default: 0
+        }
+    }
+
     var summary: String {
         switch self {
         case .spray: "Emits shaded particles that burst upward from an origin."

@@ -138,6 +138,7 @@ private struct GalleryChangeLive: View {
             .buttonStyle(.plain)
             .powChangeEffect(kind, params: params, value: fireCount)
             .id(kind)
+            .padding(.top, kind.liveHeadroom(jumpHeight: params.jumpHeight))
 
             Button {
                 fireCount += 1

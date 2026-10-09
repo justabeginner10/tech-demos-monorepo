@@ -6,10 +6,10 @@ Product **`Pow` only**. Package floor is iOS 15; this app targets iOS 18 to matc
 
 Two tabs:
 
-- **Live** — one effect target at a time. The Effects family fires Spray, Jump, Pulse (the current ping API), Shine, Spin, Shake, Wiggle, Glow, Rise, and Haptic from `.changeEffect`, with the real parameters Pow exposes. The Transitions family inserts or removes a badge with Pop, Flip, Anvil, Blinds, Boing, Swoosh, and Vanish (`.movingParts`). Switching family, switching the menu, or leaving the tab unmounts the previous target.
+- **Live** — one effect target at a time, in a `ScrollView` that stays below the navigation bar and above the floating tab bar. The Effects family fires Spray, Jump, Pulse (the current ping API), Shine, Spin, Shake, Wiggle, Glow, Rise, and Haptic from `.changeEffect`, with the real parameters Pow exposes. Jump keeps empty space above the badge so a 48pt leap does not cover the caption. The Transitions family inserts or removes a badge with Pop, Flip, Anvil, Blinds, Boing, Swoosh, and Vanish (`.movingParts`). Switching family, switching the menu, or leaving the tab unmounts the previous target.
 - **Gallery** — painted snapshots (name, API, short description). Tiles do not run Pow. Tapping a tile opens a sheet with a single live demo of that effect or transition.
 
-Chrome uses semantic grouped backgrounds and primary / secondary ink so labels stay readable in light and dark. The live badge is white on a saturated rose fill.
+Chrome uses semantic grouped backgrounds and primary ink, with an opaque muted label (not `Color.secondary`) so captions stay readable in light and dark. The live badge is white on a saturated rose fill; spray and rise particles are white so they read on the badge.
 
 ## Open and run
 
