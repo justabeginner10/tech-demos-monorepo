@@ -5,14 +5,12 @@ import SwiftUI
 struct ChangeEffectSurface: View {
     @Binding var kind: ChangeEffectKind
     @Binding var params: ChangeEffectParams
-
-    @State private var fireCount = 0
+    @Binding var fireCount: Int
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             controls
             target
-            fireButton
         }
         .onChange(of: kind) { _, _ in
             fireCount = 0
@@ -140,19 +138,6 @@ struct ChangeEffectSurface: View {
         .accessibilityIdentifier("live-badge")
     }
 
-    private var fireButton: some View {
-        Button {
-            fireCount += 1
-        } label: {
-            Label("Fire effect", systemImage: "hand.tap")
-                .font(.headline)
-                .frame(maxWidth: .infinity)
-        }
-        .buttonStyle(.borderedProminent)
-        .tint(DemoPalette.accent)
-        .accessibilityIdentifier("fire-effect")
-    }
-
     private func picker<Value: Hashable, Content: View>(
         _ title: String,
         selection: Binding<Value>,
@@ -209,14 +194,12 @@ struct ChangeEffectSurface: View {
 struct TransitionSurface: View {
     @Binding var kind: TransitionKind
     @Binding var params: TransitionParams
-
-    @State private var isVisible = true
+    @Binding var isVisible: Bool
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             controls
             stage
-            toggleButton
         }
         .onChange(of: kind) { _, _ in
             isVisible = true
@@ -328,21 +311,6 @@ struct TransitionSurface: View {
         .frame(maxWidth: .infinity)
         .frame(minHeight: 220)
         .id(kind)
-    }
-
-    private var toggleButton: some View {
-        Button {
-            withAnimation(.default) {
-                isVisible.toggle()
-            }
-        } label: {
-            Label(isVisible ? "Remove view" : "Insert view", systemImage: isVisible ? "eye.slash" : "eye")
-                .font(.headline)
-                .frame(maxWidth: .infinity)
-        }
-        .buttonStyle(.borderedProminent)
-        .tint(DemoPalette.accent)
-        .accessibilityIdentifier("toggle-transition")
     }
 
     private func picker<Value: Hashable, Content: View>(
@@ -474,13 +442,21 @@ extension View {
 }
 
 #Preview("Change effect") {
-    ChangeEffectSurface(kind: .constant(.spray), params: .constant(ChangeEffectParams()))
-        .padding()
-        .background(DemoPalette.page)
+    ChangeEffectSurface(
+        kind: .constant(.spray),
+        params: .constant(ChangeEffectParams()),
+        fireCount: .constant(0)
+    )
+    .padding()
+    .background(DemoPalette.page)
 }
 
 #Preview("Transition") {
-    TransitionSurface(kind: .constant(.pop), params: .constant(TransitionParams()))
-        .padding()
-        .background(DemoPalette.page)
+    TransitionSurface(
+        kind: .constant(.pop),
+        params: .constant(TransitionParams()),
+        isVisible: .constant(true)
+    )
+    .padding()
+    .background(DemoPalette.page)
 }

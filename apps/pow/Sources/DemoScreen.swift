@@ -32,6 +32,8 @@ struct LivePlaygroundView: View {
     @State private var transition: TransitionKind = .pop
     @State private var effectParams = ChangeEffectParams()
     @State private var transitionParams = TransitionParams()
+    @State private var fireCount = 0
+    @State private var isTransitionVisible = true
 
     var body: some View {
         NavigationStack {
@@ -57,7 +59,11 @@ struct LivePlaygroundView: View {
             .toolbarBackground(.visible, for: .navigationBar)
             .particleLayer(name: DemoParticleLayer.name)
             .safeAreaInset(edge: .bottom, spacing: 0) {
-                Color.clear.frame(height: 56)
+                if isSelected {
+                    DemoChrome.pinnedActionBar {
+                        pinnedAction
+                    }
+                }
             }
         }
     }
@@ -102,9 +108,44 @@ struct LivePlaygroundView: View {
     private var activeSurface: some View {
         switch family {
         case .effects:
-            ChangeEffectSurface(kind: $effect, params: $effectParams)
+            ChangeEffectSurface(kind: $effect, params: $effectParams, fireCount: $fireCount)
         case .transitions:
-            TransitionSurface(kind: $transition, params: $transitionParams)
+            TransitionSurface(kind: $transition, params: $transitionParams, isVisible: $isTransitionVisible)
+        }
+    }
+
+    @ViewBuilder
+    private var pinnedAction: some View {
+        switch family {
+        case .effects:
+            Button {
+                fireCount += 1
+            } label: {
+                Label("Fire effect", systemImage: "hand.tap")
+                    .font(.headline)
+                    .frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(DemoPalette.accent)
+            .controlSize(.large)
+            .accessibilityIdentifier("fire-effect")
+        case .transitions:
+            Button {
+                withAnimation(.default) {
+                    isTransitionVisible.toggle()
+                }
+            } label: {
+                Label(
+                    isTransitionVisible ? "Remove view" : "Insert view",
+                    systemImage: isTransitionVisible ? "eye.slash" : "eye"
+                )
+                .font(.headline)
+                .frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(DemoPalette.accent)
+            .controlSize(.large)
+            .accessibilityIdentifier("toggle-transition")
         }
     }
 

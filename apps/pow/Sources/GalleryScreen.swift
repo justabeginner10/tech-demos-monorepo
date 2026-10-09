@@ -24,7 +24,7 @@ struct GalleryScreen: View {
             .toolbarBackground(DemoPalette.page, for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
             .safeAreaInset(edge: .bottom, spacing: 0) {
-                Color.clear.frame(height: 56)
+                Color.clear.frame(height: DemoChrome.floatingTabClearance)
             }
             .sheet(item: $selection) { item in
                 GalleryLiveSheet(selection: item)
