@@ -59,24 +59,19 @@ struct AuroraHalo<Content: View>: View {
             }
             // Fixed gutters so the default bloom has room to fade. Not
             // tied to Glow size / Style, so the host width never changes.
-            .padding(.vertical, Self.verticalRoom)
+            .padding(.vertical, HaloMetrics.verticalRoom)
     }
-
-    /// Vertical room inside the section card. Horizontal overflow is
-    /// clipped by the card; 16pt of card padding is enough to avoid a
-    /// hard edge at Standard/Dramatic.
-    static let verticalRoom: CGFloat = 28
 
     /// Slider 8…80 → stroke 4…11pt, times Style.
     private var ringWidth: CGFloat {
-        let t = Self.unit(glowSize)
+        let t = HaloMetrics.unit(glowSize)
         return (4 + t * 7) * intensity.ringScale
     }
 
     /// Slider 8…80 → blur 14…22pt, times Style, hard-capped so max Glow
     /// cannot inflate layout. Default is already a wide Apple-like wash.
     private var bloomRadius: CGFloat {
-        let t = Self.unit(glowSize)
+        let t = HaloMetrics.unit(glowSize)
         return min((14 + t * 8) * intensity.bloomScale, 22)
     }
 
@@ -147,6 +142,14 @@ struct AuroraHalo<Content: View>: View {
                 )
         }
     }
+}
+
+/// Constants that cannot live on generic `AuroraHalo` (no static stored properties).
+private enum HaloMetrics {
+    /// Vertical room inside the section card. Horizontal overflow is
+    /// clipped by the card; 16pt of card padding is enough to avoid a
+    /// hard edge at Standard/Dramatic.
+    static let verticalRoom: CGFloat = 28
 
     static func unit(_ glowSize: CGFloat) -> CGFloat {
         min(max((glowSize - 8) / 72, 0), 1)
