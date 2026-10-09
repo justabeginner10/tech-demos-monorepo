@@ -42,7 +42,7 @@ struct LivePlaygroundView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(alignment: .leading, spacing: 10) {
+                VStack(alignment: .leading, spacing: 8) {
                     playgroundControls
                     if isSelected {
                         LiveGlowSurface(
@@ -158,7 +158,7 @@ struct LivePlaygroundView: View {
     }
 
     private var palettePicker: some View {
-        VStack(alignment: .leading, spacing: 6) {
+        VStack(alignment: .leading, spacing: 4) {
             Text("Palette")
                 .font(.caption.weight(.semibold))
                 .foregroundStyle(DemoPalette.inkMuted)
@@ -181,9 +181,9 @@ struct LivePlaygroundView: View {
     }
 
     private var intensityPicker: some View {
-        VStack(alignment: .leading, spacing: 6) {
+        VStack(alignment: .leading, spacing: 4) {
             Text("Intensity")
-                .font(.caption.weight(.semibold))
+                .font(.caption2.weight(.semibold))
                 .foregroundStyle(DemoPalette.inkMuted)
 
             Picker("Intensity", selection: $settings.intensity) {
@@ -199,9 +199,9 @@ struct LivePlaygroundView: View {
     }
 
     private var shapePicker: some View {
-        VStack(alignment: .leading, spacing: 6) {
+        VStack(alignment: .leading, spacing: 4) {
             Text("Shape")
-                .font(.caption.weight(.semibold))
+                .font(.caption2.weight(.semibold))
                 .foregroundStyle(DemoPalette.inkMuted)
 
             Picker("Shape", selection: shapeBinding) {

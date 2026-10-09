@@ -2,18 +2,16 @@ import Aurora
 import SwiftUI
 
 /// One live `AuroraGlow` used as an animated color field, then masked to
-/// the host outline so the ring follows a `Capsule` / `RoundedRectangle`
-/// the way the painted Gallery tiles do.
+/// the host outline so the ring follows a `Capsule` / `RoundedRectangle`.
 ///
-/// Aurora's SDF lights a square canvas, so the Metal view is never shown
-/// raw. Construction:
-/// 1. Crisp ring — one `AuroraGlow` is `.mask`'d to
-///    `shape.strokeBorder` (`Capsule` / `RoundedRectangle`).
-/// 2. Outer bloom — a non-Metal palette stroke, blurred and shadowed
-///    *behind* the host. It does not pad the host (padding stole width
-///    and crushed the field). Blur/shadow paint outside the layout
-///    box; the section card clips overflow.
-/// Glow size and Style scale ring width and bloom, not the host size.
+/// Construction (e899411 bloom, layout-stable):
+/// 1. Crisp ring — one `AuroraGlow` masked to a thin `strokeBorder`
+///    (`Capsule` / `RoundedRectangle`). Width is 3–5pt from Style only.
+/// 2. Outer bloom — the same outline stroked with the palette
+///    `AngularGradient`, blurred, normal blend, drawn behind the host
+///    in a GeometryReader the size of the *padded* wrapper so the blur
+///    has room. Padding is a fixed gutter (not Glow size), so the host
+///    never shrinks. No `plusLighter` (that washed to white on a light card).
 struct AuroraHalo<Content: View>: View {
     var isOn: Bool
     var glow: AuroraGlow
@@ -49,42 +47,32 @@ struct AuroraHalo<Content: View>: View {
             .overlay {
                 if isOn { crispRing }
             }
-            .background {
-                if isOn {
-                    // Color.clear keeps the layout box equal to the host.
-                    // Blur/shadow paint in the overlay and must not pad.
-                    Color.clear
-                        .overlay { bloom }
-                }
-            }
-            // Fixed gutters so the default bloom has room to fade. Not
-            // tied to Glow size / Style, so the host width never changes.
+            .padding(.horizontal, HaloMetrics.sideInset)
             .padding(.vertical, HaloMetrics.verticalRoom)
+            .background {
+                if isOn { bloom }
+            }
     }
 
-    /// Slider 8…80 → stroke 4…11pt, times Style.
+    /// Thin outline. Glow size must not thicken this inward over the text.
     private var ringWidth: CGFloat {
-        let t = HaloMetrics.unit(glowSize)
-        return (4 + t * 7) * intensity.ringScale
+        intensity.ringWidth
     }
 
-    /// Slider 8…80 → blur 14…22pt, times Style, hard-capped so max Glow
-    /// cannot inflate layout. Default is already a wide Apple-like wash.
+    /// Slider 8…80 and Style scale the *outward* blur only. Capped so the
+    /// wash dies inside the fixed gutter instead of clipping hard.
     private var bloomRadius: CGFloat {
         let t = HaloMetrics.unit(glowSize)
-        return min((14 + t * 8) * intensity.bloomScale, 22)
+        let raw = (10 + t * 12) * intensity.bloomScale
+        return min(max(raw, 8), HaloMetrics.maxBloomRadius)
     }
 
     private var bloomOpacity: CGFloat {
         switch intensity {
-        case .subtle: 0.72
-        case .standard: 0.95
-        case .dramatic: 1.0
+        case .subtle: 0.55
+        case .standard: 0.82
+        case .dramatic: 0.95
         }
-    }
-
-    private var bloomLead: Color {
-        palette.swatchColors.first ?? palette.baseColor
     }
 
     private var crispRing: some View {
@@ -94,62 +82,53 @@ struct AuroraHalo<Content: View>: View {
                 radius: hostCornerRadius,
                 in: proxy.size
             )
-            let width = min(ringWidth, min(proxy.size.width, proxy.size.height) * 0.35)
             glow
                 .cornerRadius(outline.shaderRadius(in: proxy.size))
-                .glowSize(glowSize)
-                .borderWidth(width)
+                .glowSize(18)
+                .borderWidth(ringWidth)
                 .mask {
-                    outline.strokeMask(lineWidth: width)
+                    outline.strokeMask(lineWidth: ringWidth)
                 }
         }
         .allowsHitTesting(false)
         .accessibilityHidden(true)
     }
 
-    /// Sized to the host. Blur and shadow draw outside the layout box
-    /// and do not change the proposed width/height.
+    /// Palette stroke of the *host* size, centered in the padded canvas,
+    /// then blurred. Normal blend so colour reads on a white card.
     private var bloom: some View {
-        let width = ringWidth + 5
-        return ZStack {
-            bloomStroke(lineWidth: width)
-                .blur(radius: bloomRadius)
-                .opacity(0.7)
-            bloomStroke(lineWidth: width - 2)
-                .blur(radius: max(bloomRadius * 0.4, 4))
-                .shadow(color: bloomLead.opacity(0.65), radius: 10)
-                .shadow(color: bloomLead.opacity(0.4), radius: 18)
+        GeometryReader { proxy in
+            let hostSize = CGSize(
+                width: max(proxy.size.width - HaloMetrics.sideInset * 2, 0),
+                height: max(proxy.size.height - HaloMetrics.verticalRoom * 2, 0)
+            )
+            let outline = GlowOutline.make(
+                shape: shape,
+                radius: hostCornerRadius,
+                in: hostSize
+            )
+            outline.gradientStroke(
+                lineWidth: ringWidth + 2,
+                colors: palette.ringColors
+            )
+            .frame(width: hostSize.width, height: hostSize.height)
+            .position(x: proxy.size.width / 2, y: proxy.size.height / 2)
+            .blur(radius: bloomRadius)
+            .opacity(bloomOpacity)
         }
-        .opacity(bloomOpacity)
-        .blendMode(.plusLighter)
         .allowsHitTesting(false)
         .accessibilityHidden(true)
-    }
-
-    @ViewBuilder
-    private func bloomStroke(lineWidth: CGFloat) -> some View {
-        switch shape {
-        case .capsule:
-            Capsule().strokeBorder(
-                AngularGradient(colors: palette.ringColors, center: .center),
-                lineWidth: lineWidth
-            )
-        case .rectangle, .rounded:
-            RoundedRectangle(cornerRadius: hostCornerRadius, style: .continuous)
-                .strokeBorder(
-                    AngularGradient(colors: palette.ringColors, center: .center),
-                    lineWidth: lineWidth
-                )
-        }
     }
 }
 
 /// Constants that cannot live on generic `AuroraHalo` (no static stored properties).
 private enum HaloMetrics {
-    /// Vertical room inside the section card. Horizontal overflow is
-    /// clipped by the card; 16pt of card padding is enough to avoid a
-    /// hard edge at Standard/Dramatic.
-    static let verticalRoom: CGFloat = 28
+    /// Fixed side gutter: field stays ~280pt, bloom can fade. Not tied
+    /// to Glow size, so the host width never changes.
+    static let sideInset: CGFloat = 32
+    /// Fixed vertical gutter so the blur dies before the section clip.
+    static let verticalRoom: CGFloat = 36
+    static let maxBloomRadius: CGFloat = 16
 
     static func unit(_ glowSize: CGFloat) -> CGFloat {
         min(max((glowSize - 8) / 72, 0), 1)
@@ -217,7 +196,7 @@ struct LiveGlowSurface: View {
     var burster: AuroraGlow.Burster
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 8) {
             HStack(alignment: .firstTextBaseline) {
                 Text(settings.target.title)
                     .font(.headline)
@@ -317,7 +296,7 @@ struct CardHost: View {
     var palette: GlowPaletteChoice
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
+        VStack(alignment: .leading, spacing: 8) {
             Text("AURORA")
                 .font(.caption.weight(.semibold).monospaced())
                 .tracking(1.6)
@@ -337,7 +316,7 @@ struct CardHost: View {
                 DemoChrome.chip(".glow")
             }
         }
-        .padding(18)
+        .padding(14)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background { HostChrome(shape: shape, cornerRadius: cornerRadius) }
     }

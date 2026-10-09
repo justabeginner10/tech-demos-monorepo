@@ -6,7 +6,7 @@ Product **`Aurora` only**. Package floor is iOS 17; this app targets iOS 18 to m
 
 Two tabs:
 
-- **Live** — exactly one `AuroraGlow` at a time. The Metal view is masked to the host `Capsule` / `RoundedRectangle` stroke (a crisp animated outline). A non-Metal bloom is blurred *behind* the host without padding it, so Glow size and Style never change the field's layout; the section card clips overflow. Knobs cover `AuroraGlow.Palette`, `.speed`, `AuroraGlow.Style` (intensity), `.cornerRadius` / shape presets, `.glowSize`, a glow on/off toggle that unmounts Metal, and `AuroraGlow.Burster.fire()`. System / Light / Dark restyles the chrome.
+- **Live** — exactly one `AuroraGlow` at a time. A thin Metal ring is masked to the host `Capsule` / `RoundedRectangle` stroke. A palette `AngularGradient` stroke is blurred behind it (normal blend) in a fixed gutter so Glow size and Style only change the outward bloom, never the field size or interior. Knobs cover `AuroraGlow.Palette`, `.speed`, `AuroraGlow.Style` (intensity), `.cornerRadius` / shape presets, `.glowSize`, a glow on/off toggle that unmounts Metal, and `AuroraGlow.Burster.fire()`. System / Light / Dark restyles the chrome.
 - **Gallery** — painted snapshots of a button, prompt, card, full-screen edge, and the six palettes. No `AuroraGlow`, no `.glow`, no `AuroraText` in the grid. Tap a tile to open a sheet that mounts **one** live glow; dismiss to unmount it.
 
 Chrome uses semantic grouped backgrounds and primary / secondary ink so labels stay readable in light and dark. The glow itself is the package shader.
@@ -59,8 +59,8 @@ An Apple Intelligence–style animated glow ring, drawn by a Metal fragment shad
 | **Prompt / Card** | One host. Metal glow masked to a `Capsule` / `RoundedRectangle` stroke; blurred non-Metal bloom behind. Switching unmounts the other. |
 | **Show glow** | Off removes `AuroraGlow` from the tree so TimelineView is not ticking. |
 | **Palette chips** | Six built-in palettes. Fires `Burster` so the intro burst replays. |
-| **Intensity** | `AuroraGlow.Style`: Subtle / Standard / Dramatic — also scales ring width and bloom. |
-| **Speed / Glow / Corner** | `.speed`, ring/bloom size, `.cornerRadius`. |
+| **Intensity** | `AuroraGlow.Style`: Subtle / Standard / Dramatic — bloom radius/opacity, thin ring 3–5pt. |
+| **Speed / Glow / Corner** | `.speed`, outward bloom size, `.cornerRadius`. |
 | **Rect / Round / Capsule** | Writes `.cornerRadius` (8 / 24 / 80). The shader is always a rounded rect. |
 | **Trigger burst** | `burster.fire()`. |
 | **Leave the tab** | The live glow unmounts. Gallery never keeps a live ring in the grid. |

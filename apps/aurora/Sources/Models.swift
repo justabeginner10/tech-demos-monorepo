@@ -55,21 +55,21 @@ enum GlowIntensity: String, CaseIterable, Identifiable, Hashable {
         }
     }
 
-    /// Stroke thickness vs Standard. Style must change the ring, not only the shader.
-    var ringScale: CGFloat {
+    /// Crisp outline only. Glow size must not drive this.
+    var ringWidth: CGFloat {
         switch self {
-        case .subtle: 0.7
-        case .standard: 1.0
-        case .dramatic: 1.5
+        case .subtle: 3
+        case .standard: 4
+        case .dramatic: 5
         }
     }
 
-    /// Blur radius vs Standard. Capped in AuroraHalo so this cannot resize the host.
+    /// Outward bloom vs Standard. Capped in AuroraHalo so this cannot resize the host.
     var bloomScale: CGFloat {
         switch self {
         case .subtle: 0.75
         case .standard: 1.0
-        case .dramatic: 1.25
+        case .dramatic: 1.35
         }
     }
 }
