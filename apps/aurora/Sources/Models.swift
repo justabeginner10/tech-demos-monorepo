@@ -134,14 +134,6 @@ struct LiveGlowSettings {
     var cornerRadius: CGFloat = 80
     var isGlowOn: Bool = true
 
-    var glow: AuroraGlow {
-        AuroraGlow(intensity.style)
-            .palette(palette.palette)
-            .speed(speed)
-            .cornerRadius(cornerRadius)
-            .glowSize(glowSize)
-    }
-
     mutating func applyShape(_ shape: GlowShape) {
         self.shape = shape
         cornerRadius = shape.cornerRadius

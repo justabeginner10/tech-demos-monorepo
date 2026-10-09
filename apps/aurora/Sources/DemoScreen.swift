@@ -41,32 +41,32 @@ struct LivePlaygroundView: View {
 
     var body: some View {
         NavigationStack {
-            VStack(alignment: .leading, spacing: 12) {
-                playgroundControls
-                if isSelected {
-                    LiveGlowSurface(
-                        settings: settings,
-                        promptText: $promptText,
-                        burster: burster
-                    )
-                    .frame(maxWidth: .infinity)
-                    controlPanel
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                } else {
-                    parkedCard
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+            ScrollView {
+                VStack(alignment: .leading, spacing: 12) {
+                    playgroundControls
+                    if isSelected {
+                        LiveGlowSurface(
+                            settings: settings,
+                            promptText: $promptText,
+                            burster: burster
+                        )
+                        controlPanel
+                    } else {
+                        parkedCard
+                    }
                 }
+                .padding(.horizontal)
+                .padding(.top, 8)
+                .padding(.bottom, 24)
             }
-            .padding(.horizontal)
-            .padding(.top, 8)
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+            .scrollDismissesKeyboard(.interactively)
             .background(DemoPalette.page)
             .navigationTitle("Aurora")
             .navigationBarTitleDisplayMode(.inline)
             .toolbarBackground(DemoPalette.page, for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
             .safeAreaInset(edge: .bottom, spacing: 0) {
-                Color.clear.frame(height: 56)
+                Color.clear.frame(height: DemoChrome.floatingTabClearance)
             }
         }
     }
@@ -101,6 +101,7 @@ struct LivePlaygroundView: View {
             )
             .font(.caption)
             .foregroundStyle(DemoPalette.inkMuted)
+            .fixedSize(horizontal: false, vertical: true)
         }
         .padding(14)
         .background(DemoPalette.card, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
@@ -111,54 +112,51 @@ struct LivePlaygroundView: View {
     }
 
     private var controlPanel: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 14) {
-                palettePicker
-                intensityPicker
-                shapePicker
+        VStack(alignment: .leading, spacing: 14) {
+            palettePicker
+            intensityPicker
+            shapePicker
 
-                DemoChrome.sliderRow(
-                    "Speed",
-                    value: Binding(
-                        get: { CGFloat(settings.speed) },
-                        set: { settings.speed = Double($0) }
-                    ),
-                    range: 0.02 ... 0.6,
-                    format: "%.2f"
-                )
+            DemoChrome.sliderRow(
+                "Speed",
+                value: Binding(
+                    get: { CGFloat(settings.speed) },
+                    set: { settings.speed = Double($0) }
+                ),
+                range: 0.02 ... 0.6,
+                format: "%.2f"
+            )
 
-                DemoChrome.sliderRow(
-                    "Glow",
-                    value: $settings.glowSize,
-                    range: 8 ... 80,
-                    format: "%.0f"
-                )
+            DemoChrome.sliderRow(
+                "Glow",
+                value: $settings.glowSize,
+                range: 8 ... 80,
+                format: "%.0f"
+            )
 
-                DemoChrome.sliderRow(
-                    "Corner",
-                    value: $settings.cornerRadius,
-                    range: 0 ... 120,
-                    format: "%.0f"
-                )
+            DemoChrome.sliderRow(
+                "Corner",
+                value: $settings.cornerRadius,
+                range: 0 ... 120,
+                format: "%.0f"
+            )
 
-                Button {
-                    burster.fire()
-                } label: {
-                    Label("Trigger burst", systemImage: "sparkles")
-                        .font(.headline)
-                        .frame(maxWidth: .infinity)
-                }
-                .buttonStyle(.borderedProminent)
-                .tint(DemoPalette.accent)
-                .disabled(!settings.isGlowOn)
+            Button {
+                burster.fire()
+            } label: {
+                Label("Trigger burst", systemImage: "sparkles")
+                    .font(.headline)
+                    .frame(maxWidth: .infinity)
             }
-            .padding(14)
-            .background(DemoPalette.card, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
-            .overlay {
-                RoundedRectangle(cornerRadius: 16, style: .continuous)
-                    .strokeBorder(DemoPalette.stroke, lineWidth: 1)
-            }
-            .padding(.bottom, 12)
+            .buttonStyle(.borderedProminent)
+            .tint(DemoPalette.accent)
+            .disabled(!settings.isGlowOn)
+        }
+        .padding(14)
+        .background(DemoPalette.card, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .strokeBorder(DemoPalette.stroke, lineWidth: 1)
         }
     }
 

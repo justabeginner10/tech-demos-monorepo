@@ -34,7 +34,7 @@ struct GalleryScreen: View {
             .toolbarBackground(DemoPalette.page, for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
             .safeAreaInset(edge: .bottom, spacing: 0) {
-                Color.clear.frame(height: 56)
+                Color.clear.frame(height: DemoChrome.floatingTabClearance)
             }
         }
     }
@@ -94,9 +94,10 @@ struct GalleryLivePreview: View {
             centeredGlow(
                 AuroraGlow(.standard)
                     .palette(palette.palette)
-                    .cornerRadius(80)
                     .glowSize(22)
-                    .speed(0.12)
+                    .speed(0.12),
+                hostCornerRadius: 22,
+                glowSize: 22
             ) {
                 FrozenContinueButton()
             }
@@ -104,9 +105,10 @@ struct GalleryLivePreview: View {
             centeredGlow(
                 AuroraGlow(.standard)
                     .palette(palette.palette)
-                    .cornerRadius(80)
                     .glowSize(24)
-                    .speed(0.12)
+                    .speed(0.12),
+                hostCornerRadius: 80,
+                glowSize: 24
             ) {
                 PromptHost(text: $promptText, cornerRadius: 80, onSubmit: {})
             }
@@ -114,9 +116,10 @@ struct GalleryLivePreview: View {
             centeredGlow(
                 AuroraGlow(.standard)
                     .palette(palette.palette)
-                    .cornerRadius(24)
                     .glowSize(28)
-                    .speed(0.12)
+                    .speed(0.12),
+                hostCornerRadius: 24,
+                glowSize: 28
             ) {
                 CardHost(cornerRadius: 24, palette: palette)
             }
@@ -129,12 +132,20 @@ struct GalleryLivePreview: View {
 
     private func centeredGlow<Content: View>(
         _ glow: AuroraGlow,
+        hostCornerRadius: CGFloat,
+        glowSize: CGFloat,
         @ViewBuilder content: () -> Content
     ) -> some View {
-        content()
-            .glow(glow)
-            .padding(36)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        AuroraHalo(
+            isOn: true,
+            glow: glow,
+            hostCornerRadius: hostCornerRadius,
+            glowSize: glowSize
+        ) {
+            content()
+        }
+        .padding(.horizontal, 16)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
     private var fullScreenGlow: some View {

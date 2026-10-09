@@ -1,34 +1,96 @@
 import Aurora
 import SwiftUI
 
-/// Single host + optional `View.glow(_:)`. Switching Prompt/Card restyles this
-/// overlay — it does not add a second Metal surface.
+/// README layout: pad the host, then overlay `AuroraGlow` so the shader
+/// canvas is larger than the control. The ring SDF follows that padded
+/// rounded rect; inward falloff sits in the padding (a halo around the
+/// host) instead of flooding the interior. Radius is clamped to half the
+/// canvas so a capsule never becomes a pinched lens.
+struct AuroraHalo<Content: View>: View {
+    var isOn: Bool
+    var glow: AuroraGlow
+    var hostCornerRadius: CGFloat
+    var glowSize: CGFloat
+    @ViewBuilder var content: () -> Content
+
+    /// Shader wide lobe is `glowSize * 1.4`. Extra pixels keep it inside
+    /// `compositingGroup` so the halo is not sliced into a hard rectangle.
+    var inset: CGFloat {
+        glowSize * 1.4 + 8
+    }
+
+    var body: some View {
+        content()
+            .padding(inset)
+            .overlay {
+                if isOn {
+                    GeometryReader { proxy in
+                        glow
+                            .cornerRadius(Self.clampedRadius(
+                                hostCornerRadius: hostCornerRadius,
+                                inset: inset,
+                                in: proxy.size
+                            ))
+                    }
+                }
+            }
+    }
+
+    static func clampedRadius(
+        hostCornerRadius: CGFloat,
+        inset: CGFloat,
+        in size: CGSize
+    ) -> CGFloat {
+        let limit = min(size.width, size.height) / 2
+        guard limit > 0 else { return 0 }
+        return min(max(hostCornerRadius + inset, 0), limit)
+    }
+}
+
+/// Single host + optional padded `AuroraGlow` overlay. Switching Prompt/Card
+/// restyles this overlay — it does not add a second Metal surface.
 struct LiveGlowSurface: View {
     var settings: LiveGlowSettings
     @Binding var promptText: String
     var burster: AuroraGlow.Burster
 
     var body: some View {
-        DemoChrome.chartCard(title: settings.target.title, subtitle: settings.target.subtitle) {
-            glowingHost
-                .frame(maxWidth: .infinity, minHeight: 168)
+        VStack(alignment: .leading, spacing: 12) {
+            HStack(alignment: .firstTextBaseline) {
+                Text(settings.target.title)
+                    .font(.headline)
+                    .foregroundStyle(DemoPalette.ink)
+                Spacer()
+                Text(settings.target.subtitle)
+                    .font(.caption)
+                    .foregroundStyle(DemoPalette.inkMuted)
+            }
+
+            AuroraHalo(
+                isOn: settings.isGlowOn,
+                glow: configuredGlow,
+                hostCornerRadius: settings.cornerRadius,
+                glowSize: settings.glowSize
+            ) {
+                host
+            }
+            .frame(maxWidth: .infinity)
+        }
+        .padding(14)
+        .background(DemoPalette.card, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .strokeBorder(DemoPalette.stroke, lineWidth: 1)
+                .allowsHitTesting(false)
         }
     }
 
     private var configuredGlow: AuroraGlow {
-        settings.glow.burster(burster)
-    }
-
-    @ViewBuilder
-    private var glowingHost: some View {
-        Group {
-            if settings.isGlowOn {
-                host.glow(configuredGlow)
-            } else {
-                host
-            }
-        }
-        .padding(settings.glowSize + 8)
+        AuroraGlow(settings.intensity.style)
+            .palette(settings.palette.palette)
+            .speed(settings.speed)
+            .glowSize(settings.glowSize)
+            .burster(burster)
     }
 
     @ViewBuilder
@@ -69,14 +131,18 @@ struct PromptHost: View {
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 14)
-        .background(DemoPalette.canvas, in: RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
+        .background(DemoPalette.canvas, in: hostShape)
         .overlay {
-            RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+            hostShape
                 .strokeBorder(DemoPalette.stroke, lineWidth: 1)
                 .allowsHitTesting(false)
         }
         .accessibilityElement(children: .contain)
         .accessibilityLabel("Siri-style prompt")
+    }
+
+    private var hostShape: RoundedRectangle {
+        RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
     }
 }
 
@@ -107,11 +173,15 @@ struct CardHost: View {
         }
         .padding(18)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(DemoPalette.canvas, in: RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
+        .background(DemoPalette.canvas, in: hostShape)
         .overlay {
-            RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+            hostShape
                 .strokeBorder(DemoPalette.stroke, lineWidth: 1)
                 .allowsHitTesting(false)
         }
+    }
+
+    private var hostShape: RoundedRectangle {
+        RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
     }
 }
