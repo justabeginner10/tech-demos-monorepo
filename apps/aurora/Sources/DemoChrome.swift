@@ -42,9 +42,16 @@ enum DemoPalette {
 }
 
 enum DemoChrome {
-    /// Floating iOS tab pill sits above the home indicator and does not
-    /// always enlarge the safe area enough for Live's bottom controls.
-    static let floatingTabClearance: CGFloat = 136
+    /// Extra scroll-content height so the last Live control can sit above
+    /// the floating tab pill. This is a real view in the VStack — not
+    /// `contentMargins` / `safeAreaInset`, which TabView has been dropping.
+    static let floatingTabClearance: CGFloat = 168
+
+    static var tabBarScrollSpacer: some View {
+        Color.clear
+            .frame(height: floatingTabClearance)
+            .accessibilityHidden(true)
+    }
 
     static func chartCard<Content: View>(
         title: String,

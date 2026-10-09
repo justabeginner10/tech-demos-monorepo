@@ -25,11 +25,10 @@ struct GalleryScreen: View {
                             .accessibilityHint("Shows one live AuroraGlow preview")
                         }
                     }
+                    DemoChrome.tabBarScrollSpacer
                 }
                 .padding()
-                .padding(.bottom, DemoChrome.floatingTabClearance)
             }
-            .contentMargins(.bottom, DemoChrome.floatingTabClearance, for: .scrollContent)
             .background(DemoPalette.page)
             .navigationTitle("Gallery")
             .navigationBarTitleDisplayMode(.inline)
@@ -95,8 +94,11 @@ struct GalleryLivePreview: View {
                 glow: AuroraGlow(.standard)
                     .palette(palette.palette)
                     .speed(0.12),
+                shape: .capsule,
                 hostCornerRadius: 22,
-                glowSize: 14
+                glowSize: 14,
+                intensity: .standard,
+                palette: palette
             ) {
                 FrozenContinueButton()
             }
@@ -108,10 +110,18 @@ struct GalleryLivePreview: View {
                 glow: AuroraGlow(.standard)
                     .palette(palette.palette)
                     .speed(0.12),
+                shape: .capsule,
                 hostCornerRadius: 80,
-                glowSize: 14
+                glowSize: 14,
+                intensity: .standard,
+                palette: palette
             ) {
-                PromptHost(text: $promptText, cornerRadius: 80, onSubmit: {})
+                PromptHost(
+                    text: $promptText,
+                    shape: .capsule,
+                    cornerRadius: 80,
+                    onSubmit: {}
+                )
             }
             .padding(.horizontal, 16)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -121,10 +131,13 @@ struct GalleryLivePreview: View {
                 glow: AuroraGlow(.standard)
                     .palette(palette.palette)
                     .speed(0.12),
+                shape: .rounded,
                 hostCornerRadius: 24,
-                glowSize: 14
+                glowSize: 14,
+                intensity: .standard,
+                palette: palette
             ) {
-                CardHost(cornerRadius: 24, palette: palette)
+                CardHost(shape: .rounded, cornerRadius: 24, palette: palette)
             }
             .padding(.horizontal, 16)
             .frame(maxWidth: .infinity, maxHeight: .infinity)

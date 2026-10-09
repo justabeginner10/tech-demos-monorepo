@@ -54,6 +54,24 @@ enum GlowIntensity: String, CaseIterable, Identifiable, Hashable {
         case .dramatic: .dramatic
         }
     }
+
+    /// Stroke thickness vs Standard. Style must change the ring, not only the shader.
+    var ringScale: CGFloat {
+        switch self {
+        case .subtle: 0.7
+        case .standard: 1.0
+        case .dramatic: 1.5
+        }
+    }
+
+    /// Blur radius vs Standard. Dramatic should read as a larger halo.
+    var bloomScale: CGFloat {
+        switch self {
+        case .subtle: 0.55
+        case .standard: 1.0
+        case .dramatic: 1.7
+        }
+    }
 }
 
 /// Built-in `AuroraGlow.Palette` cases. Custom `Palette(base:anchors:)` is unused.

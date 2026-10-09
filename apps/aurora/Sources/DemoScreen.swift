@@ -54,12 +54,11 @@ struct LivePlaygroundView: View {
                     } else {
                         parkedCard
                     }
+                    DemoChrome.tabBarScrollSpacer
                 }
                 .padding(.horizontal)
                 .padding(.top, 8)
-                .padding(.bottom, DemoChrome.floatingTabClearance)
             }
-            .contentMargins(.bottom, DemoChrome.floatingTabClearance, for: .scrollContent)
             .scrollDismissesKeyboard(.interactively)
             .background(DemoPalette.page)
             .navigationTitle("Aurora")
