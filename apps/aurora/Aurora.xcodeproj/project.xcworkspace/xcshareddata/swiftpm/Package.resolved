@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "aurora",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/tornikegomareli/Aurora.git",
+      "state" : {
+        "revision" : "a3f9296a1e7744529b69d8a9f9e360bf3c8c81bf",
+        "version" : "0.5.2"
+      }
+    }
+  ],
+  "version" : 2
+}

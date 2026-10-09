@@ -7,6 +7,7 @@ Each demo lives under `apps/<kebab-slug>/`.
 ## Demos
 
 - [`apps/adaptive-sheets/`](apps/adaptive-sheets/) — [AdaptiveSheets](https://github.com/huyparody/AdaptiveSheets) unified sheet API (native on iOS 16.4+).
+- [`apps/aurora/`](apps/aurora/) — [Aurora](https://github.com/tornikegomareli/Aurora) Apple Intelligence-style Metal glow (Live + Gallery).
 - [`apps/bottom-sheets/`](apps/bottom-sheets/) — [BottomSheets](https://github.com/c-villain/BottomSheets) native detent backport.
 - [`apps/button-styles/`](apps/button-styles/) — Custom `ButtonStyle` / `PrimitiveButtonStyle` gallery.
 - [`apps/design-foundation/`](apps/design-foundation/) — [DesignFoundation](https://github.com/NerdSnipe-Inc/design-foundation) token playground (Live + Gallery).

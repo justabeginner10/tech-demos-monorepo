@@ -1,0 +1,43 @@
+name: Aurora
+options:
+  bundleIdPrefix: com.techdemos
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: 6.0
+packages:
+  Aurora:
+    url: https://github.com/tornikegomareli/Aurora.git
+    from: 0.5.2
+targets:
+  Aurora:
+    type: application
+    platform: iOS
+    deploymentTarget: "18.0"
+    sources:
+      - Sources
+    dependencies:
+      - package: Aurora
+        product: Aurora
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.techdemos.aurora
+        PRODUCT_NAME: Aurora
+        PRODUCT_MODULE_NAME: AuroraDemo
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Aurora
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        CODE_SIGN_STYLE: Automatic
+schemes:
+  Aurora:
+    build:
+      targets:
+        Aurora: all
+    run:
+      config: Debug
+    test:
+      config: Debug
