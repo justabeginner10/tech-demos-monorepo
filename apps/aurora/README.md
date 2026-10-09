@@ -6,7 +6,7 @@ Product **`Aurora` only**. Package floor is iOS 17; this app targets iOS 18 to m
 
 Two tabs:
 
-- **Live** — exactly one `AuroraGlow` at a time. The host is padded first, then the glow is overlaid (Aurora README: `Card().padding().glow(...)`) so the shader canvas is larger than the control. The ring hugs a clamped rounded-rect / capsule and bleeds into that padding instead of clipping to a hard rectangle or flooding the field. Knobs cover `AuroraGlow.Palette`, `.speed`, `AuroraGlow.Style` (intensity), `.cornerRadius` / shape presets, `.glowSize`, a glow on/off toggle that unmounts Metal, and `AuroraGlow.Burster.fire()`. System / Light / Dark restyles the chrome.
+- **Live** — exactly one `AuroraGlow` at a time, overlaid on the prompt or card the same way Aurora's `GlowCard` does (`View.glow` / overlay matching the host frame). The shader is an inner-edge ring: it cannot draw outside its canvas, so we do **not** pad the host first (that only moves the ring onto a larger rectangle and slices it). Capsule radius is `min(requested, height/2)`; glow size is capped so the field stays readable. Knobs cover `AuroraGlow.Palette`, `.speed`, `AuroraGlow.Style` (intensity), `.cornerRadius` / shape presets, `.glowSize`, a glow on/off toggle that unmounts Metal, and `AuroraGlow.Burster.fire()`. System / Light / Dark restyles the chrome.
 - **Gallery** — painted snapshots of a button, prompt, card, full-screen edge, and the six palettes. No `AuroraGlow`, no `.glow`, no `AuroraText` in the grid. Tap a tile to open a sheet that mounts **one** live glow; dismiss to unmount it.
 
 Chrome uses semantic grouped backgrounds and primary / secondary ink so labels stay readable in light and dark. The glow itself is the package shader.
@@ -56,7 +56,7 @@ An Apple Intelligence–style animated glow ring, drawn by a Metal fragment shad
 
 | Control | What to look for |
 | --- | --- |
-| **Prompt / Card** | One host. Pad, then overlay `AuroraGlow` (not glow-then-pad). Corner radius is clamped to half the canvas so a capsule stays a ring, not a pinched lens. Switching unmounts the other. |
+| **Prompt / Card** | One host. `.glow` on the shape itself (capsule = half the short side). Switching unmounts the other. |
 | **Show glow** | Off removes `AuroraGlow` from the tree so TimelineView is not ticking. |
 | **Palette chips** | Six built-in palettes. Fires `Burster` so the intro burst replays. |
 | **Intensity** | `AuroraGlow.Style`: Subtle / Standard / Dramatic. |

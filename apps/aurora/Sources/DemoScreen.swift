@@ -57,17 +57,15 @@ struct LivePlaygroundView: View {
                 }
                 .padding(.horizontal)
                 .padding(.top, 8)
-                .padding(.bottom, 24)
+                .padding(.bottom, DemoChrome.floatingTabClearance)
             }
+            .contentMargins(.bottom, DemoChrome.floatingTabClearance, for: .scrollContent)
             .scrollDismissesKeyboard(.interactively)
             .background(DemoPalette.page)
             .navigationTitle("Aurora")
             .navigationBarTitleDisplayMode(.inline)
             .toolbarBackground(DemoPalette.page, for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
-            .safeAreaInset(edge: .bottom, spacing: 0) {
-                Color.clear.frame(height: DemoChrome.floatingTabClearance)
-            }
         }
     }
 

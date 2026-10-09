@@ -27,15 +27,14 @@ struct GalleryScreen: View {
                     }
                 }
                 .padding()
+                .padding(.bottom, DemoChrome.floatingTabClearance)
             }
+            .contentMargins(.bottom, DemoChrome.floatingTabClearance, for: .scrollContent)
             .background(DemoPalette.page)
             .navigationTitle("Gallery")
             .navigationBarTitleDisplayMode(.inline)
             .toolbarBackground(DemoPalette.page, for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
-            .safeAreaInset(edge: .bottom, spacing: 0) {
-                Color.clear.frame(height: DemoChrome.floatingTabClearance)
-            }
         }
     }
 
@@ -95,10 +94,9 @@ struct GalleryLivePreview: View {
                 isOn: true,
                 glow: AuroraGlow(.standard)
                     .palette(palette.palette)
-                    .glowSize(22)
                     .speed(0.12),
                 hostCornerRadius: 22,
-                glowSize: 22
+                glowSize: 14
             ) {
                 FrozenContinueButton()
             }
@@ -109,10 +107,9 @@ struct GalleryLivePreview: View {
                 isOn: true,
                 glow: AuroraGlow(.standard)
                     .palette(palette.palette)
-                    .glowSize(24)
                     .speed(0.12),
                 hostCornerRadius: 80,
-                glowSize: 24
+                glowSize: 14
             ) {
                 PromptHost(text: $promptText, cornerRadius: 80, onSubmit: {})
             }
@@ -123,10 +120,9 @@ struct GalleryLivePreview: View {
                 isOn: true,
                 glow: AuroraGlow(.standard)
                     .palette(palette.palette)
-                    .glowSize(28)
                     .speed(0.12),
                 hostCornerRadius: 24,
-                glowSize: 28
+                glowSize: 14
             ) {
                 CardHost(cornerRadius: 24, palette: palette)
             }

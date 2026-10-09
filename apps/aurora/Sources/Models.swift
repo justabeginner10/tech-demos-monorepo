@@ -130,7 +130,7 @@ struct LiveGlowSettings {
     var palette: GlowPaletteChoice = .appleIntelligence
     var shape: GlowShape = .capsule
     var speed: Double = 0.12
-    var glowSize: CGFloat = 28
+    var glowSize: CGFloat = 14
     var cornerRadius: CGFloat = 80
     var isGlowOn: Bool = true
 

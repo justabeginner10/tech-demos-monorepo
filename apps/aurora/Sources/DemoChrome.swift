@@ -44,7 +44,7 @@ enum DemoPalette {
 enum DemoChrome {
     /// Floating iOS tab pill sits above the home indicator and does not
     /// always enlarge the safe area enough for Live's bottom controls.
-    static let floatingTabClearance: CGFloat = 108
+    static let floatingTabClearance: CGFloat = 136
 
     static func chartCard<Content: View>(
         title: String,

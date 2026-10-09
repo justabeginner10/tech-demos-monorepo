@@ -1,11 +1,15 @@
 import Aurora
 import SwiftUI
 
-/// README layout: pad the host, then overlay `AuroraGlow` so the shader
-/// canvas is larger than the control. The ring SDF follows that padded
-/// rounded rect; inward falloff sits in the padding (a halo around the
-/// host) instead of flooding the interior. Radius is clamped to half the
-/// canvas so a capsule never becomes a pinched lens.
+/// Inner-edge `AuroraGlow` on the host itself — the package's wrap-a-view
+/// recipe (`View.glow(_:)`, same as `GlowCard` in Aurora's sources).
+///
+/// The Metal SDF is the host's bounds. The ring sits on that outline and
+/// falls inward; the shader never draws outside the canvas. Padding the
+/// host first would only move the ring onto the padded rectangle and
+/// slice it there. Radius is `min(requested, half the short side)` so a
+/// capsule is `height/2`. Glow size is capped so the band cannot fill
+/// the interior.
 struct AuroraHalo<Content: View>: View {
     var isOn: Bool
     var glow: AuroraGlow
@@ -27,41 +31,36 @@ struct AuroraHalo<Content: View>: View {
         self.content = content()
     }
 
-    /// Shader wide lobe is `glowSize * 1.4`. Extra pixels keep it inside
-    /// `compositingGroup` so the halo is not sliced into a hard rectangle.
-    var inset: CGFloat {
-        glowSize * 1.4 + 8
-    }
-
     var body: some View {
         content
-            .padding(inset)
             .overlay {
                 if isOn {
                     GeometryReader { proxy in
                         glow
-                            .cornerRadius(Self.clampedRadius(
-                                hostCornerRadius: hostCornerRadius,
-                                inset: inset,
-                                in: proxy.size
-                            ))
+                            .cornerRadius(Self.cornerRadius(hostCornerRadius, in: proxy.size))
+                            .glowSize(Self.cappedGlowSize(glowSize, in: proxy.size))
                     }
                 }
             }
     }
 
-    static func clampedRadius(
-        hostCornerRadius: CGFloat,
-        inset: CGFloat,
-        in size: CGSize
-    ) -> CGFloat {
+    /// Capsule when the slider is large: never exceed half the short side.
+    static func cornerRadius(_ requested: CGFloat, in size: CGSize) -> CGFloat {
         let limit = min(size.width, size.height) / 2
         guard limit > 0 else { return 0 }
-        return min(max(hostCornerRadius + inset, 0), limit)
+        return min(max(requested, 0), limit)
+    }
+
+    /// Keep an interior so labels stay readable. Falloff in the shader is
+    /// about `glowSize * 1.4` from each edge.
+    static func cappedGlowSize(_ requested: CGFloat, in size: CGSize) -> CGFloat {
+        let minSide = min(size.width, size.height)
+        guard minSide > 0 else { return 4 }
+        return min(max(requested, 4), minSide * 0.28)
     }
 }
 
-/// Single host + optional padded `AuroraGlow` overlay. Switching Prompt/Card
+/// Single host + optional inner-edge `AuroraGlow`. Switching Prompt/Card
 /// restyles this overlay — it does not add a second Metal surface.
 struct LiveGlowSurface: View {
     var settings: LiveGlowSettings
@@ -103,7 +102,6 @@ struct LiveGlowSurface: View {
         AuroraGlow(settings.intensity.style)
             .palette(settings.palette.palette)
             .speed(settings.speed)
-            .glowSize(settings.glowSize)
             .burster(burster)
     }
 
