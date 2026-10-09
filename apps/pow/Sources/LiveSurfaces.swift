@@ -299,7 +299,7 @@ struct TransitionSurface: View {
 
             if isVisible {
                 DemoChrome.badge(title: kind.title, systemImage: kind.systemImage)
-                    .padding(16)
+                    .padding(8)
                     .transition(kind.powTransition(params))
             } else {
                 Text("View removed")
@@ -309,7 +309,7 @@ struct TransitionSurface: View {
             }
         }
         .frame(maxWidth: .infinity)
-        .frame(minHeight: 220)
+        .frame(minHeight: 156)
         .id(kind)
     }
 

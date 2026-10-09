@@ -110,7 +110,7 @@ enum DemoChrome {
         }
         .foregroundStyle(DemoPalette.badgeInk)
         .frame(maxWidth: .infinity)
-        .frame(minHeight: 168)
+        .frame(minHeight: 140)
         .background(DemoPalette.badge, in: RoundedRectangle(cornerRadius: 24, style: .continuous))
         .overlay {
             RoundedRectangle(cornerRadius: 24, style: .continuous)

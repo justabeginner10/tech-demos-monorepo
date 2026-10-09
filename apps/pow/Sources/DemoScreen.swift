@@ -41,8 +41,8 @@ struct LivePlaygroundView: View {
                 VStack(alignment: .leading, spacing: 12) {
                     playgroundControls
                     if isSelected {
-                        activeSurface
                         primaryAction
+                        activeSurface
                     } else {
                         parkedCard
                     }
@@ -82,15 +82,11 @@ struct LivePlaygroundView: View {
             }
             .pickerStyle(.segmented)
 
-            Text(
-                "Only one target is mounted. Effects fire from `.changeEffect`. "
-                    + "Transitions insert or remove with `.movingParts`. Gallery tiles are paint; "
-                    + "a sheet hosts a single live demo."
-            )
-            .font(.caption)
-            .foregroundStyle(DemoPalette.inkMuted)
+            Text("One target. Tap Fire or Insert/Remove, then the badge below.")
+                .font(.caption)
+                .foregroundStyle(DemoPalette.inkMuted)
         }
-        .padding(14)
+        .padding(12)
         .background(DemoPalette.card, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
         .overlay {
             RoundedRectangle(cornerRadius: 16, style: .continuous)
