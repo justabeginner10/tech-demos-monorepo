@@ -11,7 +11,21 @@ struct AuroraHalo<Content: View>: View {
     var glow: AuroraGlow
     var hostCornerRadius: CGFloat
     var glowSize: CGFloat
-    @ViewBuilder var content: () -> Content
+    var content: Content
+
+    init(
+        isOn: Bool,
+        glow: AuroraGlow,
+        hostCornerRadius: CGFloat,
+        glowSize: CGFloat,
+        @ViewBuilder content: () -> Content
+    ) {
+        self.isOn = isOn
+        self.glow = glow
+        self.hostCornerRadius = hostCornerRadius
+        self.glowSize = glowSize
+        self.content = content()
+    }
 
     /// Shader wide lobe is `glowSize * 1.4`. Extra pixels keep it inside
     /// `compositingGroup` so the halo is not sliced into a hard rectangle.
@@ -20,7 +34,7 @@ struct AuroraHalo<Content: View>: View {
     }
 
     var body: some View {
-        content()
+        content
             .padding(inset)
             .overlay {
                 if isOn {

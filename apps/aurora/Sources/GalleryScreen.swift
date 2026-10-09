@@ -91,8 +91,9 @@ struct GalleryLivePreview: View {
     private var liveBody: some View {
         switch family {
         case .button:
-            centeredGlow(
-                AuroraGlow(.standard)
+            AuroraHalo(
+                isOn: true,
+                glow: AuroraGlow(.standard)
                     .palette(palette.palette)
                     .glowSize(22)
                     .speed(0.12),
@@ -101,9 +102,12 @@ struct GalleryLivePreview: View {
             ) {
                 FrozenContinueButton()
             }
+            .padding(.horizontal, 16)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         case .prompt:
-            centeredGlow(
-                AuroraGlow(.standard)
+            AuroraHalo(
+                isOn: true,
+                glow: AuroraGlow(.standard)
                     .palette(palette.palette)
                     .glowSize(24)
                     .speed(0.12),
@@ -112,9 +116,12 @@ struct GalleryLivePreview: View {
             ) {
                 PromptHost(text: $promptText, cornerRadius: 80, onSubmit: {})
             }
+            .padding(.horizontal, 16)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         case .card:
-            centeredGlow(
-                AuroraGlow(.standard)
+            AuroraHalo(
+                isOn: true,
+                glow: AuroraGlow(.standard)
                     .palette(palette.palette)
                     .glowSize(28)
                     .speed(0.12),
@@ -123,29 +130,13 @@ struct GalleryLivePreview: View {
             ) {
                 CardHost(cornerRadius: 24, palette: palette)
             }
+            .padding(.horizontal, 16)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         case .fullScreen:
             fullScreenGlow
         case .palettes:
             paletteGlow
         }
-    }
-
-    private func centeredGlow<Content: View>(
-        _ glow: AuroraGlow,
-        hostCornerRadius: CGFloat,
-        glowSize: CGFloat,
-        @ViewBuilder content: () -> Content
-    ) -> some View {
-        AuroraHalo(
-            isOn: true,
-            glow: glow,
-            hostCornerRadius: hostCornerRadius,
-            glowSize: glowSize
-        ) {
-            content()
-        }
-        .padding(.horizontal, 16)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
     private var fullScreenGlow: some View {
