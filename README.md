@@ -22,6 +22,7 @@ Each demo lives under `apps/<kebab-slug>/`.
 - [`apps/lucas-bottom-sheet/`](apps/lucas-bottom-sheet/) — [lucaszischka/BottomSheet](https://github.com/lucaszischka/BottomSheet) custom snap-state sheet.
 - [`apps/minted/`](apps/minted/) — [Minted](https://github.com/haplollc/Minted) physically-lit 3D gold medallions (Live + Gallery).
 - [`apps/motion-eyes/`](apps/motion-eyes/) — SwiftUI playground that integrates [MotionEyes](https://github.com/edwardsanchez/MotionEyes) so CADisplayLink traces show whether animations actually ran.
+- [`apps/pow/`](apps/pow/) — [Pow](https://github.com/EmergeTools/Pow) change effects and transitions playground (Live + Gallery).
 - [`apps/rehearsal/`](apps/rehearsal/) — [Rehearsal](https://github.com/daneden/Rehearsal) interactive preview knobs (Live + Gallery).
 - [`apps/shad-kit/`](apps/shad-kit/) — [ShadKit](https://github.com/jasonkneen/ShadKit) shadcn/ui + AI Elements playground (Live + Gallery).
 - [`apps/shader-kit/`](apps/shader-kit/) — [ShaderKit](https://github.com/jamesrochabrun/ShaderKit) holographic cards playground (Live + Gallery).
