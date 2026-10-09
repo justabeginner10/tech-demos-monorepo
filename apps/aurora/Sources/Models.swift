@@ -64,12 +64,12 @@ enum GlowIntensity: String, CaseIterable, Identifiable, Hashable {
         }
     }
 
-    /// Blur radius vs Standard. Dramatic should read as a larger halo.
+    /// Blur radius vs Standard. Capped in AuroraHalo so this cannot resize the host.
     var bloomScale: CGFloat {
         switch self {
-        case .subtle: 0.55
+        case .subtle: 0.75
         case .standard: 1.0
-        case .dramatic: 1.7
+        case .dramatic: 1.25
         }
     }
 }

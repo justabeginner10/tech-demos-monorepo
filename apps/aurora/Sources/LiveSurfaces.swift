@@ -5,16 +5,15 @@ import SwiftUI
 /// the host outline so the ring follows a `Capsule` / `RoundedRectangle`
 /// the way the painted Gallery tiles do.
 ///
-/// Aurora's SDF lights a square canvas (and the short prompt fills that
-/// canvas), so the Metal view is never shown raw. Construction:
-/// 1. Crisp ring — the single `AuroraGlow` is `.mask`'d to
-///    `shape.strokeBorder(lineWidth:)` (`Capsule` or `RoundedRectangle`).
-/// 2. Outer bloom — a non-Metal copy of that same stroke (palette
-///    `AngularGradient`) is `.blur`'d and drawn *behind* the host. The
-///    wrapper is padded by ~2.2× the blur radius so the halo fades to
-///    zero before any rectangular frame edge.
-/// Glow size and Style scale the stroke width and the blur; they are not
-/// capped into a 14pt shader band.
+/// Aurora's SDF lights a square canvas, so the Metal view is never shown
+/// raw. Construction:
+/// 1. Crisp ring — one `AuroraGlow` is `.mask`'d to
+///    `shape.strokeBorder` (`Capsule` / `RoundedRectangle`).
+/// 2. Outer bloom — a non-Metal palette stroke, blurred and shadowed
+///    *behind* the host. It does not pad the host (padding stole width
+///    and crushed the field). Blur/shadow paint outside the layout
+///    box; the section card clips overflow.
+/// Glow size and Style scale ring width and bloom, not the host size.
 struct AuroraHalo<Content: View>: View {
     var isOn: Bool
     var glow: AuroraGlow
@@ -50,42 +49,47 @@ struct AuroraHalo<Content: View>: View {
             .overlay {
                 if isOn { crispRing }
             }
-            .padding(haloPad)
             .background {
-                if isOn { bloom }
+                if isOn {
+                    // Color.clear keeps the layout box equal to the host.
+                    // Blur/shadow paint in the overlay and must not pad.
+                    Color.clear
+                        .overlay { bloom }
+                }
             }
+            // Fixed gutters so the default bloom has room to fade. Not
+            // tied to Glow size / Style, so the host width never changes.
+            .padding(.vertical, Self.verticalRoom)
     }
 
-    /// Pad first so the bloom's GeometryReader is larger than the host.
-    /// Blur then dies out before that padded frame, not on a square clip.
-    private var haloPad: CGFloat {
-        isOn ? bloomPad : 16
-    }
+    /// Vertical room inside the section card. Horizontal overflow is
+    /// clipped by the card; 16pt of card padding is enough to avoid a
+    /// hard edge at Standard/Dramatic.
+    static let verticalRoom: CGFloat = 28
 
-    /// Slider 8…80 → stroke 3…12pt, times Style. Capped so a 50pt field
-    /// still has a hole in the middle.
+    /// Slider 8…80 → stroke 4…11pt, times Style.
     private var ringWidth: CGFloat {
         let t = Self.unit(glowSize)
-        return (3 + t * 9) * intensity.ringScale
+        return (4 + t * 7) * intensity.ringScale
     }
 
-    /// Slider 8…80 → blur 8…32pt, times Style.
+    /// Slider 8…80 → blur 14…22pt, times Style, hard-capped so max Glow
+    /// cannot inflate layout. Default is already a wide Apple-like wash.
     private var bloomRadius: CGFloat {
         let t = Self.unit(glowSize)
-        return (8 + t * 24) * intensity.bloomScale
-    }
-
-    /// Layout padding so the blur reaches ~0 before the wrapper edge.
-    private var bloomPad: CGFloat {
-        bloomRadius * 2.2 + 8
+        return min((14 + t * 8) * intensity.bloomScale, 22)
     }
 
     private var bloomOpacity: CGFloat {
         switch intensity {
-        case .subtle: 0.55
-        case .standard: 0.78
-        case .dramatic: 0.92
+        case .subtle: 0.72
+        case .standard: 0.95
+        case .dramatic: 1.0
         }
+    }
+
+    private var bloomLead: Color {
+        palette.swatchColors.first ?? palette.baseColor
     }
 
     private var crispRing: some View {
@@ -108,26 +112,40 @@ struct AuroraHalo<Content: View>: View {
         .accessibilityHidden(true)
     }
 
+    /// Sized to the host. Blur and shadow draw outside the layout box
+    /// and do not change the proposed width/height.
     private var bloom: some View {
-        GeometryReader { proxy in
-            let hostSize = CGSize(
-                width: max(proxy.size.width - bloomPad * 2, 0),
-                height: max(proxy.size.height - bloomPad * 2, 0)
-            )
-            let outline = GlowOutline.make(
-                shape: shape,
-                radius: hostCornerRadius,
-                in: hostSize
-            )
-            let width = min(ringWidth, min(hostSize.width, hostSize.height) * 0.35)
-            outline.gradientStroke(lineWidth: width + 2, colors: palette.ringColors)
-                .frame(width: hostSize.width, height: hostSize.height)
-                .position(x: proxy.size.width / 2, y: proxy.size.height / 2)
+        let width = ringWidth + 5
+        return ZStack {
+            bloomStroke(lineWidth: width)
                 .blur(radius: bloomRadius)
-                .opacity(bloomOpacity)
+                .opacity(0.7)
+            bloomStroke(lineWidth: width - 2)
+                .blur(radius: max(bloomRadius * 0.4, 4))
+                .shadow(color: bloomLead.opacity(0.65), radius: 10)
+                .shadow(color: bloomLead.opacity(0.4), radius: 18)
         }
+        .opacity(bloomOpacity)
+        .blendMode(.plusLighter)
         .allowsHitTesting(false)
         .accessibilityHidden(true)
+    }
+
+    @ViewBuilder
+    private func bloomStroke(lineWidth: CGFloat) -> some View {
+        switch shape {
+        case .capsule:
+            Capsule().strokeBorder(
+                AngularGradient(colors: palette.ringColors, center: .center),
+                lineWidth: lineWidth
+            )
+        case .rectangle, .rounded:
+            RoundedRectangle(cornerRadius: hostCornerRadius, style: .continuous)
+                .strokeBorder(
+                    AngularGradient(colors: palette.ringColors, center: .center),
+                    lineWidth: lineWidth
+                )
+        }
     }
 
     static func unit(_ glowSize: CGFloat) -> CGFloat {
@@ -227,6 +245,7 @@ struct LiveGlowSurface: View {
                 .strokeBorder(DemoPalette.stroke, lineWidth: 1)
                 .allowsHitTesting(false)
         }
+        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
     }
 
     private var configuredGlow: AuroraGlow {
@@ -282,6 +301,7 @@ struct PromptHost: View {
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 14)
+        .frame(maxWidth: .infinity)
         .background { HostChrome(shape: shape, cornerRadius: cornerRadius) }
         .accessibilityElement(children: .contain)
         .accessibilityLabel("Siri-style prompt")

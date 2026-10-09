@@ -6,7 +6,7 @@ Product **`Aurora` only**. Package floor is iOS 17; this app targets iOS 18 to m
 
 Two tabs:
 
-- **Live** — exactly one `AuroraGlow` at a time. The Metal view is masked to the host `Capsule` / `RoundedRectangle` stroke (a crisp animated outline) and a non-Metal blurred copy of that stroke is drawn behind in a padded frame so the bloom fades out before any rectangular edge. Glow size and Style scale the stroke width and blur. Knobs cover `AuroraGlow.Palette`, `.speed`, `AuroraGlow.Style` (intensity), `.cornerRadius` / shape presets, `.glowSize`, a glow on/off toggle that unmounts Metal, and `AuroraGlow.Burster.fire()`. System / Light / Dark restyles the chrome.
+- **Live** — exactly one `AuroraGlow` at a time. The Metal view is masked to the host `Capsule` / `RoundedRectangle` stroke (a crisp animated outline). A non-Metal bloom is blurred *behind* the host without padding it, so Glow size and Style never change the field's layout; the section card clips overflow. Knobs cover `AuroraGlow.Palette`, `.speed`, `AuroraGlow.Style` (intensity), `.cornerRadius` / shape presets, `.glowSize`, a glow on/off toggle that unmounts Metal, and `AuroraGlow.Burster.fire()`. System / Light / Dark restyles the chrome.
 - **Gallery** — painted snapshots of a button, prompt, card, full-screen edge, and the six palettes. No `AuroraGlow`, no `.glow`, no `AuroraText` in the grid. Tap a tile to open a sheet that mounts **one** live glow; dismiss to unmount it.
 
 Chrome uses semantic grouped backgrounds and primary / secondary ink so labels stay readable in light and dark. The glow itself is the package shader.

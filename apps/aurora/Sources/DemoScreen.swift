@@ -42,7 +42,7 @@ struct LivePlaygroundView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(alignment: .leading, spacing: 12) {
+                VStack(alignment: .leading, spacing: 10) {
                     playgroundControls
                     if isSelected {
                         LiveGlowSurface(
@@ -69,7 +69,7 @@ struct LivePlaygroundView: View {
     }
 
     private var playgroundControls: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 8) {
             Text("Playground")
                 .font(.headline)
                 .foregroundStyle(DemoPalette.ink)
@@ -100,7 +100,7 @@ struct LivePlaygroundView: View {
             .foregroundStyle(DemoPalette.inkMuted)
             .fixedSize(horizontal: false, vertical: true)
         }
-        .padding(14)
+        .padding(12)
         .background(DemoPalette.card, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
         .overlay {
             RoundedRectangle(cornerRadius: 16, style: .continuous)
@@ -109,7 +109,7 @@ struct LivePlaygroundView: View {
     }
 
     private var controlPanel: some View {
-        VStack(alignment: .leading, spacing: 14) {
+        VStack(alignment: .leading, spacing: 8) {
             palettePicker
             intensityPicker
             shapePicker
@@ -149,7 +149,7 @@ struct LivePlaygroundView: View {
             .tint(DemoPalette.accent)
             .disabled(!settings.isGlowOn)
         }
-        .padding(14)
+        .padding(12)
         .background(DemoPalette.card, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
         .overlay {
             RoundedRectangle(cornerRadius: 16, style: .continuous)
@@ -158,7 +158,7 @@ struct LivePlaygroundView: View {
     }
 
     private var palettePicker: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: 6) {
             Text("Palette")
                 .font(.caption.weight(.semibold))
                 .foregroundStyle(DemoPalette.inkMuted)
@@ -181,7 +181,7 @@ struct LivePlaygroundView: View {
     }
 
     private var intensityPicker: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: 6) {
             Text("Intensity")
                 .font(.caption.weight(.semibold))
                 .foregroundStyle(DemoPalette.inkMuted)
@@ -199,7 +199,7 @@ struct LivePlaygroundView: View {
     }
 
     private var shapePicker: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: 6) {
             Text("Shape")
                 .font(.caption.weight(.semibold))
                 .foregroundStyle(DemoPalette.inkMuted)
@@ -258,7 +258,7 @@ private struct PaletteChip: View {
                 .font(.caption2.weight(.medium))
                 .foregroundStyle(isSelected ? DemoPalette.ink : DemoPalette.inkMuted)
         }
-        .padding(6)
+        .padding(4)
         .background(
             isSelected ? Color.primary.opacity(0.08) : Color.clear,
             in: RoundedRectangle(cornerRadius: 10, style: .continuous)
