@@ -42,13 +42,14 @@ struct LivePlaygroundView: View {
                     playgroundControls
                     if isSelected {
                         activeSurface
+                        primaryAction
                     } else {
                         parkedCard
                     }
                 }
                 .padding(.horizontal)
                 .padding(.top, 8)
-                .padding(.bottom, 16)
+                .padding(.bottom, DemoChrome.scrollTabClearance)
                 .frame(maxWidth: .infinity, alignment: .top)
             }
             .scrollBounceBehavior(.basedOnSize)
@@ -58,13 +59,6 @@ struct LivePlaygroundView: View {
             .toolbarBackground(DemoPalette.page, for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
             .particleLayer(name: DemoParticleLayer.name)
-            .safeAreaInset(edge: .bottom, spacing: 0) {
-                if isSelected {
-                    DemoChrome.pinnedActionBar {
-                        pinnedAction
-                    }
-                }
-            }
         }
     }
 
@@ -115,7 +109,7 @@ struct LivePlaygroundView: View {
     }
 
     @ViewBuilder
-    private var pinnedAction: some View {
+    private var primaryAction: some View {
         switch family {
         case .effects:
             Button {

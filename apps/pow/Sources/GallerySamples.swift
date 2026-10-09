@@ -17,13 +17,7 @@ extension ChangeEffectKind {
     var frozenPreview: some View {
         switch self {
         case .spray:
-            FrozenBurst(
-                symbol: "heart.fill",
-                count: 7,
-                upward: true,
-                tint: DemoPalette.particle,
-                shadowed: true
-            )
+            FrozenSpray()
         case .jump:
             FrozenOffsetCard(offset: -18, symbol: "arrow.up")
         case .pulse:
@@ -104,12 +98,41 @@ private struct FrozenCanvas<Content: View>: View {
     }
 }
 
+/// Mini live badge: white hearts sit on rose, not on the light gallery canvas.
+private struct FrozenSpray: View {
+    var body: some View {
+        FrozenCanvas {
+            ZStack {
+                DemoPalette.badge
+
+                ForEach(0 ..< 7, id: \.self) { index in
+                    Image(systemName: index.isMultiple(of: 2) ? "heart.fill" : "sparkles")
+                        .font(.caption.weight(.bold))
+                        .foregroundStyle(DemoPalette.particle)
+                        .offset(
+                            x: CGFloat(index - 3) * 16,
+                            y: CGFloat(-22 - (index % 3) * 8)
+                        )
+                        .opacity(0.75 + Double(index % 3) * 0.08)
+                }
+
+                VStack(spacing: 6) {
+                    Image(systemName: "heart.fill")
+                        .font(.title2.weight(.semibold))
+                    Text("Spray")
+                        .font(.caption.weight(.semibold))
+                }
+                .foregroundStyle(DemoPalette.badgeInk)
+                .offset(y: 14)
+            }
+        }
+    }
+}
+
 private struct FrozenBurst: View {
     var symbol: String
     var count: Int
     var upward: Bool
-    var tint: Color = DemoPalette.accent
-    var shadowed: Bool = false
 
     var body: some View {
         FrozenCanvas {
@@ -120,13 +143,12 @@ private struct FrozenBurst: View {
                 ForEach(0 ..< count, id: \.self) { index in
                     Image(systemName: symbol)
                         .font(.caption.weight(.bold))
-                        .foregroundStyle(tint)
-                        .shadow(color: shadowed ? Color.black.opacity(0.45) : .clear, radius: 1, y: 0.5)
+                        .foregroundStyle(DemoPalette.accent)
                         .offset(
                             x: CGFloat(index - count / 2) * 18,
                             y: upward ? CGFloat(-28 - (index % 3) * 10) : 0
                         )
-                        .opacity(shadowed ? 0.85 : 0.35 + Double(index % 3) * 0.2)
+                        .opacity(0.35 + Double(index % 3) * 0.2)
                 }
             }
         }

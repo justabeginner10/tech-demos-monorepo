@@ -6,10 +6,10 @@ Product **`Pow` only**. Package floor is iOS 15; this app targets iOS 18 to matc
 
 Two tabs:
 
-- **Live** — one effect target at a time, in a `ScrollView` that stays below the navigation bar. **Fire effect** / **Insert view** / **Remove view** are pinned above a 100pt floating-tab clearance so the tab bar never covers them. The Effects family fires Spray, Jump, Pulse (the current ping API), Shine, Spin, Shake, Wiggle, Glow, Rise, and Haptic from `.changeEffect`, with the real parameters Pow exposes. Jump keeps empty space above the badge so a 48pt leap does not cover the caption. The Transitions family inserts or removes a badge with Pop, Flip, Anvil, Blinds, Boing, Swoosh, and Vanish (`.movingParts`). Switching family, switching the menu, or leaving the tab unmounts the previous target.
+- **Live** — one effect target at a time, in a `ScrollView` below the navigation bar. Controls, then the badge, then **Fire effect** or **Insert / Remove view** in normal document order, then 120pt of bottom padding so the floating tab bar cannot cover the button. Jump keeps empty space above the badge so a leap does not cover the caption. The Effects family fires Spray, Jump, Pulse (the current ping API), Shine, Spin, Shake, Wiggle, Glow, Rise, and Haptic from `.changeEffect`. The Transitions family inserts or removes a badge with Pop, Flip, Anvil, Blinds, Boing, Swoosh, and Vanish (`.movingParts`). Switching family, switching the menu, or leaving the tab unmounts the previous target.
 - **Gallery** — painted snapshots (name, API, short description). Tiles do not run Pow. Tapping a tile opens a sheet with a single live demo of that effect or transition.
 
-Chrome uses semantic grouped backgrounds and primary ink, with an opaque muted label (not `Color.secondary`) so captions stay readable in light and dark. The live badge is white on a saturated rose fill; spray and rise particles are white so they read on the badge. The Gallery Spray tile uses the same white hearts.
+Chrome uses semantic grouped backgrounds and primary ink, with an opaque muted label (not `Color.secondary`) so captions stay readable in light and dark. The live badge is white on a saturated rose fill; spray and rise particles are white so they read on the badge. The Gallery Spray tile is a rose badge with white hearts, matching Live.
 
 ## Open and run
 

@@ -62,22 +62,8 @@ enum DemoParticleLayer {
 }
 
 enum DemoChrome {
-    /// Space under pinned Live actions so the iOS 18+ floating tab bar does not cover them.
-    static let floatingTabClearance: CGFloat = 100
-
-    static func pinnedActionBar<Content: View>(@ViewBuilder content: () -> Content) -> some View {
-        VStack(spacing: 0) {
-            content()
-                .padding(.horizontal)
-                .padding(.top, 10)
-                .padding(.bottom, 8)
-                .frame(maxWidth: .infinity)
-                .background(DemoPalette.page)
-            Color.clear
-                .frame(height: floatingTabClearance)
-                .accessibilityHidden(true)
-        }
-    }
+    /// Bottom padding in scroll content so the last control clears the floating tab bar.
+    static let scrollTabClearance: CGFloat = 120
 
     static func chartCard<Content: View>(
         title: String,
