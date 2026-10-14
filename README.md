@@ -26,6 +26,7 @@ Each demo lives under `apps/<kebab-slug>/`.
 - [`apps/rehearsal/`](apps/rehearsal/) — [Rehearsal](https://github.com/daneden/Rehearsal) interactive preview knobs (Live + Gallery).
 - [`apps/shad-kit/`](apps/shad-kit/) — [ShadKit](https://github.com/jasonkneen/ShadKit) shadcn/ui + AI Elements playground (Live + Gallery).
 - [`apps/shader-kit/`](apps/shader-kit/) — [ShaderKit](https://github.com/jamesrochabrun/ShaderKit) holographic cards playground (Live + Gallery).
+- [`apps/shimmer/`](apps/shimmer/) — [SwiftUI-Shimmer](https://github.com/markiv/SwiftUI-Shimmer) loading skeleton playground (Live + Gallery).
 - [`apps/ship-swift/`](apps/ship-swift/) — Slim [ShipSwift](https://github.com/signerlabs/ShipSwift) copy-paste playground (`SWPackage` recipes, Live + Gallery).
 - [`apps/swift-viz/`](apps/swift-viz/) — [SwiftViz](https://github.com/omarsinan/SwiftViz) stacked / simple bar charts.
 - [`apps/theme-kit/`](apps/theme-kit/) — [ThemeKit](https://github.com/isamercan/ThemeKit) live re-skin playground (Live + Gallery).
@@ -33,5 +34,6 @@ Each demo lives under `apps/<kebab-slug>/`.
 
 ## Notes
 
+- The [daily cloud task instructions](docs/daily-swiftui-demo-task.md) describe the 9 am IST demo workflow; the schedule must be registered separately.
 - Prefer Mac/iOS builds with Xcode + Simulator when a pool is available.
 - Demo PRs should include at least one simulator screenshot and one video.
