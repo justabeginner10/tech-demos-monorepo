@@ -31,6 +31,7 @@ Each demo lives under `apps/<kebab-slug>/`.
 - [`apps/swift-viz/`](apps/swift-viz/) — [SwiftViz](https://github.com/omarsinan/SwiftViz) stacked / simple bar charts.
 - [`apps/theme-kit/`](apps/theme-kit/) — [ThemeKit](https://github.com/isamercan/ThemeKit) live re-skin playground (Live + Gallery).
 - [`apps/welcome-kit/`](apps/welcome-kit/) — [WelcomeKit](https://github.com/atoll-studio/WelcomeKit) first-launch welcome sheet (Live + Gallery).
+- [`apps/vortex/`](apps/vortex/) — [Vortex](https://github.com/twostraws/Vortex) particle presets playground (Live + Gallery).
 
 ## Notes
 
