@@ -10,6 +10,7 @@ Each demo lives under `apps/<kebab-slug>/`.
 - [`apps/aurora/`](apps/aurora/) — [Aurora](https://github.com/tornikegomareli/Aurora) Apple Intelligence-style Metal glow (Live + Gallery).
 - [`apps/bottom-sheets/`](apps/bottom-sheets/) — [BottomSheets](https://github.com/c-villain/BottomSheets) native detent backport.
 - [`apps/button-styles/`](apps/button-styles/) — Custom `ButtonStyle` / `PrimitiveButtonStyle` gallery.
+- [`apps/confetti-swiftui/`](apps/confetti-swiftui/) — [ConfettiSwiftUI](https://github.com/simibac/ConfettiSwiftUI) burst playground (Live + Gallery).
 - [`apps/design-foundation/`](apps/design-foundation/) — [DesignFoundation](https://github.com/NerdSnipe-Inc/design-foundation) token playground (Live + Gallery).
 - [`apps/dial-kit/`](apps/dial-kit/) — [DialKit](https://github.com/mikelikesdesign/dialkit-ios) live panel playground (Live + Gallery).
 - [`apps/drafter-charts/`](apps/drafter-charts/) — [DrafterCharts](https://github.com/AndroidPoet/DrafterCharts) Live + Gallery playground.
