@@ -62,8 +62,8 @@ private struct CannonStage: View {
                 .padding(.top, 12)
                 .frame(maxHeight: .infinity, alignment: .top)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .frame(minHeight: 180)
+        .frame(maxWidth: .infinity)
+        .frame(height: 340)
         .overlay {
             RoundedRectangle(cornerRadius: 20, style: .continuous)
                 .strokeBorder(DemoPalette.stroke, lineWidth: 1)
@@ -137,7 +137,7 @@ struct BurstSurface: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             header
-            ScrollView {
+            VStack(alignment: .leading, spacing: 0) {
                 VStack(alignment: .leading, spacing: 10) {
                     DemoSlider(title: "Count", value: $count, range: 1 ... 60, step: 1, format: "%.0f")
                     DemoSlider(title: "Size", value: $size, range: 6 ... 36, step: 1, format: "%.0f")
@@ -158,7 +158,6 @@ struct BurstSurface: View {
                         .tint(DemoPalette.accent)
                 }
             }
-            .frame(maxHeight: 248)
             .demoCard()
 
             CannonStage(trigger: $trigger, request: request)
