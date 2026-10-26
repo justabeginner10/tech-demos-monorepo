@@ -1,0 +1,44 @@
+name: Wave
+options:
+  bundleIdPrefix: com.techdemos
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: 6.0
+packages:
+  Wave:
+    url: https://github.com/jtrivedi/Wave.git
+    from: 0.3.4
+targets:
+  Wave:
+    type: application
+    platform: iOS
+    deploymentTarget: "18.0"
+    sources:
+      - Sources
+    dependencies:
+      - package: Wave
+        product: Wave
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.techdemos.wave
+        PRODUCT_NAME: Wave
+        PRODUCT_MODULE_NAME: WaveDemo
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Wave
+        INFOPLIST_KEY_CADisableMinimumFrameDuration: YES
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        CODE_SIGN_STYLE: Automatic
+schemes:
+  Wave:
+    build:
+      targets:
+        Wave: all
+    run:
+      config: Debug
+    test:
+      config: Debug

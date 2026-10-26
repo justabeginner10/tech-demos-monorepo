@@ -33,6 +33,7 @@ Each demo lives under `apps/<kebab-slug>/`.
 - [`apps/theme-kit/`](apps/theme-kit/) — [ThemeKit](https://github.com/isamercan/ThemeKit) live re-skin playground (Live + Gallery).
 - [`apps/welcome-kit/`](apps/welcome-kit/) — [WelcomeKit](https://github.com/atoll-studio/WelcomeKit) first-launch welcome sheet (Live + Gallery).
 - [`apps/vortex/`](apps/vortex/) — [Vortex](https://github.com/twostraws/Vortex) particle presets playground (Live + Gallery).
+- [`apps/wave/`](apps/wave/) — [Wave](https://github.com/jtrivedi/Wave) spring animator playground (Live + Gallery).
 
 ## Notes
 
