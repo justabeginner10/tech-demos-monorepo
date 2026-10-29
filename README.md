@@ -6,6 +6,7 @@ Each demo lives under `apps/<kebab-slug>/`.
 
 ## Demos
 
+- [`apps/activity-indicator-view/`](apps/activity-indicator-view/) — [ActivityIndicatorView](https://github.com/exyte/ActivityIndicatorView) preset loading indicators (Live + Gallery).
 - [`apps/adaptive-sheets/`](apps/adaptive-sheets/) — [AdaptiveSheets](https://github.com/huyparody/AdaptiveSheets) unified sheet API (native on iOS 16.4+).
 - [`apps/aurora/`](apps/aurora/) — [Aurora](https://github.com/tornikegomareli/Aurora) Apple Intelligence-style Metal glow (Live + Gallery).
 - [`apps/bottom-sheets/`](apps/bottom-sheets/) — [BottomSheets](https://github.com/c-villain/BottomSheets) native detent backport.
