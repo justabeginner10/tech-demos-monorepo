@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "animatedtabbar",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/exyte/AnimatedTabBar.git",
+      "state" : {
+        "revision" : "f38b37064fafe098118e24c8c7d582d8622cca95",
+        "version" : "1.0.1"
+      }
+    }
+  ],
+  "version" : 2
+}
