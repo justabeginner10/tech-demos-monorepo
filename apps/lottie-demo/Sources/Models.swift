@@ -1,3 +1,4 @@
+import Foundation
 import Lottie
 
 /// `LottieCompletionBlock` is a nonisolated `(Bool) -> Void`.
