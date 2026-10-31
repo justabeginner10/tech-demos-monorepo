@@ -24,6 +24,7 @@ Each demo lives under `apps/<kebab-slug>/`.
 - [`apps/lazy-layout-kit/`](apps/lazy-layout-kit/) — [LazyLayoutKit](https://github.com/Dave861/LazyLayoutKit) masonry / justified / timeline playground (Live + Gallery).
 - [`apps/lazy-state/`](apps/lazy-state/) — Lazy `@State` initialized from parent data.
 - [`apps/liveline/`](apps/liveline/) — [Liveline](https://github.com/ParthJadhav/liveline-swift) realtime charts playground.
+- [`apps/lottie-demo/`](apps/lottie-demo/) — [Lottie](https://github.com/airbnb/lottie-spm) animation playback playground (Live + Gallery).
 - [`apps/lucas-bottom-sheet/`](apps/lucas-bottom-sheet/) — [lucaszischka/BottomSheet](https://github.com/lucaszischka/BottomSheet) custom snap-state sheet.
 - [`apps/minted/`](apps/minted/) — [Minted](https://github.com/haplollc/Minted) physically-lit 3D gold medallions (Live + Gallery).
 - [`apps/motion-eyes/`](apps/motion-eyes/) — SwiftUI playground that integrates [MotionEyes](https://github.com/edwardsanchez/MotionEyes) so CADisplayLink traces show whether animations actually ran.
