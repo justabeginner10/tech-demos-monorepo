@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "floatingbutton",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/exyte/FloatingButton.git",
+      "state" : {
+        "revision" : "10d2671e4678cf9400fcaee29dac2b20d40f2b38",
+        "version" : "1.4.1"
+      }
+    }
+  ],
+  "version" : 2
+}
