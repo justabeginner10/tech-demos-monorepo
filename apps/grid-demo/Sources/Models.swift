@@ -183,15 +183,15 @@ struct LiveLayout {
         let tracks = LiveGridMetrics.trackCount
         switch index {
         case 0:
-            TilePlacement(column: 1, row: 1)
+            return TilePlacement(column: 1, row: 1)
         case 1:
-            flow == .rows
+            return flow == .rows
                 ? TilePlacement(column: tracks, row: 1)
                 : TilePlacement(column: 1, row: tracks)
         case 2:
-            TilePlacement(column: focusColumnSpan, row: focusRowSpan)
+            return TilePlacement(column: focusColumnSpan, row: focusRowSpan)
         default:
-            TilePlacement(column: 1, row: 1)
+            return TilePlacement(column: 1, row: 1)
         }
     }
 
