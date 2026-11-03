@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "grid",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/exyte/Grid.git",
+      "state" : {
+        "revision" : "c4d1cabb0c7fcbd35f664c31ad23e7aa32bc3dd4",
+        "version" : "1.5.4"
+      }
+    }
+  ],
+  "version" : 2
+}
