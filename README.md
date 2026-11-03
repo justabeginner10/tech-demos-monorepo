@@ -18,6 +18,7 @@ Each demo lives under `apps/<kebab-slug>/`.
 - [`apps/drafter-charts/`](apps/drafter-charts/) — [DrafterCharts](https://github.com/AndroidPoet/DrafterCharts) Live + Gallery playground.
 - [`apps/enriched-markdown/`](apps/enriched-markdown/) — [enriched-markdown-ios](https://github.com/software-mansion-labs/enriched-markdown-ios) Live + Gallery playground.
 - [`apps/find-my-tab-bar/`](apps/find-my-tab-bar/) — Floating morphing tab bar inspired by Find My.
+- [`apps/floating-button/`](apps/floating-button/) — [FloatingButton](https://github.com/exyte/FloatingButton) straight and circle menus (Live + Gallery).
 - [`apps/floating-panel/`](apps/floating-panel/) — [FloatingPanel](https://github.com/scenee/FloatingPanel) Maps-style persistent panel.
 - [`apps/foldy/`](apps/foldy/) — [Foldy](https://github.com/InsaneArts/foldy) frosted-glass fold playground (Live + Gallery).
 - [`apps/grid-demo/`](apps/grid-demo/) — [Grid](https://github.com/exyte/Grid) CSS-grid layout playground (Live + Gallery).
