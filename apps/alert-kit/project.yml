@@ -1,0 +1,43 @@
+name: AlertKit
+options:
+  bundleIdPrefix: com.techdemos
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: 6.0
+packages:
+  AlertKit:
+    url: https://github.com/sparrowcode/AlertKit.git
+    from: 5.1.10
+targets:
+  AlertKit:
+    type: application
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - Sources
+    dependencies:
+      - package: AlertKit
+        product: AlertKit
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.techdemos.alertkit
+        PRODUCT_NAME: AlertKit
+        PRODUCT_MODULE_NAME: AlertKitDemo
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Alert Kit
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        CODE_SIGN_STYLE: Automatic
+schemes:
+  AlertKit:
+    build:
+      targets:
+        AlertKit: all
+    run:
+      config: Debug
+    test:
+      config: Debug
