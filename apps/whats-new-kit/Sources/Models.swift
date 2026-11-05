@@ -41,6 +41,7 @@ enum ManualStore: String, CaseIterable, Identifiable {
         }
     }
 
+    @MainActor
     var versionStore: (any WhatsNewVersionStore)? {
         switch self {
         case .userDefaults: DemoStores.userDefaults
@@ -76,6 +77,7 @@ enum InstalledVersion: String, CaseIterable, Identifiable {
         }
     }
 
+    @MainActor
     var version: WhatsNew.Version {
         switch self {
         case .oneZero: DemoVersion.oneZero
@@ -117,6 +119,7 @@ enum ManualPreset: String, CaseIterable, Identifiable {
         }
     }
 
+    @MainActor
     var version: WhatsNew.Version {
         switch self {
         case .harbor: DemoVersion.oneOne
@@ -197,6 +200,9 @@ struct LayoutKnobs {
     }
 }
 
+/// WhatsNewKit 2.2.1 does not mark `WhatsNew.Version` as `Sendable`.
+/// These constants stay on the main actor, with the views that read them.
+@MainActor
 enum DemoVersion {
     static let oneZero = WhatsNew.Version(major: 1, minor: 0, patch: 0)
     static let oneOne = WhatsNew.Version(major: 1, minor: 1, patch: 0)
@@ -207,6 +213,8 @@ enum DemoVersion {
     static let threeZero = WhatsNew.Version(major: 3, minor: 0, patch: 0)
 }
 
+/// The 2.2.1 stores are not `Sendable`. One main-actor instance keeps the memory set and the suite store.
+@MainActor
 enum DemoStores {
     /// Isolated from `UserDefaults.standard` so reset does not touch other keys.
     static let suiteName = "com.techdemos.whatsnewkit"
@@ -240,6 +248,8 @@ enum DemoCopy {
     }
 }
 
+/// Reads `DemoVersion` and `DemoStores`, so the builders are main-actor isolated with them.
+@MainActor
 enum DemoCatalog {
     static let releaseNotes = "Field notes stay on this device. SecondaryAction.Action.present put this view on a sheet."
 
