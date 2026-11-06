@@ -1,0 +1,43 @@
+name: AnimateText
+options:
+  bundleIdPrefix: com.techdemos
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: 6.0
+packages:
+  AnimateText:
+    url: https://github.com/jasudev/AnimateText.git
+    exactVersion: 0.5.0
+targets:
+  AnimateText:
+    type: application
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - Sources
+    dependencies:
+      - package: AnimateText
+        product: AnimateText
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.techdemos.animatetext
+        PRODUCT_NAME: AnimateText
+        PRODUCT_MODULE_NAME: AnimateTextDemo
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Animate Text
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        CODE_SIGN_STYLE: Automatic
+schemes:
+  AnimateText:
+    build:
+      targets:
+        AnimateText: all
+    run:
+      config: Debug
+    test:
+      config: Debug
