@@ -21,9 +21,9 @@ This worker did not have Xcode or an iOS Simulator, so there is no screenshot or
 
 What was checked here:
 
-- `swiftc -parse` (Swift 6.0.3) accepted the seven app sources.
-- `swift package resolve` of requirement `exact: 0.5.0` selected tag `0.5.0` (`c55847e03bb3f36cf83cc217fe60ec5feda9ddd6`). That pin is the checked-in `Package.resolved`.
-- The same sources were typechecked against stand-in SwiftUI and AnimateText modules. The AnimateText signatures were copied from that tag. `#Preview` was left out of that check, and `@main` was left out because the stand-in `App` protocol is not the compiler's entry-point hook. That is not an iOS build of this app.
+- `swiftc -parse` (Swift 6.4.2) accepted the seven app sources.
+- The package pin is unchanged: `Package.resolved` is still exact **0.5.0** (`c55847e03bb3f36cf83cc217fe60ec5feda9ddd6`). `SWIFT_VERSION` is still 6.0.
+- The same sources were typechecked with Swift 6.4.2 against stand-in SwiftUI and AnimateText modules. The AnimateText protocol and `AnimateText` view were copied from that tag and compiled as Swift 5, matching the package. The stand-in `View` and `ViewModifier` are `@MainActor`. `#Preview` was left out of that check, and `@main` was left out because the stand-in `App` protocol is not the compiler's entry-point hook. That is not an iOS build of this app. The same check rejects the previous unisolated `StaggerRiseEffect` conformance with `#ConformanceIsolation`.
 
 1. Open `apps/animate-text/AnimateText.xcodeproj` in Xcode 16+ (iOS 17 SDK).
 2. Pick an iPhone simulator.
@@ -60,7 +60,7 @@ The animation does not run for the initial value. `body` shows one `Text` until 
 | Advanced effects | `ATChainEffect`, `ATChimeBellEffect`, `ATCurtainEffect`, `ATDropEffect`, `ATHangEffect`, `ATPaperEffect`, `ATSpringEffect`, `ATTwistEffect`, `ATRandomTypoEffect`, `ATTypoEffect` |
 | `ATRandomTypoEffect` | Scrambles with `ATRandomTypoAnimation` and the modifier's default glyph set. Ignores `userInfo` |
 | `ATTypoEffect` | Same scramble. If `userInfo` is `[String: Any]`, it force-casts `userInfo["base"]` to `String`. `nil` keeps `"-"` |
-| `StaggerRiseEffect` | App type. Opacity and a 18pt rise. A `Double` userInfo is the per-index delay. Anything else uses `0.06`, the README sample |
+| `StaggerRiseEffect` | App type. Opacity and a 18pt rise. A `Double` userInfo is the per-index delay. Anything else uses `0.06`, the README sample. The conformance is `@MainActor`: the protocol refines `ViewModifier`, so a plain Swift 6 conformance is inferred onto the main actor and its `data`, `userInfo`, and `init` cannot satisfy the nonisolated requirements |
 
 `ATTypoEffect` crashes if `userInfo` is a dictionary and `"base"` is missing or not a `String`. An empty base would also call `arc4random_uniform(0)` inside `ATRandomTypoAnimation`. The glyph field falls back to `"-"` when it is empty.
 

@@ -195,7 +195,15 @@ enum BuiltInEffect: String, CaseIterable, Identifiable, Hashable {
 }
 
 /// README-shaped effect. `userInfo` as a `Double` is the per-element delay. Any other value uses 0.06.
-public struct StaggerRiseEffect: ATTextAnimateEffect {
+///
+/// `ATTextAnimateEffect` does not name an actor, but it refines `ViewModifier`, so a Swift 6
+/// conformance on the type declaration is inferred onto the main actor. `data`, `userInfo`, and
+/// `init` would then be main-actor witnesses for nonisolated requirements. Isolating this
+/// conformance keeps those witnesses on the main actor, which is where `AnimateText` creates
+/// each effect (`View.body`) and where SwiftUI applies it. Off-main use of the conformance is
+/// still rejected.
+@MainActor
+public struct StaggerRiseEffect: @MainActor ATTextAnimateEffect {
     public var data: ATElementData
     public var userInfo: Any?
 
