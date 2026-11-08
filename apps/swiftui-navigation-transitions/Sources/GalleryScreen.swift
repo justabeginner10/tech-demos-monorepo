@@ -1,0 +1,53 @@
+import SwiftUI
+
+/// Frozen cards. This tab does not call `customNavigationTransition`.
+struct GalleryScreen: View {
+    private let columns = [GridItem(.adaptive(minimum: 280), spacing: 12)]
+
+    var body: some View {
+        NavigationStack {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 18) {
+                    header
+                    LazyVGrid(columns: columns, spacing: 12) {
+                        ForEach(GalleryCard.allCases) { card in
+                            DemoChrome.chartCard(title: card.title, subtitle: card.subtitle) {
+                                card.preview
+                            }
+                        }
+                    }
+                }
+                .padding()
+            }
+            .background(DemoPalette.page)
+            .navigationTitle("Gallery")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbarBackground(DemoPalette.page, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbarColorScheme(.dark, for: .navigationBar)
+            .safeAreaInset(edge: .bottom, spacing: 0) {
+                Color.clear.frame(height: 56)
+            }
+        }
+    }
+
+    private var header: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("Transitions, held still.")
+                .font(.system(size: 34, weight: .regular, design: .serif))
+                .foregroundStyle(DemoPalette.ink)
+
+            Text(
+                "Painted stand-ins for the Live families. This tab does not call "
+                    + "customNavigationTransition or build a CustomNavigationTransition."
+            )
+            .font(.subheadline)
+            .foregroundStyle(DemoPalette.inkMuted)
+        }
+    }
+}
+
+#Preview("Transitions Gallery") {
+    GalleryScreen()
+        .preferredColorScheme(.dark)
+}
