@@ -1,0 +1,44 @@
+name: SwiftUINavigationTransitions
+options:
+  bundleIdPrefix: com.techdemos
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: 6.0
+packages:
+  SwiftUINavigationTransitions:
+    url: https://github.com/davdroman/swiftui-navigation-transitions.git
+    exactVersion: 0.19.1
+targets:
+  SwiftUINavigationTransitions:
+    type: application
+    platform: iOS
+    deploymentTarget: "18.0"
+    sources:
+      - Sources
+    dependencies:
+      - package: SwiftUINavigationTransitions
+        product: SwiftUINavigationTransitions
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.techdemos.swiftuinavigationtransitions
+        PRODUCT_NAME: SwiftUINavigationTransitions
+        PRODUCT_MODULE_NAME: SwiftUINavigationTransitionsDemo
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Transitions
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        CODE_SIGN_STYLE: Automatic
+schemes:
+  SwiftUINavigationTransitions:
+    build:
+      targets:
+        SwiftUINavigationTransitions: all
+    run:
+      config: Debug
+    test:
+      config: Debug

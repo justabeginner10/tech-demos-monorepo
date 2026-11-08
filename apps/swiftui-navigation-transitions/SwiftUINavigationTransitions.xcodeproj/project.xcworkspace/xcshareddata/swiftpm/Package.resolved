@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "swiftui-navigation-transitions",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/davdroman/swiftui-navigation-transitions.git",
+      "state" : {
+        "revision" : "d70e86a04250e096dbe96e3372cc9db10c7ff160",
+        "version" : "0.19.1"
+      }
+    }
+  ],
+  "version" : 2
+}
