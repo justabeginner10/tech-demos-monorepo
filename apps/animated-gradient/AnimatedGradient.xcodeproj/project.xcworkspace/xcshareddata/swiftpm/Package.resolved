@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "animatedgradient",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/exyte/AnimatedGradient.git",
+      "state" : {
+        "revision" : "c0e19120abda483a61058721c6c7d65c82c4ebe9",
+        "version" : "1.0.1"
+      }
+    }
+  ],
+  "version" : 2
+}
