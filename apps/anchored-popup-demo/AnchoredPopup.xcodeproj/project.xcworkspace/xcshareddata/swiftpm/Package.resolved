@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "anchoredpopup",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/exyte/AnchoredPopup.git",
+      "state" : {
+        "revision" : "f93c51e75ff4e5242328ac24c8fb12f1f1e84eda",
+        "version" : "1.3.1"
+      }
+    }
+  ],
+  "version" : 2
+}
