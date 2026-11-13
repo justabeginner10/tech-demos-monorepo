@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="100" viewBox="0 0 240 100">
+  <style>
+    .hot { fill: #FF8A3D }
+    #cool { fill: #5B8CFF }
+  </style>
+  <rect class="hot" x="16" y="20" width="96" height="60" rx="12"/>
+  <rect id="cool" x="128" y="20" width="96" height="60" rx="12"/>
+</svg>
