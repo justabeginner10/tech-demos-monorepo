@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="240" height="100" viewBox="0 0 240 100">
+  <defs>
+    <circle id="bead" cx="0" cy="0" r="18" fill="#5B8CFF" stroke="#F5F5F7" stroke-width="3"/>
+  </defs>
+  <use xlink:href="#bead" x="48" y="50"/>
+  <use xlink:href="#bead" x="120" y="50"/>
+  <use xlink:href="#bead" x="192" y="50"/>
+</svg>
