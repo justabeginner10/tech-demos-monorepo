@@ -32,6 +32,7 @@ Each demo lives under `apps/<kebab-slug>/`.
 - [`apps/minted/`](apps/minted/) — [Minted](https://github.com/haplollc/Minted) physically-lit 3D gold medallions (Live + Gallery).
 - [`apps/motion-eyes/`](apps/motion-eyes/) — SwiftUI playground that integrates [MotionEyes](https://github.com/edwardsanchez/MotionEyes) so CADisplayLink traces show whether animations actually ran.
 - [`apps/rehearsal/`](apps/rehearsal/) — [Rehearsal](https://github.com/daneden/Rehearsal) interactive preview knobs (Live + Gallery).
+- [`apps/rich-text-kit/`](apps/rich-text-kit/) — [RichTextKit](https://github.com/danielsaidi/RichTextKit) rich text editor playground (Live + Gallery).
 - [`apps/scaling-header-scroll-view/`](apps/scaling-header-scroll-view/) — [ScalingHeaderScrollView](https://github.com/exyte/ScalingHeaderScrollView) collapsing header scroll view (Live + Gallery).
 - [`apps/shad-kit/`](apps/shad-kit/) — [ShadKit](https://github.com/jasonkneen/ShadKit) shadcn/ui + AI Elements playground (Live + Gallery).
 - [`apps/shader-kit/`](apps/shader-kit/) — [ShaderKit](https://github.com/jamesrochabrun/ShaderKit) holographic cards playground (Live + Gallery).
