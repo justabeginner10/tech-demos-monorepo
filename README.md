@@ -29,6 +29,7 @@ Each demo lives under `apps/<kebab-slug>/`.
 - [`apps/liveline/`](apps/liveline/) — [Liveline](https://github.com/ParthJadhav/liveline-swift) realtime charts playground.
 - [`apps/lottie-demo/`](apps/lottie-demo/) — [Lottie](https://github.com/airbnb/lottie-spm) animation playback playground (Live + Gallery).
 - [`apps/lucas-bottom-sheet/`](apps/lucas-bottom-sheet/) — [lucaszischka/BottomSheet](https://github.com/lucaszischka/BottomSheet) custom snap-state sheet.
+- [`apps/media-picker/`](apps/media-picker/) — [MediaPicker](https://github.com/exyte/MediaPicker) custom photo and video picker (Live + Gallery).
 - [`apps/minted/`](apps/minted/) — [Minted](https://github.com/haplollc/Minted) physically-lit 3D gold medallions (Live + Gallery).
 - [`apps/motion-eyes/`](apps/motion-eyes/) — SwiftUI playground that integrates [MotionEyes](https://github.com/edwardsanchez/MotionEyes) so CADisplayLink traces show whether animations actually ran.
 - [`apps/rehearsal/`](apps/rehearsal/) — [Rehearsal](https://github.com/daneden/Rehearsal) interactive preview knobs (Live + Gallery).

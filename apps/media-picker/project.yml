@@ -1,0 +1,47 @@
+name: MediaPicker
+options:
+  bundleIdPrefix: com.techdemos
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: 6.0
+packages:
+  ExyteMediaPicker:
+    url: https://github.com/exyte/MediaPicker.git
+    from: 3.4.7
+targets:
+  MediaPicker:
+    type: application
+    platform: iOS
+    deploymentTarget: "18.0"
+    sources:
+      - Sources
+    dependencies:
+      - package: ExyteMediaPicker
+        product: ExyteMediaPicker
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.techdemos.mediapicker
+        PRODUCT_NAME: MediaPicker
+        PRODUCT_MODULE_NAME: MediaPickerDemo
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Media Picker
+        INFOPLIST_KEY_NSPhotoLibraryUsageDescription: "Media Picker reads your photo library so you can select photos and videos."
+        INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription: "Media Picker requests add-only Photos access before it lists items to pick."
+        INFOPLIST_KEY_NSCameraUsageDescription: "Media Picker uses the camera to take photos and videos. The Simulator has no camera."
+        INFOPLIST_KEY_NSMicrophoneUsageDescription: "Media Picker uses the microphone while recording video."
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        CODE_SIGN_STYLE: Automatic
+schemes:
+  MediaPicker:
+    build:
+      targets:
+        MediaPicker: all
+    run:
+      config: Debug
+    test:
+      config: Debug
