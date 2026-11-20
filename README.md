@@ -38,6 +38,7 @@ Each demo lives under `apps/<kebab-slug>/`.
 - [`apps/ship-swift/`](apps/ship-swift/) — Slim [ShipSwift](https://github.com/signerlabs/ShipSwift) copy-paste playground (`SWPackage` recipes, Live + Gallery).
 - [`apps/swift-viz/`](apps/swift-viz/) — [SwiftViz](https://github.com/omarsinan/SwiftViz) stacked / simple bar charts.
 - [`apps/theme-kit/`](apps/theme-kit/) — [ThemeKit](https://github.com/isamercan/ThemeKit) live re-skin playground (Live + Gallery).
+- [`apps/textual-demo/`](apps/textual-demo/) — [Textual](https://github.com/gonzalezreal/textual) Markdown and rich text playground (Live + Gallery).
 - [`apps/welcome-kit/`](apps/welcome-kit/) — [WelcomeKit](https://github.com/atoll-studio/WelcomeKit) first-launch welcome sheet (Live + Gallery).
 - [`apps/whats-new-kit/`](apps/whats-new-kit/) — [WhatsNewKit](https://github.com/SvenTiigi/WhatsNewKit) what's-new sheet playground (Live + Gallery).
 - [`apps/vortex/`](apps/vortex/) — [Vortex](https://github.com/twostraws/Vortex) particle presets playground (Live + Gallery).
