@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <rect id="plate" x="16" y="16" width="168" height="168" rx="28" fill="#1C1C1E"/>
+  <polygon id="spark" points="156,36 164,52 180,60 164,68 156,84 148,68 140,60 148,52" fill="#FFE08A"/>
+  <circle id="disc" cx="100" cy="100" r="52" fill="#FF8A3D" stroke="#F5F5F7" stroke-width="4"/>
+  <circle id="pupil" cx="100" cy="100" r="16" fill="#F5F5F7"/>
+</svg>
