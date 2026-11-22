@@ -1,0 +1,45 @@
+name: Nuke
+options:
+  bundleIdPrefix: com.techdemos
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: 6.0
+packages:
+  Nuke:
+    url: https://github.com/kean/Nuke.git
+    from: 13.2.3
+targets:
+  Nuke:
+    type: application
+    platform: iOS
+    deploymentTarget: "18.0"
+    sources:
+      - Sources
+    dependencies:
+      - package: Nuke
+        product: Nuke
+      - package: Nuke
+        product: NukeUI
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.techdemos.nuke
+        PRODUCT_NAME: Nuke
+        PRODUCT_MODULE_NAME: NukeDemo
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Nuke
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        CODE_SIGN_STYLE: Automatic
+schemes:
+  Nuke:
+    build:
+      targets:
+        Nuke: all
+    run:
+      config: Debug
+    test:
+      config: Debug

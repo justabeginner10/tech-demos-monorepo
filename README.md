@@ -9,14 +9,19 @@ Each demo lives under `apps/<kebab-slug>/`.
 - [`apps/activity-indicator-view/`](apps/activity-indicator-view/) — [ActivityIndicatorView](https://github.com/exyte/ActivityIndicatorView) preset loading indicators (Live + Gallery).
 - [`apps/adaptive-sheets/`](apps/adaptive-sheets/) — [AdaptiveSheets](https://github.com/huyparody/AdaptiveSheets) unified sheet API (native on iOS 16.4+).
 - [`apps/alert-kit/`](apps/alert-kit/) — [AlertKit](https://github.com/sparrowcode/AlertKit) Apple-style HUD alerts (Live + Gallery).
+- [`apps/animated-gradient/`](apps/animated-gradient/) — [AnimatedGradient](https://github.com/exyte/AnimatedGradient) animated linear gradients (Live + Gallery).
+- [`apps/anchored-popup-demo/`](apps/anchored-popup-demo/) — [AnchoredPopup](https://github.com/exyte/AnchoredPopup) popups anchored to a source view (Live + Gallery).
 - [`apps/animated-tab-bar/`](apps/animated-tab-bar/) — [AnimatedTabBar](https://github.com/exyte/AnimatedTabBar) ball / droplet / wiggle tab bar (Live + Gallery).
 - [`apps/aurora/`](apps/aurora/) — [Aurora](https://github.com/tornikegomareli/Aurora) Apple Intelligence-style Metal glow (Live + Gallery).
 - [`apps/bottom-sheets/`](apps/bottom-sheets/) — [BottomSheets](https://github.com/c-villain/BottomSheets) native detent backport.
 - [`apps/button-styles/`](apps/button-styles/) — Custom `ButtonStyle` / `PrimitiveButtonStyle` gallery.
+- [`apps/chat-demo/`](apps/chat-demo/) — [Chat](https://github.com/exyte/Chat) message list, attachments, and input bar (Live + Gallery).
 - [`apps/confetti-swiftui/`](apps/confetti-swiftui/) — [ConfettiSwiftUI](https://github.com/simibac/ConfettiSwiftUI) burst playground (Live + Gallery).
+- [`apps/concentric-onboarding/`](apps/concentric-onboarding/) — [ConcentricOnboarding](https://github.com/exyte/ConcentricOnboarding) concentric page-transition onboarding (Live + Gallery).
 - [`apps/design-foundation/`](apps/design-foundation/) — [DesignFoundation](https://github.com/NerdSnipe-Inc/design-foundation) token playground (Live + Gallery).
 - [`apps/dial-kit/`](apps/dial-kit/) — [DialKit](https://github.com/mikelikesdesign/dialkit-ios) live panel playground (Live + Gallery).
 - [`apps/drafter-charts/`](apps/drafter-charts/) — [DrafterCharts](https://github.com/AndroidPoet/DrafterCharts) Live + Gallery playground.
+- [`apps/efqrcode/`](apps/efqrcode/) — [EFQRCode](https://github.com/EFPrefix/EFQRCode) styled QR codes (Live + Gallery).
 - [`apps/enriched-markdown/`](apps/enriched-markdown/) — [enriched-markdown-ios](https://github.com/software-mansion-labs/enriched-markdown-ios) Live + Gallery playground.
 - [`apps/find-my-tab-bar/`](apps/find-my-tab-bar/) — Floating morphing tab bar inspired by Find My.
 - [`apps/floating-button/`](apps/floating-button/) — [FloatingButton](https://github.com/exyte/FloatingButton) straight and circle menus (Live + Gallery).
@@ -24,21 +29,30 @@ Each demo lives under `apps/<kebab-slug>/`.
 - [`apps/foldy/`](apps/foldy/) — [Foldy](https://github.com/InsaneArts/foldy) frosted-glass fold playground (Live + Gallery).
 - [`apps/grid-demo/`](apps/grid-demo/) — [Grid](https://github.com/exyte/Grid) CSS-grid layout playground (Live + Gallery).
 - [`apps/inferno/`](apps/inferno/) — [Inferno](https://github.com/twostraws/Inferno) Metal shader playground (Live + Gallery).
+- [`apps/kingfisher/`](apps/kingfisher/) — [Kingfisher](https://github.com/onevcat/Kingfisher) remote image loading playground (Live + Gallery).
 - [`apps/lazy-layout-kit/`](apps/lazy-layout-kit/) — [LazyLayoutKit](https://github.com/Dave861/LazyLayoutKit) masonry / justified / timeline playground (Live + Gallery).
 - [`apps/lazy-state/`](apps/lazy-state/) — Lazy `@State` initialized from parent data.
 - [`apps/liveline/`](apps/liveline/) — [Liveline](https://github.com/ParthJadhav/liveline-swift) realtime charts playground.
 - [`apps/lottie-demo/`](apps/lottie-demo/) — [Lottie](https://github.com/airbnb/lottie-spm) animation playback playground (Live + Gallery).
 - [`apps/lucas-bottom-sheet/`](apps/lucas-bottom-sheet/) — [lucaszischka/BottomSheet](https://github.com/lucaszischka/BottomSheet) custom snap-state sheet.
+- [`apps/media-picker/`](apps/media-picker/) — [MediaPicker](https://github.com/exyte/MediaPicker) custom photo and video picker (Live + Gallery).
 - [`apps/minted/`](apps/minted/) — [Minted](https://github.com/haplollc/Minted) physically-lit 3D gold medallions (Live + Gallery).
 - [`apps/motion-eyes/`](apps/motion-eyes/) — SwiftUI playground that integrates [MotionEyes](https://github.com/edwardsanchez/MotionEyes) so CADisplayLink traces show whether animations actually ran.
+- [`apps/progress-indicator-view/`](apps/progress-indicator-view/) — [ProgressIndicatorView](https://github.com/exyte/ProgressIndicatorView) preset progress indicators (Live + Gallery).
+- [`apps/nuke-demo/`](apps/nuke-demo/) — [Nuke](https://github.com/kean/Nuke) image loading playground (Live + Gallery).
 - [`apps/rehearsal/`](apps/rehearsal/) — [Rehearsal](https://github.com/daneden/Rehearsal) interactive preview knobs (Live + Gallery).
+- [`apps/rich-text-kit/`](apps/rich-text-kit/) — [RichTextKit](https://github.com/danielsaidi/RichTextKit) rich text editor playground (Live + Gallery).
 - [`apps/scaling-header-scroll-view/`](apps/scaling-header-scroll-view/) — [ScalingHeaderScrollView](https://github.com/exyte/ScalingHeaderScrollView) collapsing header scroll view (Live + Gallery).
+- [`apps/sdwebimage-swiftui/`](apps/sdwebimage-swiftui/) — [SDWebImageSwiftUI](https://github.com/SDWebImage/SDWebImageSwiftUI) async image loading playground (Live + Gallery).
 - [`apps/shad-kit/`](apps/shad-kit/) — [ShadKit](https://github.com/jasonkneen/ShadKit) shadcn/ui + AI Elements playground (Live + Gallery).
 - [`apps/shader-kit/`](apps/shader-kit/) — [ShaderKit](https://github.com/jamesrochabrun/ShaderKit) holographic cards playground (Live + Gallery).
 - [`apps/ship-swift/`](apps/ship-swift/) — Slim [ShipSwift](https://github.com/signerlabs/ShipSwift) copy-paste playground (`SWPackage` recipes, Live + Gallery).
 - [`apps/swift-viz/`](apps/swift-viz/) — [SwiftViz](https://github.com/omarsinan/SwiftViz) stacked / simple bar charts.
 - [`apps/swiftui-navigation-transitions/`](apps/swiftui-navigation-transitions/) — [SwiftUINavigationTransitions](https://github.com/davdroman/swiftui-navigation-transitions) custom NavigationStack push/pop transitions (Live + Gallery).
+- [`apps/svgview-demo/`](apps/svgview-demo/) — [SVGView](https://github.com/exyte/SVGView) SVG parser and renderer (Live + Gallery).
+- [`apps/swiftui-flow/`](apps/swiftui-flow/) — [SwiftUI-Flow](https://github.com/tevelee/SwiftUI-Flow) wrapping HFlow / VFlow layouts (Live + Gallery).
 - [`apps/theme-kit/`](apps/theme-kit/) — [ThemeKit](https://github.com/isamercan/ThemeKit) live re-skin playground (Live + Gallery).
+- [`apps/textual-demo/`](apps/textual-demo/) — [Textual](https://github.com/gonzalezreal/textual) Markdown and rich text playground (Live + Gallery).
 - [`apps/welcome-kit/`](apps/welcome-kit/) — [WelcomeKit](https://github.com/atoll-studio/WelcomeKit) first-launch welcome sheet (Live + Gallery).
 - [`apps/whats-new-kit/`](apps/whats-new-kit/) — [WhatsNewKit](https://github.com/SvenTiigi/WhatsNewKit) what's-new sheet playground (Live + Gallery).
 - [`apps/vortex/`](apps/vortex/) — [Vortex](https://github.com/twostraws/Vortex) particle presets playground (Live + Gallery).
