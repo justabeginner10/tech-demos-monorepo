@@ -40,6 +40,7 @@ Each demo lives under `apps/<kebab-slug>/`.
 - [`apps/swift-viz/`](apps/swift-viz/) — [SwiftViz](https://github.com/omarsinan/SwiftViz) stacked / simple bar charts.
 - [`apps/swiftui-flow/`](apps/swiftui-flow/) — [SwiftUI-Flow](https://github.com/tevelee/SwiftUI-Flow) wrapping HFlow / VFlow layouts (Live + Gallery).
 - [`apps/theme-kit/`](apps/theme-kit/) — [ThemeKit](https://github.com/isamercan/ThemeKit) live re-skin playground (Live + Gallery).
+- [`apps/textual-demo/`](apps/textual-demo/) — [Textual](https://github.com/gonzalezreal/textual) Markdown and rich text playground (Live + Gallery).
 - [`apps/welcome-kit/`](apps/welcome-kit/) — [WelcomeKit](https://github.com/atoll-studio/WelcomeKit) first-launch welcome sheet (Live + Gallery).
 - [`apps/whats-new-kit/`](apps/whats-new-kit/) — [WhatsNewKit](https://github.com/SvenTiigi/WhatsNewKit) what's-new sheet playground (Live + Gallery).
 - [`apps/vortex/`](apps/vortex/) — [Vortex](https://github.com/twostraws/Vortex) particle presets playground (Live + Gallery).
