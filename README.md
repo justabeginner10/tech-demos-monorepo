@@ -24,6 +24,7 @@ Each demo lives under `apps/<kebab-slug>/`.
 - [`apps/foldy/`](apps/foldy/) — [Foldy](https://github.com/InsaneArts/foldy) frosted-glass fold playground (Live + Gallery).
 - [`apps/grid-demo/`](apps/grid-demo/) — [Grid](https://github.com/exyte/Grid) CSS-grid layout playground (Live + Gallery).
 - [`apps/inferno/`](apps/inferno/) — [Inferno](https://github.com/twostraws/Inferno) Metal shader playground (Live + Gallery).
+- [`apps/kingfisher/`](apps/kingfisher/) — [Kingfisher](https://github.com/onevcat/Kingfisher) remote image loading playground (Live + Gallery).
 - [`apps/lazy-layout-kit/`](apps/lazy-layout-kit/) — [LazyLayoutKit](https://github.com/Dave861/LazyLayoutKit) masonry / justified / timeline playground (Live + Gallery).
 - [`apps/lazy-state/`](apps/lazy-state/) — Lazy `@State` initialized from parent data.
 - [`apps/liveline/`](apps/liveline/) — [Liveline](https://github.com/ParthJadhav/liveline-swift) realtime charts playground.
