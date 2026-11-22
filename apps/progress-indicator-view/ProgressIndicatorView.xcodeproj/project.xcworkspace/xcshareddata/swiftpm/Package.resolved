@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "progressindicatorview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/exyte/ProgressIndicatorView.git",
+      "state" : {
+        "revision" : "4bc9c200713c7a01bd7ff810c80796c0c28bf066",
+        "version" : "1.1.0"
+      }
+    }
+  ],
+  "version" : 2
+}

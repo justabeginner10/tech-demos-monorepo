@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="120" viewBox="0 0 240 120">
+  <text x="12" y="36" fill="#F5F5F7" font-family="Helvetica" font-size="20" text-anchor="start">Start</text>
+  <text x="120" y="68" fill="#FF8A3D" font-family="Helvetica" font-size="20" text-anchor="middle">Middle</text>
+  <text x="228" y="100" fill="#7DD3FC" font-family="Helvetica" font-size="20" text-anchor="end">End</text>
+</svg>
