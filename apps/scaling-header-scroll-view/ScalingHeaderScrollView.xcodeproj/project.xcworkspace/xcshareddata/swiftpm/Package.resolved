@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "scalingheaderscrollview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/exyte/ScalingHeaderScrollView.git",
+      "state" : {
+        "revision" : "f328af2bcfda8308aa9564dac47babdf01ef7947",
+        "version" : "3.1.0"
+      }
+    }
+  ],
+  "version" : 2
+}

@@ -1,0 +1,43 @@
+name: SwiftUIFlow
+options:
+  bundleIdPrefix: com.techdemos
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: 6.0
+packages:
+  SwiftUI-Flow:
+    url: https://github.com/tevelee/SwiftUI-Flow.git
+    from: 3.5.5
+targets:
+  SwiftUIFlow:
+    type: application
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - Sources
+    dependencies:
+      - package: SwiftUI-Flow
+        product: Flow
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.techdemos.swiftuiflow
+        PRODUCT_NAME: SwiftUIFlow
+        PRODUCT_MODULE_NAME: SwiftUIFlowDemo
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Flow
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        CODE_SIGN_STYLE: Automatic
+schemes:
+  SwiftUIFlow:
+    build:
+      targets:
+        SwiftUIFlow: all
+    run:
+      config: Debug
+    test:
+      config: Debug

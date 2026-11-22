@@ -1,0 +1,43 @@
+name: AnimatedTabBar
+options:
+  bundleIdPrefix: com.techdemos
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: 6.0
+packages:
+  AnimatedTabBar:
+    url: https://github.com/exyte/AnimatedTabBar.git
+    from: 1.0.1
+targets:
+  AnimatedTabBar:
+    type: application
+    platform: iOS
+    deploymentTarget: "18.0"
+    sources:
+      - Sources
+    dependencies:
+      - package: AnimatedTabBar
+        product: AnimatedTabBar
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.techdemos.animatedtabbar
+        PRODUCT_NAME: AnimatedTabBar
+        PRODUCT_MODULE_NAME: AnimatedTabBarDemo
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Tab Bar
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        CODE_SIGN_STYLE: Automatic
+schemes:
+  AnimatedTabBar:
+    build:
+      targets:
+        AnimatedTabBar: all
+    run:
+      config: Debug
+    test:
+      config: Debug

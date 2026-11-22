@@ -1,0 +1,43 @@
+name: ActivityIndicatorView
+options:
+  bundleIdPrefix: com.techdemos
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: 6.0
+packages:
+  ActivityIndicatorView:
+    url: https://github.com/exyte/ActivityIndicatorView.git
+    from: 2.0.2
+targets:
+  ActivityIndicatorView:
+    type: application
+    platform: iOS
+    deploymentTarget: "18.0"
+    sources:
+      - Sources
+    dependencies:
+      - package: ActivityIndicatorView
+        product: ActivityIndicatorView
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.techdemos.activityindicatorview
+        PRODUCT_NAME: ActivityIndicatorView
+        PRODUCT_MODULE_NAME: ActivityIndicatorViewDemo
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Indicators
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        CODE_SIGN_STYLE: Automatic
+schemes:
+  ActivityIndicatorView:
+    build:
+      targets:
+        ActivityIndicatorView: all
+    run:
+      config: Debug
+    test:
+      config: Debug

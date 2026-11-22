@@ -1,0 +1,43 @@
+name: WhatsNewKit
+options:
+  bundleIdPrefix: com.techdemos
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: 6.0
+packages:
+  WhatsNewKit:
+    url: https://github.com/SvenTiigi/WhatsNewKit.git
+    from: 2.2.1
+targets:
+  WhatsNewKit:
+    type: application
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - Sources
+    dependencies:
+      - package: WhatsNewKit
+        product: WhatsNewKit
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.techdemos.whatsnewkit
+        PRODUCT_NAME: WhatsNewKit
+        PRODUCT_MODULE_NAME: WhatsNewKitDemo
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: WhatsNewKit
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        CODE_SIGN_STYLE: Automatic
+schemes:
+  WhatsNewKit:
+    build:
+      targets:
+        WhatsNewKit: all
+    run:
+      config: Debug
+    test:
+      config: Debug

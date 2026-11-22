@@ -1,0 +1,47 @@
+name: Lottie
+options:
+  bundleIdPrefix: com.techdemos
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: 6.0
+packages:
+  Lottie:
+    url: https://github.com/airbnb/lottie-spm.git
+    from: 4.6.1
+targets:
+  Lottie:
+    type: application
+    platform: iOS
+    deploymentTarget: "18.0"
+    sources:
+      - path: Sources
+        excludes:
+          - Animations/**
+    resources:
+      - path: Sources/Animations
+    dependencies:
+      - package: Lottie
+        product: Lottie
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.techdemos.lottie
+        PRODUCT_NAME: Lottie
+        PRODUCT_MODULE_NAME: LottieDemo
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Lottie
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        CODE_SIGN_STYLE: Automatic
+schemes:
+  Lottie:
+    build:
+      targets:
+        Lottie: all
+    run:
+      config: Debug
+    test:
+      config: Debug

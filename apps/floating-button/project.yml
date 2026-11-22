@@ -1,0 +1,43 @@
+name: FloatingButton
+options:
+  bundleIdPrefix: com.techdemos
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: 6.0
+packages:
+  FloatingButton:
+    url: https://github.com/exyte/FloatingButton.git
+    from: 1.4.1
+targets:
+  FloatingButton:
+    type: application
+    platform: iOS
+    deploymentTarget: "18.0"
+    sources:
+      - Sources
+    dependencies:
+      - package: FloatingButton
+        product: FloatingButton
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.techdemos.floatingbutton
+        PRODUCT_NAME: FloatingButton
+        PRODUCT_MODULE_NAME: FloatingButtonDemo
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Floating Button
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        CODE_SIGN_STYLE: Automatic
+schemes:
+  FloatingButton:
+    build:
+      targets:
+        FloatingButton: all
+    run:
+      config: Debug
+    test:
+      config: Debug
