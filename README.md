@@ -17,6 +17,7 @@ Each demo lives under `apps/<kebab-slug>/`.
 - [`apps/button-styles/`](apps/button-styles/) — Custom `ButtonStyle` / `PrimitiveButtonStyle` gallery.
 - [`apps/chat-demo/`](apps/chat-demo/) — [Chat](https://github.com/exyte/Chat) message list, attachments, and input bar (Live + Gallery).
 - [`apps/confetti-swiftui/`](apps/confetti-swiftui/) — [ConfettiSwiftUI](https://github.com/simibac/ConfettiSwiftUI) burst playground (Live + Gallery).
+- [`apps/concentric-onboarding/`](apps/concentric-onboarding/) — [ConcentricOnboarding](https://github.com/exyte/ConcentricOnboarding) concentric page-transition onboarding (Live + Gallery).
 - [`apps/design-foundation/`](apps/design-foundation/) — [DesignFoundation](https://github.com/NerdSnipe-Inc/design-foundation) token playground (Live + Gallery).
 - [`apps/dial-kit/`](apps/dial-kit/) — [DialKit](https://github.com/mikelikesdesign/dialkit-ios) live panel playground (Live + Gallery).
 - [`apps/drafter-charts/`](apps/drafter-charts/) — [DrafterCharts](https://github.com/AndroidPoet/DrafterCharts) Live + Gallery playground.
