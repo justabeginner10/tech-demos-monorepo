@@ -38,6 +38,7 @@ Each demo lives under `apps/<kebab-slug>/`.
 - [`apps/media-picker/`](apps/media-picker/) — [MediaPicker](https://github.com/exyte/MediaPicker) custom photo and video picker (Live + Gallery).
 - [`apps/minted/`](apps/minted/) — [Minted](https://github.com/haplollc/Minted) physically-lit 3D gold medallions (Live + Gallery).
 - [`apps/motion-eyes/`](apps/motion-eyes/) — SwiftUI playground that integrates [MotionEyes](https://github.com/edwardsanchez/MotionEyes) so CADisplayLink traces show whether animations actually ran.
+- [`apps/pow/`](apps/pow/) — [Pow](https://github.com/EmergeTools/Pow) change effects and transitions (Live + Gallery).
 - [`apps/progress-indicator-view/`](apps/progress-indicator-view/) — [ProgressIndicatorView](https://github.com/exyte/ProgressIndicatorView) preset progress indicators (Live + Gallery).
 - [`apps/nuke-demo/`](apps/nuke-demo/) — [Nuke](https://github.com/kean/Nuke) image loading playground (Live + Gallery).
 - [`apps/rehearsal/`](apps/rehearsal/) — [Rehearsal](https://github.com/daneden/Rehearsal) interactive preview knobs (Live + Gallery).
