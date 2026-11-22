@@ -1,0 +1,369 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 63;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AGD31A31A31A31A31A31A31 /* AnimatedGradientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AGD21A21A21A21A21A21A21 /* AnimatedGradientApp.swift */; };
+		AGD31B31B31B31B31B31B31 /* DemoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AGD21B21B21B21B21B21B21 /* DemoScreen.swift */; };
+		AGD31C31C31C31C31C31C31 /* DemoChrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = AGD21C21C21C21C21C21C21 /* DemoChrome.swift */; };
+		AGD31D31D31D31D31D31D31 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = AGD21D21D21D21D21D21D21 /* Models.swift */; };
+		AGD31E31E31E31E31E31E31 /* LiveSurfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = AGD21E21E21E21E21E21E21 /* LiveSurfaces.swift */; };
+		AGD31F31F31F31F31F31F31 /* GalleryScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AGD22A22A22A22A22A22A22 /* GalleryScreen.swift */; };
+		AGD32A32A32A32A32A32A32 /* GallerySamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = AGD22B22B22B22B22B22B22 /* GallerySamples.swift */; };
+		AGD32B32B32B32B32B32B32 /* AnimatedGradient in Frameworks */ = {isa = PBXBuildFile; productRef = AGD81B81B81B81B81B81B81 /* AnimatedGradient */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AGD21A21A21A21A21A21A21 /* AnimatedGradientApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedGradientApp.swift; sourceTree = "<group>"; };
+		AGD21B21B21B21B21B21B21 /* DemoScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoScreen.swift; sourceTree = "<group>"; };
+		AGD21C21C21C21C21C21C21 /* DemoChrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoChrome.swift; sourceTree = "<group>"; };
+		AGD21D21D21D21D21D21D21 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		AGD21E21E21E21E21E21E21 /* LiveSurfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveSurfaces.swift; sourceTree = "<group>"; };
+		AGD22A22A22A22A22A22A22 /* GalleryScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryScreen.swift; sourceTree = "<group>"; };
+		AGD22B22B22B22B22B22B22 /* GallerySamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GallerySamples.swift; sourceTree = "<group>"; };
+		AGD21F21F21F21F21F21F21 /* AnimatedGradient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimatedGradient.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AGD41A41A41A41A41A41A41 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AGD32B32B32B32B32B32B32 /* AnimatedGradient in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AGDB11B11B11B11B11B11B11 = {
+			isa = PBXGroup;
+			children = (
+				AGDD11D11D11D11D11D11D11 /* Sources */,
+				AGDE11E11E11E11E11E11E11 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AGDD11D11D11D11D11D11D11 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				AGD21A21A21A21A21A21A21 /* AnimatedGradientApp.swift */,
+				AGD21B21B21B21B21B21B21 /* DemoScreen.swift */,
+				AGD21C21C21C21C21C21C21 /* DemoChrome.swift */,
+				AGD21D21D21D21D21D21D21 /* Models.swift */,
+				AGD21E21E21E21E21E21E21 /* LiveSurfaces.swift */,
+				AGD22A22A22A22A22A22A22 /* GalleryScreen.swift */,
+				AGD22B22B22B22B22B22B22 /* GallerySamples.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		AGDE11E11E11E11E11E11E11 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AGD21F21F21F21F21F21F21 /* AnimatedGradient.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AGD51A51A51A51A51A51A51 /* AnimatedGradient */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AGD71A71A71A71A71A71A71 /* Build configuration list for PBXNativeTarget "AnimatedGradient" */;
+			buildPhases = (
+				AGD41B41B41B41B41B41B41 /* Sources */,
+				AGD41A41A41A41A41A41A41 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AnimatedGradient;
+			packageProductDependencies = (
+				AGD81B81B81B81B81B81B81 /* AnimatedGradient */,
+			);
+			productName = AnimatedGradient;
+			productReference = AGD21F21F21F21F21F21F21 /* AnimatedGradient.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AGDA11A11A11A11A11A11A11 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+			};
+			buildConfigurationList = AGD71B71B71B71B71B71B71 /* Build configuration list for PBXProject "AnimatedGradient" */;
+			compatibilityVersion = "Xcode 15.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = AGDB11B11B11B11B11B11B11;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				AGD81A81A81A81A81A81A81 /* XCRemoteSwiftPackageReference "AnimatedGradient" */,
+			);
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AGD51A51A51A51A51A51A51 /* AnimatedGradient */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AGD41B41B41B41B41B41B41 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AGD31A31A31A31A31A31A31 /* AnimatedGradientApp.swift in Sources */,
+				AGD31B31B31B31B31B31B31 /* DemoScreen.swift in Sources */,
+				AGD31C31C31C31C31C31C31 /* DemoChrome.swift in Sources */,
+				AGD31D31D31D31D31D31D31 /* Models.swift in Sources */,
+				AGD31E31E31E31E31E31E31 /* LiveSurfaces.swift in Sources */,
+				AGD31F31F31F31F31F31F31 /* GalleryScreen.swift in Sources */,
+				AGD32A32A32A32A32A32A32 /* GallerySamples.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		AGD61A61A61A61A61A61A61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		AGD61B61B61B61B61B61B61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		AGD61C61C61C61C61C61C61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Gradient;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.techdemos.animatedgradient;
+				PRODUCT_MODULE_NAME = AnimatedGradientDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AGD61D61D61D61D61D61D61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Gradient;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.techdemos.animatedgradient;
+				PRODUCT_MODULE_NAME = AnimatedGradientDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AGD71A71A71A71A71A71A71 /* Build configuration list for PBXNativeTarget "AnimatedGradient" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AGD61C61C61C61C61C61C61 /* Debug */,
+				AGD61D61D61D61D61D61D61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		AGD71B71B71B71B71B71B71 /* Build configuration list for PBXProject "AnimatedGradient" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AGD61A61A61A61A61A61A61 /* Debug */,
+				AGD61B61B61B61B61B61B61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AGD81A81A81A81A81A81A81 /* XCRemoteSwiftPackageReference "AnimatedGradient" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/exyte/AnimatedGradient.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AGD81B81B81B81B81B81B81 /* AnimatedGradient */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AGD81A81A81A81A81A81A81 /* XCRemoteSwiftPackageReference "AnimatedGradient" */;
+			productName = AnimatedGradient;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = AGDA11A11A11A11A11A11A11 /* Project object */;
+}
