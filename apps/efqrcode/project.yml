@@ -1,0 +1,43 @@
+name: EFQRCode
+options:
+  bundleIdPrefix: com.techdemos
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: 6.0
+packages:
+  EFQRCode:
+    url: https://github.com/EFPrefix/EFQRCode.git
+    from: 7.0.3
+targets:
+  EFQRCode:
+    type: application
+    platform: iOS
+    deploymentTarget: "18.0"
+    sources:
+      - Sources
+    dependencies:
+      - package: EFQRCode
+        product: EFQRCode
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.techdemos.efqrcode
+        PRODUCT_NAME: EFQRCode
+        PRODUCT_MODULE_NAME: EFQRCodeDemo
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: EFQRCode
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        CODE_SIGN_STYLE: Automatic
+schemes:
+  EFQRCode:
+    build:
+      targets:
+        EFQRCode: all
+    run:
+      config: Debug
+    test:
+      config: Debug
