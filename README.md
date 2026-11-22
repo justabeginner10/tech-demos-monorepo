@@ -48,6 +48,7 @@ Each demo lives under `apps/<kebab-slug>/`.
 - [`apps/shader-kit/`](apps/shader-kit/) — [ShaderKit](https://github.com/jamesrochabrun/ShaderKit) holographic cards playground (Live + Gallery).
 - [`apps/ship-swift/`](apps/ship-swift/) — Slim [ShipSwift](https://github.com/signerlabs/ShipSwift) copy-paste playground (`SWPackage` recipes, Live + Gallery).
 - [`apps/swift-viz/`](apps/swift-viz/) — [SwiftViz](https://github.com/omarsinan/SwiftViz) stacked / simple bar charts.
+- [`apps/swiftui-navigation-transitions/`](apps/swiftui-navigation-transitions/) — [SwiftUINavigationTransitions](https://github.com/davdroman/swiftui-navigation-transitions) custom NavigationStack push/pop transitions (Live + Gallery).
 - [`apps/svgview-demo/`](apps/svgview-demo/) — [SVGView](https://github.com/exyte/SVGView) SVG parser and renderer (Live + Gallery).
 - [`apps/swiftui-flow/`](apps/swiftui-flow/) — [SwiftUI-Flow](https://github.com/tevelee/SwiftUI-Flow) wrapping HFlow / VFlow layouts (Live + Gallery).
 - [`apps/theme-kit/`](apps/theme-kit/) — [ThemeKit](https://github.com/isamercan/ThemeKit) live re-skin playground (Live + Gallery).
